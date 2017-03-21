@@ -1,0 +1,2 @@
+Main-Class: Asl.Asl
+Class-Path: /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/libs/antlr-3.4-complete.jar /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/libs/commons-cli-1.2.jar

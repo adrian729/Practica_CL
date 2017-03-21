@@ -1,0 +1,3 @@
+#!/bin/sh
+
+exec java -enableassertions -jar /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/bin/Asl.jar "$@"
