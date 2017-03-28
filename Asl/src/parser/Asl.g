@@ -35,13 +35,15 @@ options {
 // Imaginary tokens to create some AST nodes
 
 tokens {
-    LIST_MODULES; // List of modules (the root of the tree)
+    LIST_FUNCTIONS; // List of functions (the root of the tree)
+    ASSIGN;     // Assignment instruction
     PARAMS;     // List of parameters in the declaration of a function
     FUNCALL;    // Function call
     ARGLIST;    // List of arguments passed in a function call
     LIST_INSTR; // Block of instructions
-    ARRAY_RANK;
-    ARRAY_ACCESS;
+    BOOLEAN;    // Boolean atom (for Boolean constants "true" or "false")
+    PVALUE;     // Parameter by value in the list of parameters
+    PREF;       // Parameter by reference in the list of parameters
 }
 
 @header {
@@ -55,68 +57,137 @@ package parser;
 
 
 // A program is a list of functions
-prog	: mod+ EOF -> ^(LIST_MODULES mod+)
+prog	: func+ EOF -> ^(LIST_FUNCTIONS func+)
+        ;
+            
+// A function has a name, a list of parameters and a block of instructions	
+func	: FUNC^ ID params block_instructions ENDFUNC!
         ;
 
-mod: MODULE^ ID params block_instructions EMODULE! ;
-
-params  : '(' varslist? ')' -> ^(PARAMS varslist?)
+// The list of parameters grouped in a subtree (it can be empty)
+params	: '(' paramlist? ')' -> ^(PARAMS paramlist?)
         ;
 
-varslist: ID (','! ID)*
+// Parameters are separated by commas
+paramlist: param (','! param)*
         ;
 
-block_instructions:
-        (instruction ';')+ -> ^(LIST_INSTR instruction+)
+// Parameters with & as prefix are passed by reference
+// Only one node with the name of the parameter is created
+param   :   '&' id=ID -> ^(PREF[$id,$id.text])
+        |   id=ID -> ^(PVALUE[$id,$id.text])
         ;
 
-//Mirar com va aixo en Verilog.
-instruction:
-        declaration
-        | funcall
-        | assignation
+// A list of instructions, all of them gouped in a subtree
+block_instructions
+        :	 instruction (';' instruction)*
+            -> ^(LIST_INSTR instruction+)
         ;
 
-declaration: (INPUT^|OUTPUT^|WIRE^) array_dec varslist ;
-
-array_dec: '[' NUM ':' NUM ']' -> ^(ARRAY_RANK NUM NUM) ;
-
-funcall : ID ID '(' expr_list? ')' -> ^(FUNCALL ID ^(ARGLIST expr_list?))
+// The different types of instructions
+instruction
+        :	assign          // Assignment
+        |	ite_stmt        // if-then-else
+        |	while_stmt      // while statement
+        |   funcall         // Call to a procedure (no result produced)
+        |	return_stmt     // Return statement
+        |	read            // Read a variable
+        | 	write           // Write a string or an expression
+        |                   // Nothing
         ;
 
-expr_list: (ID|array_access) (','! (ID|array_access))* ;
-
-array_access  
-        :   ID ac='[' NUM ']' -> ^(ARRAY_ACCESS[$ac,"ARRAY_ACCESS"] ID NUM)
+// Assignment
+assign	:	ID eq=EQUAL expr -> ^(ASSIGN[$eq,":="] ID expr)
         ;
 
-assignation: ID ASSIGN bool_or ;
+// if-then-else (else is optional)
+ite_stmt	:	IF^ expr THEN! block_instructions (ELSE! block_instructions)? ENDIF!
+            ;
 
-bool_or: bool_xor (OR^ bool_xor)* ;
+// while statement
+while_stmt	:	WHILE^ expr DO! block_instructions ENDWHILE!
+            ;
 
-bool_xor: bool_and (XOR^ bool_and)* ;
+// Return statement with an expression
+return_stmt	:	RETURN^ expr?
+        ;
 
-bool_and: bool_atom (AND^ bool_atom)* ;
+// Read a variable
+read	:	READ^ ID
+        ;
 
-bool_atom: 
-        ID 
-        | '('! bool_or ')'!
+// Write an expression or a string
+write	:   WRITE^ (expr | STRING )
+        ;
+
+// Grammar for expressions with boolean, relational and aritmetic operators
+expr    :   boolterm (OR^ boolterm)*
+        ;
+
+boolterm:   boolfact (AND^ boolfact)*
+        ;
+
+boolfact:   num_expr ((EQUAL^ | NOT_EQUAL^ | LT^ | LE^ | GT^ | GE^) num_expr)?
+        ;
+
+num_expr:   term ( (PLUS^ | MINUS^) term)*
+        ;
+
+term    :   factor ( (MUL^ | DIV^ | MOD^) factor)*
+        ;
+
+factor  :   (NOT^ | PLUS^ | MINUS^)? atom
+        ;
+
+// Atom of the expressions (variables, integer and boolean literals).
+// An atom can also be a function call or another expression
+// in parenthesis
+atom    :   ID 
+        |   INT
+        |   (b=TRUE | b=FALSE)  -> ^(BOOLEAN[$b,$b.text])
+        |   funcall
+        |   '('! expr ')'!
+        ;
+
+// A function call has a lits of arguments in parenthesis (possibly empty)
+funcall :   ID '(' expr_list? ')' -> ^(FUNCALL ID ^(ARGLIST expr_list?))
+        ;
+
+// A list of expressions separated by commas
+expr_list:  expr (','! expr)*
         ;
 
 // Basic tokens
-MODULE  : 'module' ;
-EMODULE : 'endmodule' ;
-INPUT   : 'input' ;
-OUTPUT  : 'output' ;
-WIRE    : 'wire' ;
-ASSIGN  : '=' ;
-XOR     : '^' ;
-OR      : '|' ;
-AND     : '&' ;
-ID      : ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'0'..'9'|'_'|'$')* ;
-NUM     : ('0'..'9')+ ;
-
-
+EQUAL	: '=' ;
+NOT_EQUAL: '!=' ;
+LT	    : '<' ;
+LE	    : '<=';
+GT	    : '>';
+GE	    : '>=';
+PLUS	: '+' ;
+MINUS	: '-' ;
+MUL	    : '*';
+DIV	    : '/';
+MOD	    : '%' ;
+NOT	    : 'not';
+AND	    : 'and' ;
+OR	    : 'or' ;	
+IF  	: 'if' ;
+THEN	: 'then' ;
+ELSE	: 'else' ;
+ENDIF	: 'endif' ;
+WHILE	: 'while' ;
+DO	    : 'do' ;
+ENDWHILE: 'endwhile' ;
+FUNC	: 'func' ;
+ENDFUNC	: 'endfunc' ;
+RETURN	: 'return' ;
+READ	: 'read' ;
+WRITE	: 'write' ;
+TRUE    : 'true' ;
+FALSE   : 'false';
+ID  	:	('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'0'..'9'|'_')* ;
+INT 	:	'0'..'9'+ ;
 
 // C-style comments
 COMMENT	: '//' ~('\n'|'\r')* '\r'? '\n' {$channel=HIDDEN;}

@@ -1,4 +1,4 @@
-// $ANTLR 3.4 /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g 2017-03-21 19:35:37
+// $ANTLR 3.4 /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g 2017-03-28 16:33:42
 
 package parser;
 
@@ -11,35 +11,54 @@ import java.util.ArrayList;
 @SuppressWarnings({"all", "warnings", "unchecked"})
 public class AslLexer extends Lexer {
     public static final int EOF=-1;
-    public static final int T__26=26;
-    public static final int T__27=27;
-    public static final int T__28=28;
-    public static final int T__29=29;
-    public static final int T__30=30;
-    public static final int T__31=31;
-    public static final int T__32=32;
+    public static final int T__47=47;
+    public static final int T__48=48;
+    public static final int T__49=49;
+    public static final int T__50=50;
+    public static final int T__51=51;
     public static final int AND=4;
     public static final int ARGLIST=5;
-    public static final int ARRAY_ACCESS=6;
-    public static final int ARRAY_RANK=7;
-    public static final int ASSIGN=8;
-    public static final int COMMENT=9;
-    public static final int EMODULE=10;
-    public static final int ESC_SEQ=11;
-    public static final int FUNCALL=12;
-    public static final int ID=13;
-    public static final int INPUT=14;
-    public static final int LIST_INSTR=15;
-    public static final int LIST_MODULES=16;
-    public static final int MODULE=17;
-    public static final int NUM=18;
-    public static final int OR=19;
-    public static final int OUTPUT=20;
-    public static final int PARAMS=21;
-    public static final int STRING=22;
-    public static final int WIRE=23;
-    public static final int WS=24;
-    public static final int XOR=25;
+    public static final int ASSIGN=6;
+    public static final int BOOLEAN=7;
+    public static final int COMMENT=8;
+    public static final int DIV=9;
+    public static final int DO=10;
+    public static final int ELSE=11;
+    public static final int ENDFUNC=12;
+    public static final int ENDIF=13;
+    public static final int ENDWHILE=14;
+    public static final int EQUAL=15;
+    public static final int ESC_SEQ=16;
+    public static final int FALSE=17;
+    public static final int FUNC=18;
+    public static final int FUNCALL=19;
+    public static final int GE=20;
+    public static final int GT=21;
+    public static final int ID=22;
+    public static final int IF=23;
+    public static final int INT=24;
+    public static final int LE=25;
+    public static final int LIST_FUNCTIONS=26;
+    public static final int LIST_INSTR=27;
+    public static final int LT=28;
+    public static final int MINUS=29;
+    public static final int MOD=30;
+    public static final int MUL=31;
+    public static final int NOT=32;
+    public static final int NOT_EQUAL=33;
+    public static final int OR=34;
+    public static final int PARAMS=35;
+    public static final int PLUS=36;
+    public static final int PREF=37;
+    public static final int PVALUE=38;
+    public static final int READ=39;
+    public static final int RETURN=40;
+    public static final int STRING=41;
+    public static final int THEN=42;
+    public static final int TRUE=43;
+    public static final int WHILE=44;
+    public static final int WRITE=45;
+    public static final int WS=46;
 
     // delegates
     // delegators
@@ -54,340 +73,15 @@ public class AslLexer extends Lexer {
     public AslLexer(CharStream input, RecognizerSharedState state) {
         super(input,state);
     }
-    public String getGrammarFileName() { return "/home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g"; }
+    public String getGrammarFileName() { return "/home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g"; }
 
-    // $ANTLR start "T__26"
-    public final void mT__26() throws RecognitionException {
+    // $ANTLR start "T__47"
+    public final void mT__47() throws RecognitionException {
         try {
-            int _type = T__26;
+            int _type = T__47;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:6:7: ( '(' )
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:6:9: '('
-            {
-            match('('); 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        	// do for sure before leaving
-        }
-    }
-    // $ANTLR end "T__26"
-
-    // $ANTLR start "T__27"
-    public final void mT__27() throws RecognitionException {
-        try {
-            int _type = T__27;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:7:7: ( ')' )
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:7:9: ')'
-            {
-            match(')'); 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        	// do for sure before leaving
-        }
-    }
-    // $ANTLR end "T__27"
-
-    // $ANTLR start "T__28"
-    public final void mT__28() throws RecognitionException {
-        try {
-            int _type = T__28;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:8:7: ( ',' )
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:8:9: ','
-            {
-            match(','); 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        	// do for sure before leaving
-        }
-    }
-    // $ANTLR end "T__28"
-
-    // $ANTLR start "T__29"
-    public final void mT__29() throws RecognitionException {
-        try {
-            int _type = T__29;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:9:7: ( ':' )
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:9:9: ':'
-            {
-            match(':'); 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        	// do for sure before leaving
-        }
-    }
-    // $ANTLR end "T__29"
-
-    // $ANTLR start "T__30"
-    public final void mT__30() throws RecognitionException {
-        try {
-            int _type = T__30;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:10:7: ( ';' )
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:10:9: ';'
-            {
-            match(';'); 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        	// do for sure before leaving
-        }
-    }
-    // $ANTLR end "T__30"
-
-    // $ANTLR start "T__31"
-    public final void mT__31() throws RecognitionException {
-        try {
-            int _type = T__31;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:11:7: ( '[' )
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:11:9: '['
-            {
-            match('['); 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        	// do for sure before leaving
-        }
-    }
-    // $ANTLR end "T__31"
-
-    // $ANTLR start "T__32"
-    public final void mT__32() throws RecognitionException {
-        try {
-            int _type = T__32;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:12:7: ( ']' )
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:12:9: ']'
-            {
-            match(']'); 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        	// do for sure before leaving
-        }
-    }
-    // $ANTLR end "T__32"
-
-    // $ANTLR start "MODULE"
-    public final void mMODULE() throws RecognitionException {
-        try {
-            int _type = MODULE;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:107:9: ( 'module' )
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:107:11: 'module'
-            {
-            match("module"); 
-
-
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        	// do for sure before leaving
-        }
-    }
-    // $ANTLR end "MODULE"
-
-    // $ANTLR start "EMODULE"
-    public final void mEMODULE() throws RecognitionException {
-        try {
-            int _type = EMODULE;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:108:9: ( 'endmodule' )
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:108:11: 'endmodule'
-            {
-            match("endmodule"); 
-
-
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        	// do for sure before leaving
-        }
-    }
-    // $ANTLR end "EMODULE"
-
-    // $ANTLR start "INPUT"
-    public final void mINPUT() throws RecognitionException {
-        try {
-            int _type = INPUT;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:109:9: ( 'input' )
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:109:11: 'input'
-            {
-            match("input"); 
-
-
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        	// do for sure before leaving
-        }
-    }
-    // $ANTLR end "INPUT"
-
-    // $ANTLR start "OUTPUT"
-    public final void mOUTPUT() throws RecognitionException {
-        try {
-            int _type = OUTPUT;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:110:9: ( 'output' )
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:110:11: 'output'
-            {
-            match("output"); 
-
-
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        	// do for sure before leaving
-        }
-    }
-    // $ANTLR end "OUTPUT"
-
-    // $ANTLR start "WIRE"
-    public final void mWIRE() throws RecognitionException {
-        try {
-            int _type = WIRE;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:111:9: ( 'wire' )
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:111:11: 'wire'
-            {
-            match("wire"); 
-
-
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        	// do for sure before leaving
-        }
-    }
-    // $ANTLR end "WIRE"
-
-    // $ANTLR start "ASSIGN"
-    public final void mASSIGN() throws RecognitionException {
-        try {
-            int _type = ASSIGN;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:112:9: ( '=' )
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:112:11: '='
-            {
-            match('='); 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        	// do for sure before leaving
-        }
-    }
-    // $ANTLR end "ASSIGN"
-
-    // $ANTLR start "XOR"
-    public final void mXOR() throws RecognitionException {
-        try {
-            int _type = XOR;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:113:9: ( '^' )
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:113:11: '^'
-            {
-            match('^'); 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        	// do for sure before leaving
-        }
-    }
-    // $ANTLR end "XOR"
-
-    // $ANTLR start "OR"
-    public final void mOR() throws RecognitionException {
-        try {
-            int _type = OR;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:114:9: ( '|' )
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:114:11: '|'
-            {
-            match('|'); 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        	// do for sure before leaving
-        }
-    }
-    // $ANTLR end "OR"
-
-    // $ANTLR start "AND"
-    public final void mAND() throws RecognitionException {
-        try {
-            int _type = AND;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:115:9: ( '&' )
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:115:11: '&'
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:6:7: ( '&' )
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:6:9: '&'
             {
             match('&'); 
 
@@ -400,15 +94,727 @@ public class AslLexer extends Lexer {
         	// do for sure before leaving
         }
     }
+    // $ANTLR end "T__47"
+
+    // $ANTLR start "T__48"
+    public final void mT__48() throws RecognitionException {
+        try {
+            int _type = T__48;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:7:7: ( '(' )
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:7:9: '('
+            {
+            match('('); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "T__48"
+
+    // $ANTLR start "T__49"
+    public final void mT__49() throws RecognitionException {
+        try {
+            int _type = T__49;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:8:7: ( ')' )
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:8:9: ')'
+            {
+            match(')'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "T__49"
+
+    // $ANTLR start "T__50"
+    public final void mT__50() throws RecognitionException {
+        try {
+            int _type = T__50;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:9:7: ( ',' )
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:9:9: ','
+            {
+            match(','); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "T__50"
+
+    // $ANTLR start "T__51"
+    public final void mT__51() throws RecognitionException {
+        try {
+            int _type = T__51;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:10:7: ( ';' )
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:10:9: ';'
+            {
+            match(';'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "T__51"
+
+    // $ANTLR start "EQUAL"
+    public final void mEQUAL() throws RecognitionException {
+        try {
+            int _type = EQUAL;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:161:7: ( '=' )
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:161:9: '='
+            {
+            match('='); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "EQUAL"
+
+    // $ANTLR start "NOT_EQUAL"
+    public final void mNOT_EQUAL() throws RecognitionException {
+        try {
+            int _type = NOT_EQUAL;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:162:10: ( '!=' )
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:162:12: '!='
+            {
+            match("!="); 
+
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "NOT_EQUAL"
+
+    // $ANTLR start "LT"
+    public final void mLT() throws RecognitionException {
+        try {
+            int _type = LT;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:163:8: ( '<' )
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:163:10: '<'
+            {
+            match('<'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "LT"
+
+    // $ANTLR start "LE"
+    public final void mLE() throws RecognitionException {
+        try {
+            int _type = LE;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:164:8: ( '<=' )
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:164:10: '<='
+            {
+            match("<="); 
+
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "LE"
+
+    // $ANTLR start "GT"
+    public final void mGT() throws RecognitionException {
+        try {
+            int _type = GT;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:165:8: ( '>' )
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:165:10: '>'
+            {
+            match('>'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "GT"
+
+    // $ANTLR start "GE"
+    public final void mGE() throws RecognitionException {
+        try {
+            int _type = GE;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:166:8: ( '>=' )
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:166:10: '>='
+            {
+            match(">="); 
+
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "GE"
+
+    // $ANTLR start "PLUS"
+    public final void mPLUS() throws RecognitionException {
+        try {
+            int _type = PLUS;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:167:6: ( '+' )
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:167:8: '+'
+            {
+            match('+'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "PLUS"
+
+    // $ANTLR start "MINUS"
+    public final void mMINUS() throws RecognitionException {
+        try {
+            int _type = MINUS;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:168:7: ( '-' )
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:168:9: '-'
+            {
+            match('-'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "MINUS"
+
+    // $ANTLR start "MUL"
+    public final void mMUL() throws RecognitionException {
+        try {
+            int _type = MUL;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:169:9: ( '*' )
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:169:11: '*'
+            {
+            match('*'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "MUL"
+
+    // $ANTLR start "DIV"
+    public final void mDIV() throws RecognitionException {
+        try {
+            int _type = DIV;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:170:9: ( '/' )
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:170:11: '/'
+            {
+            match('/'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "DIV"
+
+    // $ANTLR start "MOD"
+    public final void mMOD() throws RecognitionException {
+        try {
+            int _type = MOD;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:171:9: ( '%' )
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:171:11: '%'
+            {
+            match('%'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "MOD"
+
+    // $ANTLR start "NOT"
+    public final void mNOT() throws RecognitionException {
+        try {
+            int _type = NOT;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:172:9: ( 'not' )
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:172:11: 'not'
+            {
+            match("not"); 
+
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "NOT"
+
+    // $ANTLR start "AND"
+    public final void mAND() throws RecognitionException {
+        try {
+            int _type = AND;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:173:9: ( 'and' )
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:173:11: 'and'
+            {
+            match("and"); 
+
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
     // $ANTLR end "AND"
+
+    // $ANTLR start "OR"
+    public final void mOR() throws RecognitionException {
+        try {
+            int _type = OR;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:174:8: ( 'or' )
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:174:10: 'or'
+            {
+            match("or"); 
+
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "OR"
+
+    // $ANTLR start "IF"
+    public final void mIF() throws RecognitionException {
+        try {
+            int _type = IF;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:175:6: ( 'if' )
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:175:8: 'if'
+            {
+            match("if"); 
+
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "IF"
+
+    // $ANTLR start "THEN"
+    public final void mTHEN() throws RecognitionException {
+        try {
+            int _type = THEN;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:176:6: ( 'then' )
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:176:8: 'then'
+            {
+            match("then"); 
+
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "THEN"
+
+    // $ANTLR start "ELSE"
+    public final void mELSE() throws RecognitionException {
+        try {
+            int _type = ELSE;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:177:6: ( 'else' )
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:177:8: 'else'
+            {
+            match("else"); 
+
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "ELSE"
+
+    // $ANTLR start "ENDIF"
+    public final void mENDIF() throws RecognitionException {
+        try {
+            int _type = ENDIF;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:178:7: ( 'endif' )
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:178:9: 'endif'
+            {
+            match("endif"); 
+
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "ENDIF"
+
+    // $ANTLR start "WHILE"
+    public final void mWHILE() throws RecognitionException {
+        try {
+            int _type = WHILE;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:179:7: ( 'while' )
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:179:9: 'while'
+            {
+            match("while"); 
+
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "WHILE"
+
+    // $ANTLR start "DO"
+    public final void mDO() throws RecognitionException {
+        try {
+            int _type = DO;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:180:8: ( 'do' )
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:180:10: 'do'
+            {
+            match("do"); 
+
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "DO"
+
+    // $ANTLR start "ENDWHILE"
+    public final void mENDWHILE() throws RecognitionException {
+        try {
+            int _type = ENDWHILE;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:181:9: ( 'endwhile' )
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:181:11: 'endwhile'
+            {
+            match("endwhile"); 
+
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "ENDWHILE"
+
+    // $ANTLR start "FUNC"
+    public final void mFUNC() throws RecognitionException {
+        try {
+            int _type = FUNC;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:182:6: ( 'func' )
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:182:8: 'func'
+            {
+            match("func"); 
+
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "FUNC"
+
+    // $ANTLR start "ENDFUNC"
+    public final void mENDFUNC() throws RecognitionException {
+        try {
+            int _type = ENDFUNC;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:183:9: ( 'endfunc' )
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:183:11: 'endfunc'
+            {
+            match("endfunc"); 
+
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "ENDFUNC"
+
+    // $ANTLR start "RETURN"
+    public final void mRETURN() throws RecognitionException {
+        try {
+            int _type = RETURN;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:184:8: ( 'return' )
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:184:10: 'return'
+            {
+            match("return"); 
+
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "RETURN"
+
+    // $ANTLR start "READ"
+    public final void mREAD() throws RecognitionException {
+        try {
+            int _type = READ;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:185:6: ( 'read' )
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:185:8: 'read'
+            {
+            match("read"); 
+
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "READ"
+
+    // $ANTLR start "WRITE"
+    public final void mWRITE() throws RecognitionException {
+        try {
+            int _type = WRITE;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:186:7: ( 'write' )
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:186:9: 'write'
+            {
+            match("write"); 
+
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "WRITE"
+
+    // $ANTLR start "TRUE"
+    public final void mTRUE() throws RecognitionException {
+        try {
+            int _type = TRUE;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:187:9: ( 'true' )
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:187:11: 'true'
+            {
+            match("true"); 
+
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "TRUE"
+
+    // $ANTLR start "FALSE"
+    public final void mFALSE() throws RecognitionException {
+        try {
+            int _type = FALSE;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:188:9: ( 'false' )
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:188:11: 'false'
+            {
+            match("false"); 
+
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "FALSE"
 
     // $ANTLR start "ID"
     public final void mID() throws RecognitionException {
         try {
             int _type = ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:116:9: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' | '$' )* )
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:116:11: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' | '$' )*
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:189:6: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )* )
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:189:8: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
             {
             if ( (input.LA(1) >= 'A' && input.LA(1) <= 'Z')||input.LA(1)=='_'||(input.LA(1) >= 'a' && input.LA(1) <= 'z') ) {
                 input.consume();
@@ -420,22 +826,22 @@ public class AslLexer extends Lexer {
             }
 
 
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:116:35: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' | '$' )*
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:189:32: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
             loop1:
             do {
                 int alt1=2;
                 int LA1_0 = input.LA(1);
 
-                if ( (LA1_0=='$'||(LA1_0 >= '0' && LA1_0 <= '9')||(LA1_0 >= 'A' && LA1_0 <= 'Z')||LA1_0=='_'||(LA1_0 >= 'a' && LA1_0 <= 'z')) ) {
+                if ( ((LA1_0 >= '0' && LA1_0 <= '9')||(LA1_0 >= 'A' && LA1_0 <= 'Z')||LA1_0=='_'||(LA1_0 >= 'a' && LA1_0 <= 'z')) ) {
                     alt1=1;
                 }
 
 
                 switch (alt1) {
             	case 1 :
-            	    // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:
+            	    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:
             	    {
-            	    if ( input.LA(1)=='$'||(input.LA(1) >= '0' && input.LA(1) <= '9')||(input.LA(1) >= 'A' && input.LA(1) <= 'Z')||input.LA(1)=='_'||(input.LA(1) >= 'a' && input.LA(1) <= 'z') ) {
+            	    if ( (input.LA(1) >= '0' && input.LA(1) <= '9')||(input.LA(1) >= 'A' && input.LA(1) <= 'Z')||input.LA(1)=='_'||(input.LA(1) >= 'a' && input.LA(1) <= 'z') ) {
             	        input.consume();
             	    }
             	    else {
@@ -465,15 +871,15 @@ public class AslLexer extends Lexer {
     }
     // $ANTLR end "ID"
 
-    // $ANTLR start "NUM"
-    public final void mNUM() throws RecognitionException {
+    // $ANTLR start "INT"
+    public final void mINT() throws RecognitionException {
         try {
-            int _type = NUM;
+            int _type = INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:117:9: ( ( '0' .. '9' )+ )
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:117:11: ( '0' .. '9' )+
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:190:6: ( ( '0' .. '9' )+ )
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:190:8: ( '0' .. '9' )+
             {
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:117:11: ( '0' .. '9' )+
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:190:8: ( '0' .. '9' )+
             int cnt2=0;
             loop2:
             do {
@@ -487,7 +893,7 @@ public class AslLexer extends Lexer {
 
                 switch (alt2) {
             	case 1 :
-            	    // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:
+            	    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:
             	    {
             	    if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
             	        input.consume();
@@ -521,14 +927,14 @@ public class AslLexer extends Lexer {
         	// do for sure before leaving
         }
     }
-    // $ANTLR end "NUM"
+    // $ANTLR end "INT"
 
     // $ANTLR start "COMMENT"
     public final void mCOMMENT() throws RecognitionException {
         try {
             int _type = COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:122:9: ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' | '/*' ( options {greedy=false; } : . )* '*/' )
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:193:9: ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' | '/*' ( options {greedy=false; } : . )* '*/' )
             int alt6=2;
             int LA6_0 = input.LA(1);
 
@@ -558,13 +964,13 @@ public class AslLexer extends Lexer {
             }
             switch (alt6) {
                 case 1 :
-                    // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:122:11: '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n'
+                    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:193:11: '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n'
                     {
                     match("//"); 
 
 
 
-                    // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:122:16: (~ ( '\\n' | '\\r' ) )*
+                    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:193:16: (~ ( '\\n' | '\\r' ) )*
                     loop3:
                     do {
                         int alt3=2;
@@ -577,7 +983,7 @@ public class AslLexer extends Lexer {
 
                         switch (alt3) {
                     	case 1 :
-                    	    // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:
+                    	    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:
                     	    {
                     	    if ( (input.LA(1) >= '\u0000' && input.LA(1) <= '\t')||(input.LA(1) >= '\u000B' && input.LA(1) <= '\f')||(input.LA(1) >= '\u000E' && input.LA(1) <= '\uFFFF') ) {
                     	        input.consume();
@@ -598,7 +1004,7 @@ public class AslLexer extends Lexer {
                     } while (true);
 
 
-                    // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:122:30: ( '\\r' )?
+                    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:193:30: ( '\\r' )?
                     int alt4=2;
                     int LA4_0 = input.LA(1);
 
@@ -607,7 +1013,7 @@ public class AslLexer extends Lexer {
                     }
                     switch (alt4) {
                         case 1 :
-                            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:122:30: '\\r'
+                            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:193:30: '\\r'
                             {
                             match('\r'); 
 
@@ -624,13 +1030,13 @@ public class AslLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:123:8: '/*' ( options {greedy=false; } : . )* '*/'
+                    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:194:8: '/*' ( options {greedy=false; } : . )* '*/'
                     {
                     match("/*"); 
 
 
 
-                    // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:123:13: ( options {greedy=false; } : . )*
+                    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:194:13: ( options {greedy=false; } : . )*
                     loop5:
                     do {
                         int alt5=2;
@@ -655,7 +1061,7 @@ public class AslLexer extends Lexer {
 
                         switch (alt5) {
                     	case 1 :
-                    	    // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:123:41: .
+                    	    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:194:41: .
                     	    {
                     	    matchAny(); 
 
@@ -692,12 +1098,12 @@ public class AslLexer extends Lexer {
         try {
             int _type = STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:127:9: ( '\"' ( ESC_SEQ |~ ( '\\\\' | '\"' ) )* '\"' )
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:127:12: '\"' ( ESC_SEQ |~ ( '\\\\' | '\"' ) )* '\"'
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:198:9: ( '\"' ( ESC_SEQ |~ ( '\\\\' | '\"' ) )* '\"' )
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:198:12: '\"' ( ESC_SEQ |~ ( '\\\\' | '\"' ) )* '\"'
             {
             match('\"'); 
 
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:127:16: ( ESC_SEQ |~ ( '\\\\' | '\"' ) )*
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:198:16: ( ESC_SEQ |~ ( '\\\\' | '\"' ) )*
             loop7:
             do {
                 int alt7=3;
@@ -713,7 +1119,7 @@ public class AslLexer extends Lexer {
 
                 switch (alt7) {
             	case 1 :
-            	    // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:127:18: ESC_SEQ
+            	    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:198:18: ESC_SEQ
             	    {
             	    mESC_SEQ(); 
 
@@ -721,7 +1127,7 @@ public class AslLexer extends Lexer {
             	    }
             	    break;
             	case 2 :
-            	    // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:127:28: ~ ( '\\\\' | '\"' )
+            	    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:198:28: ~ ( '\\\\' | '\"' )
             	    {
             	    if ( (input.LA(1) >= '\u0000' && input.LA(1) <= '!')||(input.LA(1) >= '#' && input.LA(1) <= '[')||(input.LA(1) >= ']' && input.LA(1) <= '\uFFFF') ) {
             	        input.consume();
@@ -758,8 +1164,8 @@ public class AslLexer extends Lexer {
     // $ANTLR start "ESC_SEQ"
     public final void mESC_SEQ() throws RecognitionException {
         try {
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:133:5: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) )
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:133:9: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' )
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:204:5: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) )
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:204:9: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' )
             {
             match('\\'); 
 
@@ -788,8 +1194,8 @@ public class AslLexer extends Lexer {
         try {
             int _type = WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:136:6: ( ( ' ' | '\\t' | '\\r' | '\\n' ) )
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:136:8: ( ' ' | '\\t' | '\\r' | '\\n' )
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:207:6: ( ( ' ' | '\\t' | '\\r' | '\\n' ) )
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:207:8: ( ' ' | '\\t' | '\\r' | '\\n' )
             {
             if ( (input.LA(1) >= '\t' && input.LA(1) <= '\n')||input.LA(1)=='\r'||input.LA(1)==' ' ) {
                 input.consume();
@@ -815,554 +1221,308 @@ public class AslLexer extends Lexer {
     // $ANTLR end "WS"
 
     public void mTokens() throws RecognitionException {
-        // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:1:8: ( T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | MODULE | EMODULE | INPUT | OUTPUT | WIRE | ASSIGN | XOR | OR | AND | ID | NUM | COMMENT | STRING | WS )
-        int alt8=21;
-        switch ( input.LA(1) ) {
-        case '(':
-            {
-            alt8=1;
-            }
-            break;
-        case ')':
-            {
-            alt8=2;
-            }
-            break;
-        case ',':
-            {
-            alt8=3;
-            }
-            break;
-        case ':':
-            {
-            alt8=4;
-            }
-            break;
-        case ';':
-            {
-            alt8=5;
-            }
-            break;
-        case '[':
-            {
-            alt8=6;
-            }
-            break;
-        case ']':
-            {
-            alt8=7;
-            }
-            break;
-        case 'm':
-            {
-            int LA8_8 = input.LA(2);
-
-            if ( (LA8_8=='o') ) {
-                int LA8_22 = input.LA(3);
-
-                if ( (LA8_22=='d') ) {
-                    int LA8_27 = input.LA(4);
-
-                    if ( (LA8_27=='u') ) {
-                        int LA8_32 = input.LA(5);
-
-                        if ( (LA8_32=='l') ) {
-                            int LA8_37 = input.LA(6);
-
-                            if ( (LA8_37=='e') ) {
-                                int LA8_42 = input.LA(7);
-
-                                if ( (LA8_42=='$'||(LA8_42 >= '0' && LA8_42 <= '9')||(LA8_42 >= 'A' && LA8_42 <= 'Z')||LA8_42=='_'||(LA8_42 >= 'a' && LA8_42 <= 'z')) ) {
-                                    alt8=17;
-                                }
-                                else {
-                                    alt8=8;
-                                }
-                            }
-                            else {
-                                alt8=17;
-                            }
-                        }
-                        else {
-                            alt8=17;
-                        }
-                    }
-                    else {
-                        alt8=17;
-                    }
-                }
-                else {
-                    alt8=17;
-                }
-            }
-            else {
-                alt8=17;
-            }
-            }
-            break;
-        case 'e':
-            {
-            int LA8_9 = input.LA(2);
-
-            if ( (LA8_9=='n') ) {
-                int LA8_23 = input.LA(3);
-
-                if ( (LA8_23=='d') ) {
-                    int LA8_28 = input.LA(4);
-
-                    if ( (LA8_28=='m') ) {
-                        int LA8_33 = input.LA(5);
-
-                        if ( (LA8_33=='o') ) {
-                            int LA8_38 = input.LA(6);
-
-                            if ( (LA8_38=='d') ) {
-                                int LA8_43 = input.LA(7);
-
-                                if ( (LA8_43=='u') ) {
-                                    int LA8_47 = input.LA(8);
-
-                                    if ( (LA8_47=='l') ) {
-                                        int LA8_49 = input.LA(9);
-
-                                        if ( (LA8_49=='e') ) {
-                                            int LA8_50 = input.LA(10);
-
-                                            if ( (LA8_50=='$'||(LA8_50 >= '0' && LA8_50 <= '9')||(LA8_50 >= 'A' && LA8_50 <= 'Z')||LA8_50=='_'||(LA8_50 >= 'a' && LA8_50 <= 'z')) ) {
-                                                alt8=17;
-                                            }
-                                            else {
-                                                alt8=9;
-                                            }
-                                        }
-                                        else {
-                                            alt8=17;
-                                        }
-                                    }
-                                    else {
-                                        alt8=17;
-                                    }
-                                }
-                                else {
-                                    alt8=17;
-                                }
-                            }
-                            else {
-                                alt8=17;
-                            }
-                        }
-                        else {
-                            alt8=17;
-                        }
-                    }
-                    else {
-                        alt8=17;
-                    }
-                }
-                else {
-                    alt8=17;
-                }
-            }
-            else {
-                alt8=17;
-            }
-            }
-            break;
-        case 'i':
-            {
-            int LA8_10 = input.LA(2);
-
-            if ( (LA8_10=='n') ) {
-                int LA8_24 = input.LA(3);
-
-                if ( (LA8_24=='p') ) {
-                    int LA8_29 = input.LA(4);
-
-                    if ( (LA8_29=='u') ) {
-                        int LA8_34 = input.LA(5);
-
-                        if ( (LA8_34=='t') ) {
-                            int LA8_39 = input.LA(6);
-
-                            if ( (LA8_39=='$'||(LA8_39 >= '0' && LA8_39 <= '9')||(LA8_39 >= 'A' && LA8_39 <= 'Z')||LA8_39=='_'||(LA8_39 >= 'a' && LA8_39 <= 'z')) ) {
-                                alt8=17;
-                            }
-                            else {
-                                alt8=10;
-                            }
-                        }
-                        else {
-                            alt8=17;
-                        }
-                    }
-                    else {
-                        alt8=17;
-                    }
-                }
-                else {
-                    alt8=17;
-                }
-            }
-            else {
-                alt8=17;
-            }
-            }
-            break;
-        case 'o':
-            {
-            int LA8_11 = input.LA(2);
-
-            if ( (LA8_11=='u') ) {
-                int LA8_25 = input.LA(3);
-
-                if ( (LA8_25=='t') ) {
-                    int LA8_30 = input.LA(4);
-
-                    if ( (LA8_30=='p') ) {
-                        int LA8_35 = input.LA(5);
-
-                        if ( (LA8_35=='u') ) {
-                            int LA8_40 = input.LA(6);
-
-                            if ( (LA8_40=='t') ) {
-                                int LA8_45 = input.LA(7);
-
-                                if ( (LA8_45=='$'||(LA8_45 >= '0' && LA8_45 <= '9')||(LA8_45 >= 'A' && LA8_45 <= 'Z')||LA8_45=='_'||(LA8_45 >= 'a' && LA8_45 <= 'z')) ) {
-                                    alt8=17;
-                                }
-                                else {
-                                    alt8=11;
-                                }
-                            }
-                            else {
-                                alt8=17;
-                            }
-                        }
-                        else {
-                            alt8=17;
-                        }
-                    }
-                    else {
-                        alt8=17;
-                    }
-                }
-                else {
-                    alt8=17;
-                }
-            }
-            else {
-                alt8=17;
-            }
-            }
-            break;
-        case 'w':
-            {
-            int LA8_12 = input.LA(2);
-
-            if ( (LA8_12=='i') ) {
-                int LA8_26 = input.LA(3);
-
-                if ( (LA8_26=='r') ) {
-                    int LA8_31 = input.LA(4);
-
-                    if ( (LA8_31=='e') ) {
-                        int LA8_36 = input.LA(5);
-
-                        if ( (LA8_36=='$'||(LA8_36 >= '0' && LA8_36 <= '9')||(LA8_36 >= 'A' && LA8_36 <= 'Z')||LA8_36=='_'||(LA8_36 >= 'a' && LA8_36 <= 'z')) ) {
-                            alt8=17;
-                        }
-                        else {
-                            alt8=12;
-                        }
-                    }
-                    else {
-                        alt8=17;
-                    }
-                }
-                else {
-                    alt8=17;
-                }
-            }
-            else {
-                alt8=17;
-            }
-            }
-            break;
-        case '=':
-            {
-            alt8=13;
-            }
-            break;
-        case '^':
-            {
-            alt8=14;
-            }
-            break;
-        case '|':
-            {
-            alt8=15;
-            }
-            break;
-        case '&':
-            {
-            alt8=16;
-            }
-            break;
-        case 'A':
-        case 'B':
-        case 'C':
-        case 'D':
-        case 'E':
-        case 'F':
-        case 'G':
-        case 'H':
-        case 'I':
-        case 'J':
-        case 'K':
-        case 'L':
-        case 'M':
-        case 'N':
-        case 'O':
-        case 'P':
-        case 'Q':
-        case 'R':
-        case 'S':
-        case 'T':
-        case 'U':
-        case 'V':
-        case 'W':
-        case 'X':
-        case 'Y':
-        case 'Z':
-        case '_':
-        case 'a':
-        case 'b':
-        case 'c':
-        case 'd':
-        case 'f':
-        case 'g':
-        case 'h':
-        case 'j':
-        case 'k':
-        case 'l':
-        case 'n':
-        case 'p':
-        case 'q':
-        case 'r':
-        case 's':
-        case 't':
-        case 'u':
-        case 'v':
-        case 'x':
-        case 'y':
-        case 'z':
-            {
-            alt8=17;
-            }
-            break;
-        case '0':
-        case '1':
-        case '2':
-        case '3':
-        case '4':
-        case '5':
-        case '6':
-        case '7':
-        case '8':
-        case '9':
-            {
-            alt8=18;
-            }
-            break;
-        case '/':
-            {
-            alt8=19;
-            }
-            break;
-        case '\"':
-            {
-            alt8=20;
-            }
-            break;
-        case '\t':
-        case '\n':
-        case '\r':
-        case ' ':
-            {
-            alt8=21;
-            }
-            break;
-        default:
-            NoViableAltException nvae =
-                new NoViableAltException("", 8, 0, input);
-
-            throw nvae;
-
-        }
-
+        // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:1:8: ( T__47 | T__48 | T__49 | T__50 | T__51 | EQUAL | NOT_EQUAL | LT | LE | GT | GE | PLUS | MINUS | MUL | DIV | MOD | NOT | AND | OR | IF | THEN | ELSE | ENDIF | WHILE | DO | ENDWHILE | FUNC | ENDFUNC | RETURN | READ | WRITE | TRUE | FALSE | ID | INT | COMMENT | STRING | WS )
+        int alt8=38;
+        alt8 = dfa8.predict(input);
         switch (alt8) {
             case 1 :
-                // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:1:10: T__26
+                // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:1:10: T__47
                 {
-                mT__26(); 
+                mT__47(); 
 
 
                 }
                 break;
             case 2 :
-                // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:1:16: T__27
+                // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:1:16: T__48
                 {
-                mT__27(); 
+                mT__48(); 
 
 
                 }
                 break;
             case 3 :
-                // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:1:22: T__28
+                // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:1:22: T__49
                 {
-                mT__28(); 
+                mT__49(); 
 
 
                 }
                 break;
             case 4 :
-                // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:1:28: T__29
+                // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:1:28: T__50
                 {
-                mT__29(); 
+                mT__50(); 
 
 
                 }
                 break;
             case 5 :
-                // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:1:34: T__30
+                // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:1:34: T__51
                 {
-                mT__30(); 
+                mT__51(); 
 
 
                 }
                 break;
             case 6 :
-                // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:1:40: T__31
+                // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:1:40: EQUAL
                 {
-                mT__31(); 
+                mEQUAL(); 
 
 
                 }
                 break;
             case 7 :
-                // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:1:46: T__32
+                // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:1:46: NOT_EQUAL
                 {
-                mT__32(); 
+                mNOT_EQUAL(); 
 
 
                 }
                 break;
             case 8 :
-                // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:1:52: MODULE
+                // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:1:56: LT
                 {
-                mMODULE(); 
+                mLT(); 
 
 
                 }
                 break;
             case 9 :
-                // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:1:59: EMODULE
+                // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:1:59: LE
                 {
-                mEMODULE(); 
+                mLE(); 
 
 
                 }
                 break;
             case 10 :
-                // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:1:67: INPUT
+                // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:1:62: GT
                 {
-                mINPUT(); 
+                mGT(); 
 
 
                 }
                 break;
             case 11 :
-                // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:1:73: OUTPUT
+                // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:1:65: GE
                 {
-                mOUTPUT(); 
+                mGE(); 
 
 
                 }
                 break;
             case 12 :
-                // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:1:80: WIRE
+                // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:1:68: PLUS
                 {
-                mWIRE(); 
+                mPLUS(); 
 
 
                 }
                 break;
             case 13 :
-                // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:1:85: ASSIGN
+                // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:1:73: MINUS
                 {
-                mASSIGN(); 
+                mMINUS(); 
 
 
                 }
                 break;
             case 14 :
-                // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:1:92: XOR
+                // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:1:79: MUL
                 {
-                mXOR(); 
+                mMUL(); 
 
 
                 }
                 break;
             case 15 :
-                // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:1:96: OR
+                // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:1:83: DIV
                 {
-                mOR(); 
+                mDIV(); 
 
 
                 }
                 break;
             case 16 :
-                // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:1:99: AND
+                // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:1:87: MOD
+                {
+                mMOD(); 
+
+
+                }
+                break;
+            case 17 :
+                // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:1:91: NOT
+                {
+                mNOT(); 
+
+
+                }
+                break;
+            case 18 :
+                // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:1:95: AND
                 {
                 mAND(); 
 
 
                 }
                 break;
-            case 17 :
-                // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:1:103: ID
+            case 19 :
+                // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:1:99: OR
+                {
+                mOR(); 
+
+
+                }
+                break;
+            case 20 :
+                // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:1:102: IF
+                {
+                mIF(); 
+
+
+                }
+                break;
+            case 21 :
+                // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:1:105: THEN
+                {
+                mTHEN(); 
+
+
+                }
+                break;
+            case 22 :
+                // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:1:110: ELSE
+                {
+                mELSE(); 
+
+
+                }
+                break;
+            case 23 :
+                // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:1:115: ENDIF
+                {
+                mENDIF(); 
+
+
+                }
+                break;
+            case 24 :
+                // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:1:121: WHILE
+                {
+                mWHILE(); 
+
+
+                }
+                break;
+            case 25 :
+                // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:1:127: DO
+                {
+                mDO(); 
+
+
+                }
+                break;
+            case 26 :
+                // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:1:130: ENDWHILE
+                {
+                mENDWHILE(); 
+
+
+                }
+                break;
+            case 27 :
+                // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:1:139: FUNC
+                {
+                mFUNC(); 
+
+
+                }
+                break;
+            case 28 :
+                // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:1:144: ENDFUNC
+                {
+                mENDFUNC(); 
+
+
+                }
+                break;
+            case 29 :
+                // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:1:152: RETURN
+                {
+                mRETURN(); 
+
+
+                }
+                break;
+            case 30 :
+                // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:1:159: READ
+                {
+                mREAD(); 
+
+
+                }
+                break;
+            case 31 :
+                // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:1:164: WRITE
+                {
+                mWRITE(); 
+
+
+                }
+                break;
+            case 32 :
+                // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:1:170: TRUE
+                {
+                mTRUE(); 
+
+
+                }
+                break;
+            case 33 :
+                // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:1:175: FALSE
+                {
+                mFALSE(); 
+
+
+                }
+                break;
+            case 34 :
+                // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:1:181: ID
                 {
                 mID(); 
 
 
                 }
                 break;
-            case 18 :
-                // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:1:106: NUM
+            case 35 :
+                // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:1:184: INT
                 {
-                mNUM(); 
+                mINT(); 
 
 
                 }
                 break;
-            case 19 :
-                // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:1:110: COMMENT
+            case 36 :
+                // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:1:188: COMMENT
                 {
                 mCOMMENT(); 
 
 
                 }
                 break;
-            case 20 :
-                // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:1:118: STRING
+            case 37 :
+                // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:1:196: STRING
                 {
                 mSTRING(); 
 
 
                 }
                 break;
-            case 21 :
-                // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:1:125: WS
+            case 38 :
+                // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:1:203: WS
                 {
                 mWS(); 
 
@@ -1375,6 +1535,182 @@ public class AslLexer extends Lexer {
     }
 
 
+    protected DFA8 dfa8 = new DFA8(this);
+    static final String DFA8_eotS =
+        "\10\uffff\1\36\1\40\3\uffff\1\42\1\uffff\12\31\12\uffff\2\31\1\63"+
+        "\1\64\6\31\1\73\3\31\1\100\1\101\2\uffff\6\31\1\uffff\4\31\2\uffff"+
+        "\1\116\1\117\1\120\5\31\1\126\2\31\1\131\3\uffff\1\132\2\31\1\135"+
+        "\1\136\1\uffff\1\137\1\31\2\uffff\2\31\3\uffff\1\143\1\31\1\145"+
+        "\1\uffff\1\146\2\uffff";
+    static final String DFA8_eofS =
+        "\147\uffff";
+    static final String DFA8_minS =
+        "\1\11\7\uffff\2\75\3\uffff\1\52\1\uffff\1\157\1\156\1\162\1\146"+
+        "\1\150\1\154\1\150\1\157\1\141\1\145\12\uffff\1\164\1\144\2\60\1"+
+        "\145\1\165\1\163\1\144\2\151\1\60\1\156\1\154\1\141\2\60\2\uffff"+
+        "\1\156\2\145\1\146\1\154\1\164\1\uffff\1\143\1\163\1\165\1\144\2"+
+        "\uffff\3\60\1\146\1\150\1\165\2\145\1\60\1\145\1\162\1\60\3\uffff"+
+        "\1\60\1\151\1\156\2\60\1\uffff\1\60\1\156\2\uffff\1\154\1\143\3"+
+        "\uffff\1\60\1\145\1\60\1\uffff\1\60\2\uffff";
+    static final String DFA8_maxS =
+        "\1\172\7\uffff\2\75\3\uffff\1\57\1\uffff\1\157\1\156\1\162\1\146"+
+        "\1\162\1\156\1\162\1\157\1\165\1\145\12\uffff\1\164\1\144\2\172"+
+        "\1\145\1\165\1\163\1\144\2\151\1\172\1\156\1\154\1\164\2\172\2\uffff"+
+        "\1\156\2\145\1\167\1\154\1\164\1\uffff\1\143\1\163\1\165\1\144\2"+
+        "\uffff\3\172\1\146\1\150\1\165\2\145\1\172\1\145\1\162\1\172\3\uffff"+
+        "\1\172\1\151\1\156\2\172\1\uffff\1\172\1\156\2\uffff\1\154\1\143"+
+        "\3\uffff\1\172\1\145\1\172\1\uffff\1\172\2\uffff";
+    static final String DFA8_acceptS =
+        "\1\uffff\1\1\1\2\1\3\1\4\1\5\1\6\1\7\2\uffff\1\14\1\15\1\16\1\uffff"+
+        "\1\20\12\uffff\1\42\1\43\1\45\1\46\1\11\1\10\1\13\1\12\1\44\1\17"+
+        "\20\uffff\1\23\1\24\6\uffff\1\31\4\uffff\1\21\1\22\14\uffff\1\25"+
+        "\1\40\1\26\5\uffff\1\33\2\uffff\1\36\1\27\2\uffff\1\30\1\37\1\41"+
+        "\3\uffff\1\35\1\uffff\1\34\1\32";
+    static final String DFA8_specialS =
+        "\147\uffff}>";
+    static final String[] DFA8_transitionS = {
+            "\2\34\2\uffff\1\34\22\uffff\1\34\1\7\1\33\2\uffff\1\16\1\1\1"+
+            "\uffff\1\2\1\3\1\14\1\12\1\4\1\13\1\uffff\1\15\12\32\1\uffff"+
+            "\1\5\1\10\1\6\1\11\2\uffff\32\31\4\uffff\1\31\1\uffff\1\20\2"+
+            "\31\1\26\1\24\1\27\2\31\1\22\4\31\1\17\1\21\2\31\1\30\1\31\1"+
+            "\23\2\31\1\25\3\31",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "\1\35",
+            "\1\37",
+            "",
+            "",
+            "",
+            "\1\41\4\uffff\1\41",
+            "",
+            "\1\43",
+            "\1\44",
+            "\1\45",
+            "\1\46",
+            "\1\47\11\uffff\1\50",
+            "\1\51\1\uffff\1\52",
+            "\1\53\11\uffff\1\54",
+            "\1\55",
+            "\1\57\23\uffff\1\56",
+            "\1\60",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "\1\61",
+            "\1\62",
+            "\12\31\7\uffff\32\31\4\uffff\1\31\1\uffff\32\31",
+            "\12\31\7\uffff\32\31\4\uffff\1\31\1\uffff\32\31",
+            "\1\65",
+            "\1\66",
+            "\1\67",
+            "\1\70",
+            "\1\71",
+            "\1\72",
+            "\12\31\7\uffff\32\31\4\uffff\1\31\1\uffff\32\31",
+            "\1\74",
+            "\1\75",
+            "\1\77\22\uffff\1\76",
+            "\12\31\7\uffff\32\31\4\uffff\1\31\1\uffff\32\31",
+            "\12\31\7\uffff\32\31\4\uffff\1\31\1\uffff\32\31",
+            "",
+            "",
+            "\1\102",
+            "\1\103",
+            "\1\104",
+            "\1\107\2\uffff\1\105\15\uffff\1\106",
+            "\1\110",
+            "\1\111",
+            "",
+            "\1\112",
+            "\1\113",
+            "\1\114",
+            "\1\115",
+            "",
+            "",
+            "\12\31\7\uffff\32\31\4\uffff\1\31\1\uffff\32\31",
+            "\12\31\7\uffff\32\31\4\uffff\1\31\1\uffff\32\31",
+            "\12\31\7\uffff\32\31\4\uffff\1\31\1\uffff\32\31",
+            "\1\121",
+            "\1\122",
+            "\1\123",
+            "\1\124",
+            "\1\125",
+            "\12\31\7\uffff\32\31\4\uffff\1\31\1\uffff\32\31",
+            "\1\127",
+            "\1\130",
+            "\12\31\7\uffff\32\31\4\uffff\1\31\1\uffff\32\31",
+            "",
+            "",
+            "",
+            "\12\31\7\uffff\32\31\4\uffff\1\31\1\uffff\32\31",
+            "\1\133",
+            "\1\134",
+            "\12\31\7\uffff\32\31\4\uffff\1\31\1\uffff\32\31",
+            "\12\31\7\uffff\32\31\4\uffff\1\31\1\uffff\32\31",
+            "",
+            "\12\31\7\uffff\32\31\4\uffff\1\31\1\uffff\32\31",
+            "\1\140",
+            "",
+            "",
+            "\1\141",
+            "\1\142",
+            "",
+            "",
+            "",
+            "\12\31\7\uffff\32\31\4\uffff\1\31\1\uffff\32\31",
+            "\1\144",
+            "\12\31\7\uffff\32\31\4\uffff\1\31\1\uffff\32\31",
+            "",
+            "\12\31\7\uffff\32\31\4\uffff\1\31\1\uffff\32\31",
+            "",
+            ""
+    };
+
+    static final short[] DFA8_eot = DFA.unpackEncodedString(DFA8_eotS);
+    static final short[] DFA8_eof = DFA.unpackEncodedString(DFA8_eofS);
+    static final char[] DFA8_min = DFA.unpackEncodedStringToUnsignedChars(DFA8_minS);
+    static final char[] DFA8_max = DFA.unpackEncodedStringToUnsignedChars(DFA8_maxS);
+    static final short[] DFA8_accept = DFA.unpackEncodedString(DFA8_acceptS);
+    static final short[] DFA8_special = DFA.unpackEncodedString(DFA8_specialS);
+    static final short[][] DFA8_transition;
+
+    static {
+        int numStates = DFA8_transitionS.length;
+        DFA8_transition = new short[numStates][];
+        for (int i=0; i<numStates; i++) {
+            DFA8_transition[i] = DFA.unpackEncodedString(DFA8_transitionS[i]);
+        }
+    }
+
+    class DFA8 extends DFA {
+
+        public DFA8(BaseRecognizer recognizer) {
+            this.recognizer = recognizer;
+            this.decisionNumber = 8;
+            this.eot = DFA8_eot;
+            this.eof = DFA8_eof;
+            this.min = DFA8_min;
+            this.max = DFA8_max;
+            this.accept = DFA8_accept;
+            this.special = DFA8_special;
+            this.transition = DFA8_transition;
+        }
+        public String getDescription() {
+            return "1:1: Tokens : ( T__47 | T__48 | T__49 | T__50 | T__51 | EQUAL | NOT_EQUAL | LT | LE | GT | GE | PLUS | MINUS | MUL | DIV | MOD | NOT | AND | OR | IF | THEN | ELSE | ENDIF | WHILE | DO | ENDWHILE | FUNC | ENDFUNC | RETURN | READ | WRITE | TRUE | FALSE | ID | INT | COMMENT | STRING | WS );";
+        }
+    }
  
 
 }

@@ -1,4 +1,4 @@
-// $ANTLR 3.4 /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g 2017-03-21 19:35:37
+// $ANTLR 3.4 /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g 2017-03-28 16:33:42
 
 package parser;
 import interp.AslTree;
@@ -41,39 +41,58 @@ import org.antlr.runtime.tree.*;
 @SuppressWarnings({"all", "warnings", "unchecked"})
 public class AslParser extends Parser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "AND", "ARGLIST", "ARRAY_ACCESS", "ARRAY_RANK", "ASSIGN", "COMMENT", "EMODULE", "ESC_SEQ", "FUNCALL", "ID", "INPUT", "LIST_INSTR", "LIST_MODULES", "MODULE", "NUM", "OR", "OUTPUT", "PARAMS", "STRING", "WIRE", "WS", "XOR", "'('", "')'", "','", "':'", "';'", "'['", "']'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "AND", "ARGLIST", "ASSIGN", "BOOLEAN", "COMMENT", "DIV", "DO", "ELSE", "ENDFUNC", "ENDIF", "ENDWHILE", "EQUAL", "ESC_SEQ", "FALSE", "FUNC", "FUNCALL", "GE", "GT", "ID", "IF", "INT", "LE", "LIST_FUNCTIONS", "LIST_INSTR", "LT", "MINUS", "MOD", "MUL", "NOT", "NOT_EQUAL", "OR", "PARAMS", "PLUS", "PREF", "PVALUE", "READ", "RETURN", "STRING", "THEN", "TRUE", "WHILE", "WRITE", "WS", "'&'", "'('", "')'", "','", "';'"
     };
 
     public static final int EOF=-1;
-    public static final int T__26=26;
-    public static final int T__27=27;
-    public static final int T__28=28;
-    public static final int T__29=29;
-    public static final int T__30=30;
-    public static final int T__31=31;
-    public static final int T__32=32;
+    public static final int T__47=47;
+    public static final int T__48=48;
+    public static final int T__49=49;
+    public static final int T__50=50;
+    public static final int T__51=51;
     public static final int AND=4;
     public static final int ARGLIST=5;
-    public static final int ARRAY_ACCESS=6;
-    public static final int ARRAY_RANK=7;
-    public static final int ASSIGN=8;
-    public static final int COMMENT=9;
-    public static final int EMODULE=10;
-    public static final int ESC_SEQ=11;
-    public static final int FUNCALL=12;
-    public static final int ID=13;
-    public static final int INPUT=14;
-    public static final int LIST_INSTR=15;
-    public static final int LIST_MODULES=16;
-    public static final int MODULE=17;
-    public static final int NUM=18;
-    public static final int OR=19;
-    public static final int OUTPUT=20;
-    public static final int PARAMS=21;
-    public static final int STRING=22;
-    public static final int WIRE=23;
-    public static final int WS=24;
-    public static final int XOR=25;
+    public static final int ASSIGN=6;
+    public static final int BOOLEAN=7;
+    public static final int COMMENT=8;
+    public static final int DIV=9;
+    public static final int DO=10;
+    public static final int ELSE=11;
+    public static final int ENDFUNC=12;
+    public static final int ENDIF=13;
+    public static final int ENDWHILE=14;
+    public static final int EQUAL=15;
+    public static final int ESC_SEQ=16;
+    public static final int FALSE=17;
+    public static final int FUNC=18;
+    public static final int FUNCALL=19;
+    public static final int GE=20;
+    public static final int GT=21;
+    public static final int ID=22;
+    public static final int IF=23;
+    public static final int INT=24;
+    public static final int LE=25;
+    public static final int LIST_FUNCTIONS=26;
+    public static final int LIST_INSTR=27;
+    public static final int LT=28;
+    public static final int MINUS=29;
+    public static final int MOD=30;
+    public static final int MUL=31;
+    public static final int NOT=32;
+    public static final int NOT_EQUAL=33;
+    public static final int OR=34;
+    public static final int PARAMS=35;
+    public static final int PLUS=36;
+    public static final int PREF=37;
+    public static final int PVALUE=38;
+    public static final int READ=39;
+    public static final int RETURN=40;
+    public static final int STRING=41;
+    public static final int THEN=42;
+    public static final int TRUE=43;
+    public static final int WHILE=44;
+    public static final int WRITE=45;
+    public static final int WS=46;
 
     // delegates
     public Parser[] getDelegates() {
@@ -99,7 +118,7 @@ public TreeAdaptor getTreeAdaptor() {
     return adaptor;
 }
     public String[] getTokenNames() { return AslParser.tokenNames; }
-    public String getGrammarFileName() { return "/home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g"; }
+    public String getGrammarFileName() { return "/home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g"; }
 
 
     public static class prog_return extends ParserRuleReturnScope {
@@ -109,7 +128,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "prog"
-    // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:58:1: prog : ( mod )+ EOF -> ^( LIST_MODULES ( mod )+ ) ;
+    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:60:1: prog : ( func )+ EOF -> ^( LIST_FUNCTIONS ( func )+ ) ;
     public final AslParser.prog_return prog() throws RecognitionException {
         AslParser.prog_return retval = new AslParser.prog_return();
         retval.start = input.LT(1);
@@ -118,38 +137,38 @@ public TreeAdaptor getTreeAdaptor() {
         AslTree root_0 = null;
 
         Token EOF2=null;
-        AslParser.mod_return mod1 =null;
+        AslParser.func_return func1 =null;
 
 
         AslTree EOF2_tree=null;
         RewriteRuleTokenStream stream_EOF=new RewriteRuleTokenStream(adaptor,"token EOF");
-        RewriteRuleSubtreeStream stream_mod=new RewriteRuleSubtreeStream(adaptor,"rule mod");
+        RewriteRuleSubtreeStream stream_func=new RewriteRuleSubtreeStream(adaptor,"rule func");
         try {
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:58:6: ( ( mod )+ EOF -> ^( LIST_MODULES ( mod )+ ) )
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:58:8: ( mod )+ EOF
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:60:6: ( ( func )+ EOF -> ^( LIST_FUNCTIONS ( func )+ ) )
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:60:8: ( func )+ EOF
             {
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:58:8: ( mod )+
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:60:8: ( func )+
             int cnt1=0;
             loop1:
             do {
                 int alt1=2;
                 int LA1_0 = input.LA(1);
 
-                if ( (LA1_0==MODULE) ) {
+                if ( (LA1_0==FUNC) ) {
                     alt1=1;
                 }
 
 
                 switch (alt1) {
             	case 1 :
-            	    // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:58:8: mod
+            	    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:60:8: func
             	    {
-            	    pushFollow(FOLLOW_mod_in_prog128);
-            	    mod1=mod();
+            	    pushFollow(FOLLOW_func_in_prog163);
+            	    func1=func();
 
             	    state._fsp--;
 
-            	    stream_mod.add(mod1.getTree());
+            	    stream_func.add(func1.getTree());
 
             	    }
             	    break;
@@ -164,12 +183,12 @@ public TreeAdaptor getTreeAdaptor() {
             } while (true);
 
 
-            EOF2=(Token)match(input,EOF,FOLLOW_EOF_in_prog131);  
+            EOF2=(Token)match(input,EOF,FOLLOW_EOF_in_prog166);  
             stream_EOF.add(EOF2);
 
 
             // AST REWRITE
-            // elements: mod
+            // elements: func
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -179,23 +198,23 @@ public TreeAdaptor getTreeAdaptor() {
             RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
             root_0 = (AslTree)adaptor.nil();
-            // 58:17: -> ^( LIST_MODULES ( mod )+ )
+            // 60:18: -> ^( LIST_FUNCTIONS ( func )+ )
             {
-                // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:58:20: ^( LIST_MODULES ( mod )+ )
+                // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:60:21: ^( LIST_FUNCTIONS ( func )+ )
                 {
                 AslTree root_1 = (AslTree)adaptor.nil();
                 root_1 = (AslTree)adaptor.becomeRoot(
-                (AslTree)adaptor.create(LIST_MODULES, "LIST_MODULES")
+                (AslTree)adaptor.create(LIST_FUNCTIONS, "LIST_FUNCTIONS")
                 , root_1);
 
-                if ( !(stream_mod.hasNext()) ) {
+                if ( !(stream_func.hasNext()) ) {
                     throw new RewriteEarlyExitException();
                 }
-                while ( stream_mod.hasNext() ) {
-                    adaptor.addChild(root_1, stream_mod.nextTree());
+                while ( stream_func.hasNext() ) {
+                    adaptor.addChild(root_1, stream_func.nextTree());
 
                 }
-                stream_mod.reset();
+                stream_func.reset();
 
                 adaptor.addChild(root_0, root_1);
                 }
@@ -229,69 +248,69 @@ public TreeAdaptor getTreeAdaptor() {
     // $ANTLR end "prog"
 
 
-    public static class mod_return extends ParserRuleReturnScope {
+    public static class func_return extends ParserRuleReturnScope {
         AslTree tree;
         public Object getTree() { return tree; }
     };
 
 
-    // $ANTLR start "mod"
-    // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:61:1: mod : MODULE ^ ID params block_instructions EMODULE !;
-    public final AslParser.mod_return mod() throws RecognitionException {
-        AslParser.mod_return retval = new AslParser.mod_return();
+    // $ANTLR start "func"
+    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:64:1: func : FUNC ^ ID params block_instructions ENDFUNC !;
+    public final AslParser.func_return func() throws RecognitionException {
+        AslParser.func_return retval = new AslParser.func_return();
         retval.start = input.LT(1);
 
 
         AslTree root_0 = null;
 
-        Token MODULE3=null;
+        Token FUNC3=null;
         Token ID4=null;
-        Token EMODULE7=null;
+        Token ENDFUNC7=null;
         AslParser.params_return params5 =null;
 
         AslParser.block_instructions_return block_instructions6 =null;
 
 
-        AslTree MODULE3_tree=null;
+        AslTree FUNC3_tree=null;
         AslTree ID4_tree=null;
-        AslTree EMODULE7_tree=null;
+        AslTree ENDFUNC7_tree=null;
 
         try {
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:61:4: ( MODULE ^ ID params block_instructions EMODULE !)
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:61:6: MODULE ^ ID params block_instructions EMODULE !
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:64:6: ( FUNC ^ ID params block_instructions ENDFUNC !)
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:64:8: FUNC ^ ID params block_instructions ENDFUNC !
             {
             root_0 = (AslTree)adaptor.nil();
 
 
-            MODULE3=(Token)match(input,MODULE,FOLLOW_MODULE_in_mod156); 
-            MODULE3_tree = 
-            (AslTree)adaptor.create(MODULE3)
+            FUNC3=(Token)match(input,FUNC,FOLLOW_FUNC_in_func205); 
+            FUNC3_tree = 
+            (AslTree)adaptor.create(FUNC3)
             ;
-            root_0 = (AslTree)adaptor.becomeRoot(MODULE3_tree, root_0);
+            root_0 = (AslTree)adaptor.becomeRoot(FUNC3_tree, root_0);
 
 
-            ID4=(Token)match(input,ID,FOLLOW_ID_in_mod159); 
+            ID4=(Token)match(input,ID,FOLLOW_ID_in_func208); 
             ID4_tree = 
             (AslTree)adaptor.create(ID4)
             ;
             adaptor.addChild(root_0, ID4_tree);
 
 
-            pushFollow(FOLLOW_params_in_mod161);
+            pushFollow(FOLLOW_params_in_func210);
             params5=params();
 
             state._fsp--;
 
             adaptor.addChild(root_0, params5.getTree());
 
-            pushFollow(FOLLOW_block_instructions_in_mod163);
+            pushFollow(FOLLOW_block_instructions_in_func212);
             block_instructions6=block_instructions();
 
             state._fsp--;
 
             adaptor.addChild(root_0, block_instructions6.getTree());
 
-            EMODULE7=(Token)match(input,EMODULE,FOLLOW_EMODULE_in_mod165); 
+            ENDFUNC7=(Token)match(input,ENDFUNC,FOLLOW_ENDFUNC_in_func214); 
 
             }
 
@@ -314,7 +333,7 @@ public TreeAdaptor getTreeAdaptor() {
         }
         return retval;
     }
-    // $ANTLR end "mod"
+    // $ANTLR end "func"
 
 
     public static class params_return extends ParserRuleReturnScope {
@@ -324,7 +343,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "params"
-    // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:63:1: params : '(' ( varslist )? ')' -> ^( PARAMS ( varslist )? ) ;
+    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:68:1: params : '(' ( paramlist )? ')' -> ^( PARAMS ( paramlist )? ) ;
     public final AslParser.params_return params() throws RecognitionException {
         AslParser.params_return retval = new AslParser.params_return();
         retval.start = input.LT(1);
@@ -334,39 +353,39 @@ public TreeAdaptor getTreeAdaptor() {
 
         Token char_literal8=null;
         Token char_literal10=null;
-        AslParser.varslist_return varslist9 =null;
+        AslParser.paramlist_return paramlist9 =null;
 
 
         AslTree char_literal8_tree=null;
         AslTree char_literal10_tree=null;
-        RewriteRuleTokenStream stream_26=new RewriteRuleTokenStream(adaptor,"token 26");
-        RewriteRuleTokenStream stream_27=new RewriteRuleTokenStream(adaptor,"token 27");
-        RewriteRuleSubtreeStream stream_varslist=new RewriteRuleSubtreeStream(adaptor,"rule varslist");
+        RewriteRuleTokenStream stream_48=new RewriteRuleTokenStream(adaptor,"token 48");
+        RewriteRuleTokenStream stream_49=new RewriteRuleTokenStream(adaptor,"token 49");
+        RewriteRuleSubtreeStream stream_paramlist=new RewriteRuleSubtreeStream(adaptor,"rule paramlist");
         try {
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:63:9: ( '(' ( varslist )? ')' -> ^( PARAMS ( varslist )? ) )
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:63:11: '(' ( varslist )? ')'
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:68:8: ( '(' ( paramlist )? ')' -> ^( PARAMS ( paramlist )? ) )
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:68:10: '(' ( paramlist )? ')'
             {
-            char_literal8=(Token)match(input,26,FOLLOW_26_in_params176);  
-            stream_26.add(char_literal8);
+            char_literal8=(Token)match(input,48,FOLLOW_48_in_params233);  
+            stream_48.add(char_literal8);
 
 
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:63:15: ( varslist )?
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:68:14: ( paramlist )?
             int alt2=2;
             int LA2_0 = input.LA(1);
 
-            if ( (LA2_0==ID) ) {
+            if ( (LA2_0==ID||LA2_0==47) ) {
                 alt2=1;
             }
             switch (alt2) {
                 case 1 :
-                    // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:63:15: varslist
+                    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:68:14: paramlist
                     {
-                    pushFollow(FOLLOW_varslist_in_params178);
-                    varslist9=varslist();
+                    pushFollow(FOLLOW_paramlist_in_params235);
+                    paramlist9=paramlist();
 
                     state._fsp--;
 
-                    stream_varslist.add(varslist9.getTree());
+                    stream_paramlist.add(paramlist9.getTree());
 
                     }
                     break;
@@ -374,12 +393,12 @@ public TreeAdaptor getTreeAdaptor() {
             }
 
 
-            char_literal10=(Token)match(input,27,FOLLOW_27_in_params181);  
-            stream_27.add(char_literal10);
+            char_literal10=(Token)match(input,49,FOLLOW_49_in_params238);  
+            stream_49.add(char_literal10);
 
 
             // AST REWRITE
-            // elements: varslist
+            // elements: paramlist
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -389,21 +408,21 @@ public TreeAdaptor getTreeAdaptor() {
             RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
             root_0 = (AslTree)adaptor.nil();
-            // 63:29: -> ^( PARAMS ( varslist )? )
+            // 68:29: -> ^( PARAMS ( paramlist )? )
             {
-                // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:63:32: ^( PARAMS ( varslist )? )
+                // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:68:32: ^( PARAMS ( paramlist )? )
                 {
                 AslTree root_1 = (AslTree)adaptor.nil();
                 root_1 = (AslTree)adaptor.becomeRoot(
                 (AslTree)adaptor.create(PARAMS, "PARAMS")
                 , root_1);
 
-                // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:63:41: ( varslist )?
-                if ( stream_varslist.hasNext() ) {
-                    adaptor.addChild(root_1, stream_varslist.nextTree());
+                // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:68:41: ( paramlist )?
+                if ( stream_paramlist.hasNext() ) {
+                    adaptor.addChild(root_1, stream_paramlist.nextTree());
 
                 }
-                stream_varslist.reset();
+                stream_paramlist.reset();
 
                 adaptor.addChild(root_0, root_1);
                 }
@@ -437,66 +456,66 @@ public TreeAdaptor getTreeAdaptor() {
     // $ANTLR end "params"
 
 
-    public static class varslist_return extends ParserRuleReturnScope {
+    public static class paramlist_return extends ParserRuleReturnScope {
         AslTree tree;
         public Object getTree() { return tree; }
     };
 
 
-    // $ANTLR start "varslist"
-    // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:66:1: varslist : ID ( ',' ! ID )* ;
-    public final AslParser.varslist_return varslist() throws RecognitionException {
-        AslParser.varslist_return retval = new AslParser.varslist_return();
+    // $ANTLR start "paramlist"
+    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:72:1: paramlist : param ( ',' ! param )* ;
+    public final AslParser.paramlist_return paramlist() throws RecognitionException {
+        AslParser.paramlist_return retval = new AslParser.paramlist_return();
         retval.start = input.LT(1);
 
 
         AslTree root_0 = null;
 
-        Token ID11=null;
         Token char_literal12=null;
-        Token ID13=null;
+        AslParser.param_return param11 =null;
 
-        AslTree ID11_tree=null;
+        AslParser.param_return param13 =null;
+
+
         AslTree char_literal12_tree=null;
-        AslTree ID13_tree=null;
 
         try {
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:66:9: ( ID ( ',' ! ID )* )
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:66:11: ID ( ',' ! ID )*
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:72:10: ( param ( ',' ! param )* )
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:72:12: param ( ',' ! param )*
             {
             root_0 = (AslTree)adaptor.nil();
 
 
-            ID11=(Token)match(input,ID,FOLLOW_ID_in_varslist206); 
-            ID11_tree = 
-            (AslTree)adaptor.create(ID11)
-            ;
-            adaptor.addChild(root_0, ID11_tree);
+            pushFollow(FOLLOW_param_in_paramlist264);
+            param11=param();
 
+            state._fsp--;
 
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:66:14: ( ',' ! ID )*
+            adaptor.addChild(root_0, param11.getTree());
+
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:72:18: ( ',' ! param )*
             loop3:
             do {
                 int alt3=2;
                 int LA3_0 = input.LA(1);
 
-                if ( (LA3_0==28) ) {
+                if ( (LA3_0==50) ) {
                     alt3=1;
                 }
 
 
                 switch (alt3) {
             	case 1 :
-            	    // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:66:15: ',' ! ID
+            	    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:72:19: ',' ! param
             	    {
-            	    char_literal12=(Token)match(input,28,FOLLOW_28_in_varslist209); 
+            	    char_literal12=(Token)match(input,50,FOLLOW_50_in_paramlist267); 
 
-            	    ID13=(Token)match(input,ID,FOLLOW_ID_in_varslist212); 
-            	    ID13_tree = 
-            	    (AslTree)adaptor.create(ID13)
-            	    ;
-            	    adaptor.addChild(root_0, ID13_tree);
+            	    pushFollow(FOLLOW_param_in_paramlist270);
+            	    param13=param();
 
+            	    state._fsp--;
+
+            	    adaptor.addChild(root_0, param13.getTree());
 
             	    }
             	    break;
@@ -528,7 +547,151 @@ public TreeAdaptor getTreeAdaptor() {
         }
         return retval;
     }
-    // $ANTLR end "varslist"
+    // $ANTLR end "paramlist"
+
+
+    public static class param_return extends ParserRuleReturnScope {
+        AslTree tree;
+        public Object getTree() { return tree; }
+    };
+
+
+    // $ANTLR start "param"
+    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:77:1: param : ( '&' id= ID -> ^( PREF[$id,$id.text] ) |id= ID -> ^( PVALUE[$id,$id.text] ) );
+    public final AslParser.param_return param() throws RecognitionException {
+        AslParser.param_return retval = new AslParser.param_return();
+        retval.start = input.LT(1);
+
+
+        AslTree root_0 = null;
+
+        Token id=null;
+        Token char_literal14=null;
+
+        AslTree id_tree=null;
+        AslTree char_literal14_tree=null;
+        RewriteRuleTokenStream stream_47=new RewriteRuleTokenStream(adaptor,"token 47");
+        RewriteRuleTokenStream stream_ID=new RewriteRuleTokenStream(adaptor,"token ID");
+
+        try {
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:77:9: ( '&' id= ID -> ^( PREF[$id,$id.text] ) |id= ID -> ^( PVALUE[$id,$id.text] ) )
+            int alt4=2;
+            int LA4_0 = input.LA(1);
+
+            if ( (LA4_0==47) ) {
+                alt4=1;
+            }
+            else if ( (LA4_0==ID) ) {
+                alt4=2;
+            }
+            else {
+                NoViableAltException nvae =
+                    new NoViableAltException("", 4, 0, input);
+
+                throw nvae;
+
+            }
+            switch (alt4) {
+                case 1 :
+                    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:77:13: '&' id= ID
+                    {
+                    char_literal14=(Token)match(input,47,FOLLOW_47_in_param295);  
+                    stream_47.add(char_literal14);
+
+
+                    id=(Token)match(input,ID,FOLLOW_ID_in_param299);  
+                    stream_ID.add(id);
+
+
+                    // AST REWRITE
+                    // elements: 
+                    // token labels: 
+                    // rule labels: retval
+                    // token list labels: 
+                    // rule list labels: 
+                    // wildcard labels: 
+                    retval.tree = root_0;
+                    RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
+
+                    root_0 = (AslTree)adaptor.nil();
+                    // 77:23: -> ^( PREF[$id,$id.text] )
+                    {
+                        // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:77:26: ^( PREF[$id,$id.text] )
+                        {
+                        AslTree root_1 = (AslTree)adaptor.nil();
+                        root_1 = (AslTree)adaptor.becomeRoot(
+                        (AslTree)adaptor.create(PREF, id, (id!=null?id.getText():null))
+                        , root_1);
+
+                        adaptor.addChild(root_0, root_1);
+                        }
+
+                    }
+
+
+                    retval.tree = root_0;
+
+                    }
+                    break;
+                case 2 :
+                    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:78:13: id= ID
+                    {
+                    id=(Token)match(input,ID,FOLLOW_ID_in_param322);  
+                    stream_ID.add(id);
+
+
+                    // AST REWRITE
+                    // elements: 
+                    // token labels: 
+                    // rule labels: retval
+                    // token list labels: 
+                    // rule list labels: 
+                    // wildcard labels: 
+                    retval.tree = root_0;
+                    RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
+
+                    root_0 = (AslTree)adaptor.nil();
+                    // 78:19: -> ^( PVALUE[$id,$id.text] )
+                    {
+                        // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:78:22: ^( PVALUE[$id,$id.text] )
+                        {
+                        AslTree root_1 = (AslTree)adaptor.nil();
+                        root_1 = (AslTree)adaptor.becomeRoot(
+                        (AslTree)adaptor.create(PVALUE, id, (id!=null?id.getText():null))
+                        , root_1);
+
+                        adaptor.addChild(root_0, root_1);
+                        }
+
+                    }
+
+
+                    retval.tree = root_0;
+
+                    }
+                    break;
+
+            }
+            retval.stop = input.LT(-1);
+
+
+            retval.tree = (AslTree)adaptor.rulePostProcessing(root_0);
+            adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+    	retval.tree = (AslTree)adaptor.errorNode(input, retval.start, input.LT(-1), re);
+
+        }
+
+        finally {
+        	// do for sure before leaving
+        }
+        return retval;
+    }
+    // $ANTLR end "param"
 
 
     public static class block_instructions_return extends ParserRuleReturnScope {
@@ -538,7 +701,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "block_instructions"
-    // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:69:1: block_instructions : ( instruction ';' )+ -> ^( LIST_INSTR ( instruction )+ ) ;
+    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:82:1: block_instructions : instruction ( ';' instruction )* -> ^( LIST_INSTR ( instruction )+ ) ;
     public final AslParser.block_instructions_return block_instructions() throws RecognitionException {
         AslParser.block_instructions_return retval = new AslParser.block_instructions_return();
         retval.start = input.LT(1);
@@ -546,54 +709,58 @@ public TreeAdaptor getTreeAdaptor() {
 
         AslTree root_0 = null;
 
-        Token char_literal15=null;
-        AslParser.instruction_return instruction14 =null;
+        Token char_literal16=null;
+        AslParser.instruction_return instruction15 =null;
+
+        AslParser.instruction_return instruction17 =null;
 
 
-        AslTree char_literal15_tree=null;
-        RewriteRuleTokenStream stream_30=new RewriteRuleTokenStream(adaptor,"token 30");
+        AslTree char_literal16_tree=null;
+        RewriteRuleTokenStream stream_51=new RewriteRuleTokenStream(adaptor,"token 51");
         RewriteRuleSubtreeStream stream_instruction=new RewriteRuleSubtreeStream(adaptor,"rule instruction");
         try {
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:69:19: ( ( instruction ';' )+ -> ^( LIST_INSTR ( instruction )+ ) )
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:70:9: ( instruction ';' )+
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:83:9: ( instruction ( ';' instruction )* -> ^( LIST_INSTR ( instruction )+ ) )
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:83:12: instruction ( ';' instruction )*
             {
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:70:9: ( instruction ';' )+
-            int cnt4=0;
-            loop4:
-            do {
-                int alt4=2;
-                int LA4_0 = input.LA(1);
+            pushFollow(FOLLOW_instruction_in_block_instructions356);
+            instruction15=instruction();
 
-                if ( ((LA4_0 >= ID && LA4_0 <= INPUT)||LA4_0==OUTPUT||LA4_0==WIRE) ) {
-                    alt4=1;
+            state._fsp--;
+
+            stream_instruction.add(instruction15.getTree());
+
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:83:24: ( ';' instruction )*
+            loop5:
+            do {
+                int alt5=2;
+                int LA5_0 = input.LA(1);
+
+                if ( (LA5_0==51) ) {
+                    alt5=1;
                 }
 
 
-                switch (alt4) {
+                switch (alt5) {
             	case 1 :
-            	    // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:70:10: instruction ';'
+            	    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:83:25: ';' instruction
             	    {
-            	    pushFollow(FOLLOW_instruction_in_block_instructions239);
-            	    instruction14=instruction();
+            	    char_literal16=(Token)match(input,51,FOLLOW_51_in_block_instructions359);  
+            	    stream_51.add(char_literal16);
+
+
+            	    pushFollow(FOLLOW_instruction_in_block_instructions361);
+            	    instruction17=instruction();
 
             	    state._fsp--;
 
-            	    stream_instruction.add(instruction14.getTree());
-
-            	    char_literal15=(Token)match(input,30,FOLLOW_30_in_block_instructions241);  
-            	    stream_30.add(char_literal15);
-
+            	    stream_instruction.add(instruction17.getTree());
 
             	    }
             	    break;
 
             	default :
-            	    if ( cnt4 >= 1 ) break loop4;
-                        EarlyExitException eee =
-                            new EarlyExitException(4, input);
-                        throw eee;
+            	    break loop5;
                 }
-                cnt4++;
             } while (true);
 
 
@@ -608,9 +775,9 @@ public TreeAdaptor getTreeAdaptor() {
             RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
             root_0 = (AslTree)adaptor.nil();
-            // 70:28: -> ^( LIST_INSTR ( instruction )+ )
+            // 84:13: -> ^( LIST_INSTR ( instruction )+ )
             {
-                // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:70:31: ^( LIST_INSTR ( instruction )+ )
+                // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:84:16: ^( LIST_INSTR ( instruction )+ )
                 {
                 AslTree root_1 = (AslTree)adaptor.nil();
                 root_1 = (AslTree)adaptor.becomeRoot(
@@ -665,7 +832,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "instruction"
-    // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:74:1: instruction : ( declaration | funcall | assignation );
+    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:88:1: instruction : ( assign | ite_stmt | while_stmt | funcall | return_stmt | read | write |);
     public final AslParser.instruction_return instruction() throws RecognitionException {
         AslParser.instruction_return retval = new AslParser.instruction_return();
         retval.start = input.LT(1);
@@ -673,89 +840,198 @@ public TreeAdaptor getTreeAdaptor() {
 
         AslTree root_0 = null;
 
-        AslParser.declaration_return declaration16 =null;
+        AslParser.assign_return assign18 =null;
 
-        AslParser.funcall_return funcall17 =null;
+        AslParser.ite_stmt_return ite_stmt19 =null;
 
-        AslParser.assignation_return assignation18 =null;
+        AslParser.while_stmt_return while_stmt20 =null;
+
+        AslParser.funcall_return funcall21 =null;
+
+        AslParser.return_stmt_return return_stmt22 =null;
+
+        AslParser.read_return read23 =null;
+
+        AslParser.write_return write24 =null;
 
 
 
         try {
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:74:12: ( declaration | funcall | assignation )
-            int alt5=3;
-            int LA5_0 = input.LA(1);
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:89:9: ( assign | ite_stmt | while_stmt | funcall | return_stmt | read | write |)
+            int alt6=8;
+            switch ( input.LA(1) ) {
+            case ID:
+                {
+                int LA6_1 = input.LA(2);
 
-            if ( (LA5_0==INPUT||LA5_0==OUTPUT||LA5_0==WIRE) ) {
-                alt5=1;
-            }
-            else if ( (LA5_0==ID) ) {
-                int LA5_2 = input.LA(2);
-
-                if ( (LA5_2==ID) ) {
-                    alt5=2;
+                if ( (LA6_1==EQUAL) ) {
+                    alt6=1;
                 }
-                else if ( (LA5_2==ASSIGN) ) {
-                    alt5=3;
+                else if ( (LA6_1==48) ) {
+                    alt6=4;
                 }
                 else {
                     NoViableAltException nvae =
-                        new NoViableAltException("", 5, 2, input);
+                        new NoViableAltException("", 6, 1, input);
 
                     throw nvae;
 
                 }
-            }
-            else {
+                }
+                break;
+            case IF:
+                {
+                alt6=2;
+                }
+                break;
+            case WHILE:
+                {
+                alt6=3;
+                }
+                break;
+            case RETURN:
+                {
+                alt6=5;
+                }
+                break;
+            case READ:
+                {
+                alt6=6;
+                }
+                break;
+            case WRITE:
+                {
+                alt6=7;
+                }
+                break;
+            case ELSE:
+            case ENDFUNC:
+            case ENDIF:
+            case ENDWHILE:
+            case 51:
+                {
+                alt6=8;
+                }
+                break;
+            default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 5, 0, input);
+                    new NoViableAltException("", 6, 0, input);
 
                 throw nvae;
 
             }
-            switch (alt5) {
+
+            switch (alt6) {
                 case 1 :
-                    // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:75:9: declaration
+                    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:89:11: assign
                     {
                     root_0 = (AslTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_declaration_in_instruction277);
-                    declaration16=declaration();
+                    pushFollow(FOLLOW_assign_in_instruction410);
+                    assign18=assign();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, declaration16.getTree());
+                    adaptor.addChild(root_0, assign18.getTree());
 
                     }
                     break;
                 case 2 :
-                    // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:76:11: funcall
+                    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:90:11: ite_stmt
                     {
                     root_0 = (AslTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_funcall_in_instruction289);
-                    funcall17=funcall();
+                    pushFollow(FOLLOW_ite_stmt_in_instruction432);
+                    ite_stmt19=ite_stmt();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, funcall17.getTree());
+                    adaptor.addChild(root_0, ite_stmt19.getTree());
 
                     }
                     break;
                 case 3 :
-                    // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:77:11: assignation
+                    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:91:11: while_stmt
                     {
                     root_0 = (AslTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_assignation_in_instruction301);
-                    assignation18=assignation();
+                    pushFollow(FOLLOW_while_stmt_in_instruction452);
+                    while_stmt20=while_stmt();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, assignation18.getTree());
+                    adaptor.addChild(root_0, while_stmt20.getTree());
+
+                    }
+                    break;
+                case 4 :
+                    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:92:13: funcall
+                    {
+                    root_0 = (AslTree)adaptor.nil();
+
+
+                    pushFollow(FOLLOW_funcall_in_instruction472);
+                    funcall21=funcall();
+
+                    state._fsp--;
+
+                    adaptor.addChild(root_0, funcall21.getTree());
+
+                    }
+                    break;
+                case 5 :
+                    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:93:11: return_stmt
+                    {
+                    root_0 = (AslTree)adaptor.nil();
+
+
+                    pushFollow(FOLLOW_return_stmt_in_instruction493);
+                    return_stmt22=return_stmt();
+
+                    state._fsp--;
+
+                    adaptor.addChild(root_0, return_stmt22.getTree());
+
+                    }
+                    break;
+                case 6 :
+                    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:94:11: read
+                    {
+                    root_0 = (AslTree)adaptor.nil();
+
+
+                    pushFollow(FOLLOW_read_in_instruction510);
+                    read23=read();
+
+                    state._fsp--;
+
+                    adaptor.addChild(root_0, read23.getTree());
+
+                    }
+                    break;
+                case 7 :
+                    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:95:12: write
+                    {
+                    root_0 = (AslTree)adaptor.nil();
+
+
+                    pushFollow(FOLLOW_write_in_instruction535);
+                    write24=write();
+
+                    state._fsp--;
+
+                    adaptor.addChild(root_0, write24.getTree());
+
+                    }
+                    break;
+                case 8 :
+                    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:97:9: 
+                    {
+                    root_0 = (AslTree)adaptor.nil();
+
 
                     }
                     break;
@@ -783,202 +1059,52 @@ public TreeAdaptor getTreeAdaptor() {
     // $ANTLR end "instruction"
 
 
-    public static class declaration_return extends ParserRuleReturnScope {
+    public static class assign_return extends ParserRuleReturnScope {
         AslTree tree;
         public Object getTree() { return tree; }
     };
 
 
-    // $ANTLR start "declaration"
-    // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:80:1: declaration : ( INPUT ^| OUTPUT ^| WIRE ^) array_dec varslist ;
-    public final AslParser.declaration_return declaration() throws RecognitionException {
-        AslParser.declaration_return retval = new AslParser.declaration_return();
+    // $ANTLR start "assign"
+    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:100:1: assign : ID eq= EQUAL expr -> ^( ASSIGN[$eq,\":=\"] ID expr ) ;
+    public final AslParser.assign_return assign() throws RecognitionException {
+        AslParser.assign_return retval = new AslParser.assign_return();
         retval.start = input.LT(1);
 
 
         AslTree root_0 = null;
 
-        Token INPUT19=null;
-        Token OUTPUT20=null;
-        Token WIRE21=null;
-        AslParser.array_dec_return array_dec22 =null;
-
-        AslParser.varslist_return varslist23 =null;
+        Token eq=null;
+        Token ID25=null;
+        AslParser.expr_return expr26 =null;
 
 
-        AslTree INPUT19_tree=null;
-        AslTree OUTPUT20_tree=null;
-        AslTree WIRE21_tree=null;
-
+        AslTree eq_tree=null;
+        AslTree ID25_tree=null;
+        RewriteRuleTokenStream stream_EQUAL=new RewriteRuleTokenStream(adaptor,"token EQUAL");
+        RewriteRuleTokenStream stream_ID=new RewriteRuleTokenStream(adaptor,"token ID");
+        RewriteRuleSubtreeStream stream_expr=new RewriteRuleSubtreeStream(adaptor,"rule expr");
         try {
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:80:12: ( ( INPUT ^| OUTPUT ^| WIRE ^) array_dec varslist )
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:80:14: ( INPUT ^| OUTPUT ^| WIRE ^) array_dec varslist
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:100:8: ( ID eq= EQUAL expr -> ^( ASSIGN[$eq,\":=\"] ID expr ) )
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:100:10: ID eq= EQUAL expr
             {
-            root_0 = (AslTree)adaptor.nil();
+            ID25=(Token)match(input,ID,FOLLOW_ID_in_assign593);  
+            stream_ID.add(ID25);
 
 
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:80:14: ( INPUT ^| OUTPUT ^| WIRE ^)
-            int alt6=3;
-            switch ( input.LA(1) ) {
-            case INPUT:
-                {
-                alt6=1;
-                }
-                break;
-            case OUTPUT:
-                {
-                alt6=2;
-                }
-                break;
-            case WIRE:
-                {
-                alt6=3;
-                }
-                break;
-            default:
-                NoViableAltException nvae =
-                    new NoViableAltException("", 6, 0, input);
-
-                throw nvae;
-
-            }
-
-            switch (alt6) {
-                case 1 :
-                    // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:80:15: INPUT ^
-                    {
-                    INPUT19=(Token)match(input,INPUT,FOLLOW_INPUT_in_declaration318); 
-                    INPUT19_tree = 
-                    (AslTree)adaptor.create(INPUT19)
-                    ;
-                    root_0 = (AslTree)adaptor.becomeRoot(INPUT19_tree, root_0);
+            eq=(Token)match(input,EQUAL,FOLLOW_EQUAL_in_assign597);  
+            stream_EQUAL.add(eq);
 
 
-                    }
-                    break;
-                case 2 :
-                    // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:80:22: OUTPUT ^
-                    {
-                    OUTPUT20=(Token)match(input,OUTPUT,FOLLOW_OUTPUT_in_declaration321); 
-                    OUTPUT20_tree = 
-                    (AslTree)adaptor.create(OUTPUT20)
-                    ;
-                    root_0 = (AslTree)adaptor.becomeRoot(OUTPUT20_tree, root_0);
-
-
-                    }
-                    break;
-                case 3 :
-                    // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:80:30: WIRE ^
-                    {
-                    WIRE21=(Token)match(input,WIRE,FOLLOW_WIRE_in_declaration324); 
-                    WIRE21_tree = 
-                    (AslTree)adaptor.create(WIRE21)
-                    ;
-                    root_0 = (AslTree)adaptor.becomeRoot(WIRE21_tree, root_0);
-
-
-                    }
-                    break;
-
-            }
-
-
-            pushFollow(FOLLOW_array_dec_in_declaration328);
-            array_dec22=array_dec();
+            pushFollow(FOLLOW_expr_in_assign599);
+            expr26=expr();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, array_dec22.getTree());
-
-            pushFollow(FOLLOW_varslist_in_declaration330);
-            varslist23=varslist();
-
-            state._fsp--;
-
-            adaptor.addChild(root_0, varslist23.getTree());
-
-            }
-
-            retval.stop = input.LT(-1);
-
-
-            retval.tree = (AslTree)adaptor.rulePostProcessing(root_0);
-            adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-    	retval.tree = (AslTree)adaptor.errorNode(input, retval.start, input.LT(-1), re);
-
-        }
-
-        finally {
-        	// do for sure before leaving
-        }
-        return retval;
-    }
-    // $ANTLR end "declaration"
-
-
-    public static class array_dec_return extends ParserRuleReturnScope {
-        AslTree tree;
-        public Object getTree() { return tree; }
-    };
-
-
-    // $ANTLR start "array_dec"
-    // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:82:1: array_dec : '[' NUM ':' NUM ']' -> ^( ARRAY_RANK NUM NUM ) ;
-    public final AslParser.array_dec_return array_dec() throws RecognitionException {
-        AslParser.array_dec_return retval = new AslParser.array_dec_return();
-        retval.start = input.LT(1);
-
-
-        AslTree root_0 = null;
-
-        Token char_literal24=null;
-        Token NUM25=null;
-        Token char_literal26=null;
-        Token NUM27=null;
-        Token char_literal28=null;
-
-        AslTree char_literal24_tree=null;
-        AslTree NUM25_tree=null;
-        AslTree char_literal26_tree=null;
-        AslTree NUM27_tree=null;
-        AslTree char_literal28_tree=null;
-        RewriteRuleTokenStream stream_29=new RewriteRuleTokenStream(adaptor,"token 29");
-        RewriteRuleTokenStream stream_NUM=new RewriteRuleTokenStream(adaptor,"token NUM");
-        RewriteRuleTokenStream stream_31=new RewriteRuleTokenStream(adaptor,"token 31");
-        RewriteRuleTokenStream stream_32=new RewriteRuleTokenStream(adaptor,"token 32");
-
-        try {
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:82:10: ( '[' NUM ':' NUM ']' -> ^( ARRAY_RANK NUM NUM ) )
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:82:12: '[' NUM ':' NUM ']'
-            {
-            char_literal24=(Token)match(input,31,FOLLOW_31_in_array_dec338);  
-            stream_31.add(char_literal24);
-
-
-            NUM25=(Token)match(input,NUM,FOLLOW_NUM_in_array_dec340);  
-            stream_NUM.add(NUM25);
-
-
-            char_literal26=(Token)match(input,29,FOLLOW_29_in_array_dec342);  
-            stream_29.add(char_literal26);
-
-
-            NUM27=(Token)match(input,NUM,FOLLOW_NUM_in_array_dec344);  
-            stream_NUM.add(NUM27);
-
-
-            char_literal28=(Token)match(input,32,FOLLOW_32_in_array_dec346);  
-            stream_32.add(char_literal28);
-
+            stream_expr.add(expr26.getTree());
 
             // AST REWRITE
-            // elements: NUM, NUM
+            // elements: ID, expr
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -988,22 +1114,20 @@ public TreeAdaptor getTreeAdaptor() {
             RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
             root_0 = (AslTree)adaptor.nil();
-            // 82:32: -> ^( ARRAY_RANK NUM NUM )
+            // 100:27: -> ^( ASSIGN[$eq,\":=\"] ID expr )
             {
-                // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:82:35: ^( ARRAY_RANK NUM NUM )
+                // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:100:30: ^( ASSIGN[$eq,\":=\"] ID expr )
                 {
                 AslTree root_1 = (AslTree)adaptor.nil();
                 root_1 = (AslTree)adaptor.becomeRoot(
-                (AslTree)adaptor.create(ARRAY_RANK, "ARRAY_RANK")
+                (AslTree)adaptor.create(ASSIGN, eq, ":=")
                 , root_1);
 
                 adaptor.addChild(root_1, 
-                stream_NUM.nextNode()
+                stream_ID.nextNode()
                 );
 
-                adaptor.addChild(root_1, 
-                stream_NUM.nextNode()
-                );
+                adaptor.addChild(root_1, stream_expr.nextTree());
 
                 adaptor.addChild(root_0, root_1);
                 }
@@ -1034,7 +1158,1539 @@ public TreeAdaptor getTreeAdaptor() {
         }
         return retval;
     }
-    // $ANTLR end "array_dec"
+    // $ANTLR end "assign"
+
+
+    public static class ite_stmt_return extends ParserRuleReturnScope {
+        AslTree tree;
+        public Object getTree() { return tree; }
+    };
+
+
+    // $ANTLR start "ite_stmt"
+    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:104:1: ite_stmt : IF ^ expr THEN ! block_instructions ( ELSE ! block_instructions )? ENDIF !;
+    public final AslParser.ite_stmt_return ite_stmt() throws RecognitionException {
+        AslParser.ite_stmt_return retval = new AslParser.ite_stmt_return();
+        retval.start = input.LT(1);
+
+
+        AslTree root_0 = null;
+
+        Token IF27=null;
+        Token THEN29=null;
+        Token ELSE31=null;
+        Token ENDIF33=null;
+        AslParser.expr_return expr28 =null;
+
+        AslParser.block_instructions_return block_instructions30 =null;
+
+        AslParser.block_instructions_return block_instructions32 =null;
+
+
+        AslTree IF27_tree=null;
+        AslTree THEN29_tree=null;
+        AslTree ELSE31_tree=null;
+        AslTree ENDIF33_tree=null;
+
+        try {
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:104:10: ( IF ^ expr THEN ! block_instructions ( ELSE ! block_instructions )? ENDIF !)
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:104:12: IF ^ expr THEN ! block_instructions ( ELSE ! block_instructions )? ENDIF !
+            {
+            root_0 = (AslTree)adaptor.nil();
+
+
+            IF27=(Token)match(input,IF,FOLLOW_IF_in_ite_stmt628); 
+            IF27_tree = 
+            (AslTree)adaptor.create(IF27)
+            ;
+            root_0 = (AslTree)adaptor.becomeRoot(IF27_tree, root_0);
+
+
+            pushFollow(FOLLOW_expr_in_ite_stmt631);
+            expr28=expr();
+
+            state._fsp--;
+
+            adaptor.addChild(root_0, expr28.getTree());
+
+            THEN29=(Token)match(input,THEN,FOLLOW_THEN_in_ite_stmt633); 
+
+            pushFollow(FOLLOW_block_instructions_in_ite_stmt636);
+            block_instructions30=block_instructions();
+
+            state._fsp--;
+
+            adaptor.addChild(root_0, block_instructions30.getTree());
+
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:104:46: ( ELSE ! block_instructions )?
+            int alt7=2;
+            int LA7_0 = input.LA(1);
+
+            if ( (LA7_0==ELSE) ) {
+                alt7=1;
+            }
+            switch (alt7) {
+                case 1 :
+                    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:104:47: ELSE ! block_instructions
+                    {
+                    ELSE31=(Token)match(input,ELSE,FOLLOW_ELSE_in_ite_stmt639); 
+
+                    pushFollow(FOLLOW_block_instructions_in_ite_stmt642);
+                    block_instructions32=block_instructions();
+
+                    state._fsp--;
+
+                    adaptor.addChild(root_0, block_instructions32.getTree());
+
+                    }
+                    break;
+
+            }
+
+
+            ENDIF33=(Token)match(input,ENDIF,FOLLOW_ENDIF_in_ite_stmt646); 
+
+            }
+
+            retval.stop = input.LT(-1);
+
+
+            retval.tree = (AslTree)adaptor.rulePostProcessing(root_0);
+            adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+    	retval.tree = (AslTree)adaptor.errorNode(input, retval.start, input.LT(-1), re);
+
+        }
+
+        finally {
+        	// do for sure before leaving
+        }
+        return retval;
+    }
+    // $ANTLR end "ite_stmt"
+
+
+    public static class while_stmt_return extends ParserRuleReturnScope {
+        AslTree tree;
+        public Object getTree() { return tree; }
+    };
+
+
+    // $ANTLR start "while_stmt"
+    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:108:1: while_stmt : WHILE ^ expr DO ! block_instructions ENDWHILE !;
+    public final AslParser.while_stmt_return while_stmt() throws RecognitionException {
+        AslParser.while_stmt_return retval = new AslParser.while_stmt_return();
+        retval.start = input.LT(1);
+
+
+        AslTree root_0 = null;
+
+        Token WHILE34=null;
+        Token DO36=null;
+        Token ENDWHILE38=null;
+        AslParser.expr_return expr35 =null;
+
+        AslParser.block_instructions_return block_instructions37 =null;
+
+
+        AslTree WHILE34_tree=null;
+        AslTree DO36_tree=null;
+        AslTree ENDWHILE38_tree=null;
+
+        try {
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:108:12: ( WHILE ^ expr DO ! block_instructions ENDWHILE !)
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:108:14: WHILE ^ expr DO ! block_instructions ENDWHILE !
+            {
+            root_0 = (AslTree)adaptor.nil();
+
+
+            WHILE34=(Token)match(input,WHILE,FOLLOW_WHILE_in_while_stmt669); 
+            WHILE34_tree = 
+            (AslTree)adaptor.create(WHILE34)
+            ;
+            root_0 = (AslTree)adaptor.becomeRoot(WHILE34_tree, root_0);
+
+
+            pushFollow(FOLLOW_expr_in_while_stmt672);
+            expr35=expr();
+
+            state._fsp--;
+
+            adaptor.addChild(root_0, expr35.getTree());
+
+            DO36=(Token)match(input,DO,FOLLOW_DO_in_while_stmt674); 
+
+            pushFollow(FOLLOW_block_instructions_in_while_stmt677);
+            block_instructions37=block_instructions();
+
+            state._fsp--;
+
+            adaptor.addChild(root_0, block_instructions37.getTree());
+
+            ENDWHILE38=(Token)match(input,ENDWHILE,FOLLOW_ENDWHILE_in_while_stmt679); 
+
+            }
+
+            retval.stop = input.LT(-1);
+
+
+            retval.tree = (AslTree)adaptor.rulePostProcessing(root_0);
+            adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+    	retval.tree = (AslTree)adaptor.errorNode(input, retval.start, input.LT(-1), re);
+
+        }
+
+        finally {
+        	// do for sure before leaving
+        }
+        return retval;
+    }
+    // $ANTLR end "while_stmt"
+
+
+    public static class return_stmt_return extends ParserRuleReturnScope {
+        AslTree tree;
+        public Object getTree() { return tree; }
+    };
+
+
+    // $ANTLR start "return_stmt"
+    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:112:1: return_stmt : RETURN ^ ( expr )? ;
+    public final AslParser.return_stmt_return return_stmt() throws RecognitionException {
+        AslParser.return_stmt_return retval = new AslParser.return_stmt_return();
+        retval.start = input.LT(1);
+
+
+        AslTree root_0 = null;
+
+        Token RETURN39=null;
+        AslParser.expr_return expr40 =null;
+
+
+        AslTree RETURN39_tree=null;
+
+        try {
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:112:13: ( RETURN ^ ( expr )? )
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:112:15: RETURN ^ ( expr )?
+            {
+            root_0 = (AslTree)adaptor.nil();
+
+
+            RETURN39=(Token)match(input,RETURN,FOLLOW_RETURN_in_return_stmt702); 
+            RETURN39_tree = 
+            (AslTree)adaptor.create(RETURN39)
+            ;
+            root_0 = (AslTree)adaptor.becomeRoot(RETURN39_tree, root_0);
+
+
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:112:23: ( expr )?
+            int alt8=2;
+            int LA8_0 = input.LA(1);
+
+            if ( (LA8_0==FALSE||LA8_0==ID||LA8_0==INT||LA8_0==MINUS||LA8_0==NOT||LA8_0==PLUS||LA8_0==TRUE||LA8_0==48) ) {
+                alt8=1;
+            }
+            switch (alt8) {
+                case 1 :
+                    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:112:23: expr
+                    {
+                    pushFollow(FOLLOW_expr_in_return_stmt705);
+                    expr40=expr();
+
+                    state._fsp--;
+
+                    adaptor.addChild(root_0, expr40.getTree());
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+            retval.stop = input.LT(-1);
+
+
+            retval.tree = (AslTree)adaptor.rulePostProcessing(root_0);
+            adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+    	retval.tree = (AslTree)adaptor.errorNode(input, retval.start, input.LT(-1), re);
+
+        }
+
+        finally {
+        	// do for sure before leaving
+        }
+        return retval;
+    }
+    // $ANTLR end "return_stmt"
+
+
+    public static class read_return extends ParserRuleReturnScope {
+        AslTree tree;
+        public Object getTree() { return tree; }
+    };
+
+
+    // $ANTLR start "read"
+    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:116:1: read : READ ^ ID ;
+    public final AslParser.read_return read() throws RecognitionException {
+        AslParser.read_return retval = new AslParser.read_return();
+        retval.start = input.LT(1);
+
+
+        AslTree root_0 = null;
+
+        Token READ41=null;
+        Token ID42=null;
+
+        AslTree READ41_tree=null;
+        AslTree ID42_tree=null;
+
+        try {
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:116:6: ( READ ^ ID )
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:116:8: READ ^ ID
+            {
+            root_0 = (AslTree)adaptor.nil();
+
+
+            READ41=(Token)match(input,READ,FOLLOW_READ_in_read724); 
+            READ41_tree = 
+            (AslTree)adaptor.create(READ41)
+            ;
+            root_0 = (AslTree)adaptor.becomeRoot(READ41_tree, root_0);
+
+
+            ID42=(Token)match(input,ID,FOLLOW_ID_in_read727); 
+            ID42_tree = 
+            (AslTree)adaptor.create(ID42)
+            ;
+            adaptor.addChild(root_0, ID42_tree);
+
+
+            }
+
+            retval.stop = input.LT(-1);
+
+
+            retval.tree = (AslTree)adaptor.rulePostProcessing(root_0);
+            adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+    	retval.tree = (AslTree)adaptor.errorNode(input, retval.start, input.LT(-1), re);
+
+        }
+
+        finally {
+        	// do for sure before leaving
+        }
+        return retval;
+    }
+    // $ANTLR end "read"
+
+
+    public static class write_return extends ParserRuleReturnScope {
+        AslTree tree;
+        public Object getTree() { return tree; }
+    };
+
+
+    // $ANTLR start "write"
+    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:120:1: write : WRITE ^ ( expr | STRING ) ;
+    public final AslParser.write_return write() throws RecognitionException {
+        AslParser.write_return retval = new AslParser.write_return();
+        retval.start = input.LT(1);
+
+
+        AslTree root_0 = null;
+
+        Token WRITE43=null;
+        Token STRING45=null;
+        AslParser.expr_return expr44 =null;
+
+
+        AslTree WRITE43_tree=null;
+        AslTree STRING45_tree=null;
+
+        try {
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:120:7: ( WRITE ^ ( expr | STRING ) )
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:120:11: WRITE ^ ( expr | STRING )
+            {
+            root_0 = (AslTree)adaptor.nil();
+
+
+            WRITE43=(Token)match(input,WRITE,FOLLOW_WRITE_in_write747); 
+            WRITE43_tree = 
+            (AslTree)adaptor.create(WRITE43)
+            ;
+            root_0 = (AslTree)adaptor.becomeRoot(WRITE43_tree, root_0);
+
+
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:120:18: ( expr | STRING )
+            int alt9=2;
+            int LA9_0 = input.LA(1);
+
+            if ( (LA9_0==FALSE||LA9_0==ID||LA9_0==INT||LA9_0==MINUS||LA9_0==NOT||LA9_0==PLUS||LA9_0==TRUE||LA9_0==48) ) {
+                alt9=1;
+            }
+            else if ( (LA9_0==STRING) ) {
+                alt9=2;
+            }
+            else {
+                NoViableAltException nvae =
+                    new NoViableAltException("", 9, 0, input);
+
+                throw nvae;
+
+            }
+            switch (alt9) {
+                case 1 :
+                    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:120:19: expr
+                    {
+                    pushFollow(FOLLOW_expr_in_write751);
+                    expr44=expr();
+
+                    state._fsp--;
+
+                    adaptor.addChild(root_0, expr44.getTree());
+
+                    }
+                    break;
+                case 2 :
+                    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:120:26: STRING
+                    {
+                    STRING45=(Token)match(input,STRING,FOLLOW_STRING_in_write755); 
+                    STRING45_tree = 
+                    (AslTree)adaptor.create(STRING45)
+                    ;
+                    adaptor.addChild(root_0, STRING45_tree);
+
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+            retval.stop = input.LT(-1);
+
+
+            retval.tree = (AslTree)adaptor.rulePostProcessing(root_0);
+            adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+    	retval.tree = (AslTree)adaptor.errorNode(input, retval.start, input.LT(-1), re);
+
+        }
+
+        finally {
+        	// do for sure before leaving
+        }
+        return retval;
+    }
+    // $ANTLR end "write"
+
+
+    public static class expr_return extends ParserRuleReturnScope {
+        AslTree tree;
+        public Object getTree() { return tree; }
+    };
+
+
+    // $ANTLR start "expr"
+    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:124:1: expr : boolterm ( OR ^ boolterm )* ;
+    public final AslParser.expr_return expr() throws RecognitionException {
+        AslParser.expr_return retval = new AslParser.expr_return();
+        retval.start = input.LT(1);
+
+
+        AslTree root_0 = null;
+
+        Token OR47=null;
+        AslParser.boolterm_return boolterm46 =null;
+
+        AslParser.boolterm_return boolterm48 =null;
+
+
+        AslTree OR47_tree=null;
+
+        try {
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:124:9: ( boolterm ( OR ^ boolterm )* )
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:124:13: boolterm ( OR ^ boolterm )*
+            {
+            root_0 = (AslTree)adaptor.nil();
+
+
+            pushFollow(FOLLOW_boolterm_in_expr780);
+            boolterm46=boolterm();
+
+            state._fsp--;
+
+            adaptor.addChild(root_0, boolterm46.getTree());
+
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:124:22: ( OR ^ boolterm )*
+            loop10:
+            do {
+                int alt10=2;
+                int LA10_0 = input.LA(1);
+
+                if ( (LA10_0==OR) ) {
+                    alt10=1;
+                }
+
+
+                switch (alt10) {
+            	case 1 :
+            	    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:124:23: OR ^ boolterm
+            	    {
+            	    OR47=(Token)match(input,OR,FOLLOW_OR_in_expr783); 
+            	    OR47_tree = 
+            	    (AslTree)adaptor.create(OR47)
+            	    ;
+            	    root_0 = (AslTree)adaptor.becomeRoot(OR47_tree, root_0);
+
+
+            	    pushFollow(FOLLOW_boolterm_in_expr786);
+            	    boolterm48=boolterm();
+
+            	    state._fsp--;
+
+            	    adaptor.addChild(root_0, boolterm48.getTree());
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop10;
+                }
+            } while (true);
+
+
+            }
+
+            retval.stop = input.LT(-1);
+
+
+            retval.tree = (AslTree)adaptor.rulePostProcessing(root_0);
+            adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+    	retval.tree = (AslTree)adaptor.errorNode(input, retval.start, input.LT(-1), re);
+
+        }
+
+        finally {
+        	// do for sure before leaving
+        }
+        return retval;
+    }
+    // $ANTLR end "expr"
+
+
+    public static class boolterm_return extends ParserRuleReturnScope {
+        AslTree tree;
+        public Object getTree() { return tree; }
+    };
+
+
+    // $ANTLR start "boolterm"
+    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:127:1: boolterm : boolfact ( AND ^ boolfact )* ;
+    public final AslParser.boolterm_return boolterm() throws RecognitionException {
+        AslParser.boolterm_return retval = new AslParser.boolterm_return();
+        retval.start = input.LT(1);
+
+
+        AslTree root_0 = null;
+
+        Token AND50=null;
+        AslParser.boolfact_return boolfact49 =null;
+
+        AslParser.boolfact_return boolfact51 =null;
+
+
+        AslTree AND50_tree=null;
+
+        try {
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:127:9: ( boolfact ( AND ^ boolfact )* )
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:127:13: boolfact ( AND ^ boolfact )*
+            {
+            root_0 = (AslTree)adaptor.nil();
+
+
+            pushFollow(FOLLOW_boolfact_in_boolterm806);
+            boolfact49=boolfact();
+
+            state._fsp--;
+
+            adaptor.addChild(root_0, boolfact49.getTree());
+
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:127:22: ( AND ^ boolfact )*
+            loop11:
+            do {
+                int alt11=2;
+                int LA11_0 = input.LA(1);
+
+                if ( (LA11_0==AND) ) {
+                    alt11=1;
+                }
+
+
+                switch (alt11) {
+            	case 1 :
+            	    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:127:23: AND ^ boolfact
+            	    {
+            	    AND50=(Token)match(input,AND,FOLLOW_AND_in_boolterm809); 
+            	    AND50_tree = 
+            	    (AslTree)adaptor.create(AND50)
+            	    ;
+            	    root_0 = (AslTree)adaptor.becomeRoot(AND50_tree, root_0);
+
+
+            	    pushFollow(FOLLOW_boolfact_in_boolterm812);
+            	    boolfact51=boolfact();
+
+            	    state._fsp--;
+
+            	    adaptor.addChild(root_0, boolfact51.getTree());
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop11;
+                }
+            } while (true);
+
+
+            }
+
+            retval.stop = input.LT(-1);
+
+
+            retval.tree = (AslTree)adaptor.rulePostProcessing(root_0);
+            adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+    	retval.tree = (AslTree)adaptor.errorNode(input, retval.start, input.LT(-1), re);
+
+        }
+
+        finally {
+        	// do for sure before leaving
+        }
+        return retval;
+    }
+    // $ANTLR end "boolterm"
+
+
+    public static class boolfact_return extends ParserRuleReturnScope {
+        AslTree tree;
+        public Object getTree() { return tree; }
+    };
+
+
+    // $ANTLR start "boolfact"
+    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:130:1: boolfact : num_expr ( ( EQUAL ^| NOT_EQUAL ^| LT ^| LE ^| GT ^| GE ^) num_expr )? ;
+    public final AslParser.boolfact_return boolfact() throws RecognitionException {
+        AslParser.boolfact_return retval = new AslParser.boolfact_return();
+        retval.start = input.LT(1);
+
+
+        AslTree root_0 = null;
+
+        Token EQUAL53=null;
+        Token NOT_EQUAL54=null;
+        Token LT55=null;
+        Token LE56=null;
+        Token GT57=null;
+        Token GE58=null;
+        AslParser.num_expr_return num_expr52 =null;
+
+        AslParser.num_expr_return num_expr59 =null;
+
+
+        AslTree EQUAL53_tree=null;
+        AslTree NOT_EQUAL54_tree=null;
+        AslTree LT55_tree=null;
+        AslTree LE56_tree=null;
+        AslTree GT57_tree=null;
+        AslTree GE58_tree=null;
+
+        try {
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:130:9: ( num_expr ( ( EQUAL ^| NOT_EQUAL ^| LT ^| LE ^| GT ^| GE ^) num_expr )? )
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:130:13: num_expr ( ( EQUAL ^| NOT_EQUAL ^| LT ^| LE ^| GT ^| GE ^) num_expr )?
+            {
+            root_0 = (AslTree)adaptor.nil();
+
+
+            pushFollow(FOLLOW_num_expr_in_boolfact832);
+            num_expr52=num_expr();
+
+            state._fsp--;
+
+            adaptor.addChild(root_0, num_expr52.getTree());
+
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:130:22: ( ( EQUAL ^| NOT_EQUAL ^| LT ^| LE ^| GT ^| GE ^) num_expr )?
+            int alt13=2;
+            int LA13_0 = input.LA(1);
+
+            if ( (LA13_0==EQUAL||(LA13_0 >= GE && LA13_0 <= GT)||LA13_0==LE||LA13_0==LT||LA13_0==NOT_EQUAL) ) {
+                alt13=1;
+            }
+            switch (alt13) {
+                case 1 :
+                    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:130:23: ( EQUAL ^| NOT_EQUAL ^| LT ^| LE ^| GT ^| GE ^) num_expr
+                    {
+                    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:130:23: ( EQUAL ^| NOT_EQUAL ^| LT ^| LE ^| GT ^| GE ^)
+                    int alt12=6;
+                    switch ( input.LA(1) ) {
+                    case EQUAL:
+                        {
+                        alt12=1;
+                        }
+                        break;
+                    case NOT_EQUAL:
+                        {
+                        alt12=2;
+                        }
+                        break;
+                    case LT:
+                        {
+                        alt12=3;
+                        }
+                        break;
+                    case LE:
+                        {
+                        alt12=4;
+                        }
+                        break;
+                    case GT:
+                        {
+                        alt12=5;
+                        }
+                        break;
+                    case GE:
+                        {
+                        alt12=6;
+                        }
+                        break;
+                    default:
+                        NoViableAltException nvae =
+                            new NoViableAltException("", 12, 0, input);
+
+                        throw nvae;
+
+                    }
+
+                    switch (alt12) {
+                        case 1 :
+                            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:130:24: EQUAL ^
+                            {
+                            EQUAL53=(Token)match(input,EQUAL,FOLLOW_EQUAL_in_boolfact836); 
+                            EQUAL53_tree = 
+                            (AslTree)adaptor.create(EQUAL53)
+                            ;
+                            root_0 = (AslTree)adaptor.becomeRoot(EQUAL53_tree, root_0);
+
+
+                            }
+                            break;
+                        case 2 :
+                            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:130:33: NOT_EQUAL ^
+                            {
+                            NOT_EQUAL54=(Token)match(input,NOT_EQUAL,FOLLOW_NOT_EQUAL_in_boolfact841); 
+                            NOT_EQUAL54_tree = 
+                            (AslTree)adaptor.create(NOT_EQUAL54)
+                            ;
+                            root_0 = (AslTree)adaptor.becomeRoot(NOT_EQUAL54_tree, root_0);
+
+
+                            }
+                            break;
+                        case 3 :
+                            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:130:46: LT ^
+                            {
+                            LT55=(Token)match(input,LT,FOLLOW_LT_in_boolfact846); 
+                            LT55_tree = 
+                            (AslTree)adaptor.create(LT55)
+                            ;
+                            root_0 = (AslTree)adaptor.becomeRoot(LT55_tree, root_0);
+
+
+                            }
+                            break;
+                        case 4 :
+                            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:130:52: LE ^
+                            {
+                            LE56=(Token)match(input,LE,FOLLOW_LE_in_boolfact851); 
+                            LE56_tree = 
+                            (AslTree)adaptor.create(LE56)
+                            ;
+                            root_0 = (AslTree)adaptor.becomeRoot(LE56_tree, root_0);
+
+
+                            }
+                            break;
+                        case 5 :
+                            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:130:58: GT ^
+                            {
+                            GT57=(Token)match(input,GT,FOLLOW_GT_in_boolfact856); 
+                            GT57_tree = 
+                            (AslTree)adaptor.create(GT57)
+                            ;
+                            root_0 = (AslTree)adaptor.becomeRoot(GT57_tree, root_0);
+
+
+                            }
+                            break;
+                        case 6 :
+                            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:130:64: GE ^
+                            {
+                            GE58=(Token)match(input,GE,FOLLOW_GE_in_boolfact861); 
+                            GE58_tree = 
+                            (AslTree)adaptor.create(GE58)
+                            ;
+                            root_0 = (AslTree)adaptor.becomeRoot(GE58_tree, root_0);
+
+
+                            }
+                            break;
+
+                    }
+
+
+                    pushFollow(FOLLOW_num_expr_in_boolfact865);
+                    num_expr59=num_expr();
+
+                    state._fsp--;
+
+                    adaptor.addChild(root_0, num_expr59.getTree());
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+            retval.stop = input.LT(-1);
+
+
+            retval.tree = (AslTree)adaptor.rulePostProcessing(root_0);
+            adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+    	retval.tree = (AslTree)adaptor.errorNode(input, retval.start, input.LT(-1), re);
+
+        }
+
+        finally {
+        	// do for sure before leaving
+        }
+        return retval;
+    }
+    // $ANTLR end "boolfact"
+
+
+    public static class num_expr_return extends ParserRuleReturnScope {
+        AslTree tree;
+        public Object getTree() { return tree; }
+    };
+
+
+    // $ANTLR start "num_expr"
+    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:133:1: num_expr : term ( ( PLUS ^| MINUS ^) term )* ;
+    public final AslParser.num_expr_return num_expr() throws RecognitionException {
+        AslParser.num_expr_return retval = new AslParser.num_expr_return();
+        retval.start = input.LT(1);
+
+
+        AslTree root_0 = null;
+
+        Token PLUS61=null;
+        Token MINUS62=null;
+        AslParser.term_return term60 =null;
+
+        AslParser.term_return term63 =null;
+
+
+        AslTree PLUS61_tree=null;
+        AslTree MINUS62_tree=null;
+
+        try {
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:133:9: ( term ( ( PLUS ^| MINUS ^) term )* )
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:133:13: term ( ( PLUS ^| MINUS ^) term )*
+            {
+            root_0 = (AslTree)adaptor.nil();
+
+
+            pushFollow(FOLLOW_term_in_num_expr885);
+            term60=term();
+
+            state._fsp--;
+
+            adaptor.addChild(root_0, term60.getTree());
+
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:133:18: ( ( PLUS ^| MINUS ^) term )*
+            loop15:
+            do {
+                int alt15=2;
+                int LA15_0 = input.LA(1);
+
+                if ( (LA15_0==MINUS||LA15_0==PLUS) ) {
+                    alt15=1;
+                }
+
+
+                switch (alt15) {
+            	case 1 :
+            	    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:133:20: ( PLUS ^| MINUS ^) term
+            	    {
+            	    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:133:20: ( PLUS ^| MINUS ^)
+            	    int alt14=2;
+            	    int LA14_0 = input.LA(1);
+
+            	    if ( (LA14_0==PLUS) ) {
+            	        alt14=1;
+            	    }
+            	    else if ( (LA14_0==MINUS) ) {
+            	        alt14=2;
+            	    }
+            	    else {
+            	        NoViableAltException nvae =
+            	            new NoViableAltException("", 14, 0, input);
+
+            	        throw nvae;
+
+            	    }
+            	    switch (alt14) {
+            	        case 1 :
+            	            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:133:21: PLUS ^
+            	            {
+            	            PLUS61=(Token)match(input,PLUS,FOLLOW_PLUS_in_num_expr890); 
+            	            PLUS61_tree = 
+            	            (AslTree)adaptor.create(PLUS61)
+            	            ;
+            	            root_0 = (AslTree)adaptor.becomeRoot(PLUS61_tree, root_0);
+
+
+            	            }
+            	            break;
+            	        case 2 :
+            	            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:133:29: MINUS ^
+            	            {
+            	            MINUS62=(Token)match(input,MINUS,FOLLOW_MINUS_in_num_expr895); 
+            	            MINUS62_tree = 
+            	            (AslTree)adaptor.create(MINUS62)
+            	            ;
+            	            root_0 = (AslTree)adaptor.becomeRoot(MINUS62_tree, root_0);
+
+
+            	            }
+            	            break;
+
+            	    }
+
+
+            	    pushFollow(FOLLOW_term_in_num_expr899);
+            	    term63=term();
+
+            	    state._fsp--;
+
+            	    adaptor.addChild(root_0, term63.getTree());
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop15;
+                }
+            } while (true);
+
+
+            }
+
+            retval.stop = input.LT(-1);
+
+
+            retval.tree = (AslTree)adaptor.rulePostProcessing(root_0);
+            adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+    	retval.tree = (AslTree)adaptor.errorNode(input, retval.start, input.LT(-1), re);
+
+        }
+
+        finally {
+        	// do for sure before leaving
+        }
+        return retval;
+    }
+    // $ANTLR end "num_expr"
+
+
+    public static class term_return extends ParserRuleReturnScope {
+        AslTree tree;
+        public Object getTree() { return tree; }
+    };
+
+
+    // $ANTLR start "term"
+    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:136:1: term : factor ( ( MUL ^| DIV ^| MOD ^) factor )* ;
+    public final AslParser.term_return term() throws RecognitionException {
+        AslParser.term_return retval = new AslParser.term_return();
+        retval.start = input.LT(1);
+
+
+        AslTree root_0 = null;
+
+        Token MUL65=null;
+        Token DIV66=null;
+        Token MOD67=null;
+        AslParser.factor_return factor64 =null;
+
+        AslParser.factor_return factor68 =null;
+
+
+        AslTree MUL65_tree=null;
+        AslTree DIV66_tree=null;
+        AslTree MOD67_tree=null;
+
+        try {
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:136:9: ( factor ( ( MUL ^| DIV ^| MOD ^) factor )* )
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:136:13: factor ( ( MUL ^| DIV ^| MOD ^) factor )*
+            {
+            root_0 = (AslTree)adaptor.nil();
+
+
+            pushFollow(FOLLOW_factor_in_term923);
+            factor64=factor();
+
+            state._fsp--;
+
+            adaptor.addChild(root_0, factor64.getTree());
+
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:136:20: ( ( MUL ^| DIV ^| MOD ^) factor )*
+            loop17:
+            do {
+                int alt17=2;
+                int LA17_0 = input.LA(1);
+
+                if ( (LA17_0==DIV||(LA17_0 >= MOD && LA17_0 <= MUL)) ) {
+                    alt17=1;
+                }
+
+
+                switch (alt17) {
+            	case 1 :
+            	    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:136:22: ( MUL ^| DIV ^| MOD ^) factor
+            	    {
+            	    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:136:22: ( MUL ^| DIV ^| MOD ^)
+            	    int alt16=3;
+            	    switch ( input.LA(1) ) {
+            	    case MUL:
+            	        {
+            	        alt16=1;
+            	        }
+            	        break;
+            	    case DIV:
+            	        {
+            	        alt16=2;
+            	        }
+            	        break;
+            	    case MOD:
+            	        {
+            	        alt16=3;
+            	        }
+            	        break;
+            	    default:
+            	        NoViableAltException nvae =
+            	            new NoViableAltException("", 16, 0, input);
+
+            	        throw nvae;
+
+            	    }
+
+            	    switch (alt16) {
+            	        case 1 :
+            	            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:136:23: MUL ^
+            	            {
+            	            MUL65=(Token)match(input,MUL,FOLLOW_MUL_in_term928); 
+            	            MUL65_tree = 
+            	            (AslTree)adaptor.create(MUL65)
+            	            ;
+            	            root_0 = (AslTree)adaptor.becomeRoot(MUL65_tree, root_0);
+
+
+            	            }
+            	            break;
+            	        case 2 :
+            	            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:136:30: DIV ^
+            	            {
+            	            DIV66=(Token)match(input,DIV,FOLLOW_DIV_in_term933); 
+            	            DIV66_tree = 
+            	            (AslTree)adaptor.create(DIV66)
+            	            ;
+            	            root_0 = (AslTree)adaptor.becomeRoot(DIV66_tree, root_0);
+
+
+            	            }
+            	            break;
+            	        case 3 :
+            	            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:136:37: MOD ^
+            	            {
+            	            MOD67=(Token)match(input,MOD,FOLLOW_MOD_in_term938); 
+            	            MOD67_tree = 
+            	            (AslTree)adaptor.create(MOD67)
+            	            ;
+            	            root_0 = (AslTree)adaptor.becomeRoot(MOD67_tree, root_0);
+
+
+            	            }
+            	            break;
+
+            	    }
+
+
+            	    pushFollow(FOLLOW_factor_in_term942);
+            	    factor68=factor();
+
+            	    state._fsp--;
+
+            	    adaptor.addChild(root_0, factor68.getTree());
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop17;
+                }
+            } while (true);
+
+
+            }
+
+            retval.stop = input.LT(-1);
+
+
+            retval.tree = (AslTree)adaptor.rulePostProcessing(root_0);
+            adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+    	retval.tree = (AslTree)adaptor.errorNode(input, retval.start, input.LT(-1), re);
+
+        }
+
+        finally {
+        	// do for sure before leaving
+        }
+        return retval;
+    }
+    // $ANTLR end "term"
+
+
+    public static class factor_return extends ParserRuleReturnScope {
+        AslTree tree;
+        public Object getTree() { return tree; }
+    };
+
+
+    // $ANTLR start "factor"
+    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:139:1: factor : ( NOT ^| PLUS ^| MINUS ^)? atom ;
+    public final AslParser.factor_return factor() throws RecognitionException {
+        AslParser.factor_return retval = new AslParser.factor_return();
+        retval.start = input.LT(1);
+
+
+        AslTree root_0 = null;
+
+        Token NOT69=null;
+        Token PLUS70=null;
+        Token MINUS71=null;
+        AslParser.atom_return atom72 =null;
+
+
+        AslTree NOT69_tree=null;
+        AslTree PLUS70_tree=null;
+        AslTree MINUS71_tree=null;
+
+        try {
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:139:9: ( ( NOT ^| PLUS ^| MINUS ^)? atom )
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:139:13: ( NOT ^| PLUS ^| MINUS ^)? atom
+            {
+            root_0 = (AslTree)adaptor.nil();
+
+
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:139:13: ( NOT ^| PLUS ^| MINUS ^)?
+            int alt18=4;
+            switch ( input.LA(1) ) {
+                case NOT:
+                    {
+                    alt18=1;
+                    }
+                    break;
+                case PLUS:
+                    {
+                    alt18=2;
+                    }
+                    break;
+                case MINUS:
+                    {
+                    alt18=3;
+                    }
+                    break;
+            }
+
+            switch (alt18) {
+                case 1 :
+                    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:139:14: NOT ^
+                    {
+                    NOT69=(Token)match(input,NOT,FOLLOW_NOT_in_factor965); 
+                    NOT69_tree = 
+                    (AslTree)adaptor.create(NOT69)
+                    ;
+                    root_0 = (AslTree)adaptor.becomeRoot(NOT69_tree, root_0);
+
+
+                    }
+                    break;
+                case 2 :
+                    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:139:21: PLUS ^
+                    {
+                    PLUS70=(Token)match(input,PLUS,FOLLOW_PLUS_in_factor970); 
+                    PLUS70_tree = 
+                    (AslTree)adaptor.create(PLUS70)
+                    ;
+                    root_0 = (AslTree)adaptor.becomeRoot(PLUS70_tree, root_0);
+
+
+                    }
+                    break;
+                case 3 :
+                    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:139:29: MINUS ^
+                    {
+                    MINUS71=(Token)match(input,MINUS,FOLLOW_MINUS_in_factor975); 
+                    MINUS71_tree = 
+                    (AslTree)adaptor.create(MINUS71)
+                    ;
+                    root_0 = (AslTree)adaptor.becomeRoot(MINUS71_tree, root_0);
+
+
+                    }
+                    break;
+
+            }
+
+
+            pushFollow(FOLLOW_atom_in_factor980);
+            atom72=atom();
+
+            state._fsp--;
+
+            adaptor.addChild(root_0, atom72.getTree());
+
+            }
+
+            retval.stop = input.LT(-1);
+
+
+            retval.tree = (AslTree)adaptor.rulePostProcessing(root_0);
+            adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+    	retval.tree = (AslTree)adaptor.errorNode(input, retval.start, input.LT(-1), re);
+
+        }
+
+        finally {
+        	// do for sure before leaving
+        }
+        return retval;
+    }
+    // $ANTLR end "factor"
+
+
+    public static class atom_return extends ParserRuleReturnScope {
+        AslTree tree;
+        public Object getTree() { return tree; }
+    };
+
+
+    // $ANTLR start "atom"
+    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:145:1: atom : ( ID | INT | (b= TRUE |b= FALSE ) -> ^( BOOLEAN[$b,$b.text] ) | funcall | '(' ! expr ')' !);
+    public final AslParser.atom_return atom() throws RecognitionException {
+        AslParser.atom_return retval = new AslParser.atom_return();
+        retval.start = input.LT(1);
+
+
+        AslTree root_0 = null;
+
+        Token b=null;
+        Token ID73=null;
+        Token INT74=null;
+        Token char_literal76=null;
+        Token char_literal78=null;
+        AslParser.funcall_return funcall75 =null;
+
+        AslParser.expr_return expr77 =null;
+
+
+        AslTree b_tree=null;
+        AslTree ID73_tree=null;
+        AslTree INT74_tree=null;
+        AslTree char_literal76_tree=null;
+        AslTree char_literal78_tree=null;
+        RewriteRuleTokenStream stream_TRUE=new RewriteRuleTokenStream(adaptor,"token TRUE");
+        RewriteRuleTokenStream stream_FALSE=new RewriteRuleTokenStream(adaptor,"token FALSE");
+
+        try {
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:145:9: ( ID | INT | (b= TRUE |b= FALSE ) -> ^( BOOLEAN[$b,$b.text] ) | funcall | '(' ! expr ')' !)
+            int alt20=5;
+            switch ( input.LA(1) ) {
+            case ID:
+                {
+                int LA20_1 = input.LA(2);
+
+                if ( (LA20_1==48) ) {
+                    alt20=4;
+                }
+                else if ( (LA20_1==AND||(LA20_1 >= DIV && LA20_1 <= EQUAL)||(LA20_1 >= GE && LA20_1 <= GT)||LA20_1==LE||(LA20_1 >= LT && LA20_1 <= MUL)||(LA20_1 >= NOT_EQUAL && LA20_1 <= OR)||LA20_1==PLUS||LA20_1==THEN||(LA20_1 >= 49 && LA20_1 <= 51)) ) {
+                    alt20=1;
+                }
+                else {
+                    NoViableAltException nvae =
+                        new NoViableAltException("", 20, 1, input);
+
+                    throw nvae;
+
+                }
+                }
+                break;
+            case INT:
+                {
+                alt20=2;
+                }
+                break;
+            case FALSE:
+            case TRUE:
+                {
+                alt20=3;
+                }
+                break;
+            case 48:
+                {
+                alt20=5;
+                }
+                break;
+            default:
+                NoViableAltException nvae =
+                    new NoViableAltException("", 20, 0, input);
+
+                throw nvae;
+
+            }
+
+            switch (alt20) {
+                case 1 :
+                    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:145:13: ID
+                    {
+                    root_0 = (AslTree)adaptor.nil();
+
+
+                    ID73=(Token)match(input,ID,FOLLOW_ID_in_atom1005); 
+                    ID73_tree = 
+                    (AslTree)adaptor.create(ID73)
+                    ;
+                    adaptor.addChild(root_0, ID73_tree);
+
+
+                    }
+                    break;
+                case 2 :
+                    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:146:13: INT
+                    {
+                    root_0 = (AslTree)adaptor.nil();
+
+
+                    INT74=(Token)match(input,INT,FOLLOW_INT_in_atom1020); 
+                    INT74_tree = 
+                    (AslTree)adaptor.create(INT74)
+                    ;
+                    adaptor.addChild(root_0, INT74_tree);
+
+
+                    }
+                    break;
+                case 3 :
+                    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:147:13: (b= TRUE |b= FALSE )
+                    {
+                    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:147:13: (b= TRUE |b= FALSE )
+                    int alt19=2;
+                    int LA19_0 = input.LA(1);
+
+                    if ( (LA19_0==TRUE) ) {
+                        alt19=1;
+                    }
+                    else if ( (LA19_0==FALSE) ) {
+                        alt19=2;
+                    }
+                    else {
+                        NoViableAltException nvae =
+                            new NoViableAltException("", 19, 0, input);
+
+                        throw nvae;
+
+                    }
+                    switch (alt19) {
+                        case 1 :
+                            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:147:14: b= TRUE
+                            {
+                            b=(Token)match(input,TRUE,FOLLOW_TRUE_in_atom1037);  
+                            stream_TRUE.add(b);
+
+
+                            }
+                            break;
+                        case 2 :
+                            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:147:23: b= FALSE
+                            {
+                            b=(Token)match(input,FALSE,FOLLOW_FALSE_in_atom1043);  
+                            stream_FALSE.add(b);
+
+
+                            }
+                            break;
+
+                    }
+
+
+                    // AST REWRITE
+                    // elements: 
+                    // token labels: 
+                    // rule labels: retval
+                    // token list labels: 
+                    // rule list labels: 
+                    // wildcard labels: 
+                    retval.tree = root_0;
+                    RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
+
+                    root_0 = (AslTree)adaptor.nil();
+                    // 147:33: -> ^( BOOLEAN[$b,$b.text] )
+                    {
+                        // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:147:36: ^( BOOLEAN[$b,$b.text] )
+                        {
+                        AslTree root_1 = (AslTree)adaptor.nil();
+                        root_1 = (AslTree)adaptor.becomeRoot(
+                        (AslTree)adaptor.create(BOOLEAN, b, (b!=null?b.getText():null))
+                        , root_1);
+
+                        adaptor.addChild(root_0, root_1);
+                        }
+
+                    }
+
+
+                    retval.tree = root_0;
+
+                    }
+                    break;
+                case 4 :
+                    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:148:13: funcall
+                    {
+                    root_0 = (AslTree)adaptor.nil();
+
+
+                    pushFollow(FOLLOW_funcall_in_atom1066);
+                    funcall75=funcall();
+
+                    state._fsp--;
+
+                    adaptor.addChild(root_0, funcall75.getTree());
+
+                    }
+                    break;
+                case 5 :
+                    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:149:13: '(' ! expr ')' !
+                    {
+                    root_0 = (AslTree)adaptor.nil();
+
+
+                    char_literal76=(Token)match(input,48,FOLLOW_48_in_atom1080); 
+
+                    pushFollow(FOLLOW_expr_in_atom1083);
+                    expr77=expr();
+
+                    state._fsp--;
+
+                    adaptor.addChild(root_0, expr77.getTree());
+
+                    char_literal78=(Token)match(input,49,FOLLOW_49_in_atom1085); 
+
+                    }
+                    break;
+
+            }
+            retval.stop = input.LT(-1);
+
+
+            retval.tree = (AslTree)adaptor.rulePostProcessing(root_0);
+            adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+    	retval.tree = (AslTree)adaptor.errorNode(input, retval.start, input.LT(-1), re);
+
+        }
+
+        finally {
+        	// do for sure before leaving
+        }
+        return retval;
+    }
+    // $ANTLR end "atom"
 
 
     public static class funcall_return extends ParserRuleReturnScope {
@@ -1044,7 +2700,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "funcall"
-    // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:84:1: funcall : ID ID '(' ( expr_list )? ')' -> ^( FUNCALL ID ^( ARGLIST ( expr_list )? ) ) ;
+    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:153:1: funcall : ID '(' ( expr_list )? ')' -> ^( FUNCALL ID ^( ARGLIST ( expr_list )? ) ) ;
     public final AslParser.funcall_return funcall() throws RecognitionException {
         AslParser.funcall_return retval = new AslParser.funcall_return();
         retval.start = input.LT(1);
@@ -1052,54 +2708,48 @@ public TreeAdaptor getTreeAdaptor() {
 
         AslTree root_0 = null;
 
-        Token ID29=null;
-        Token ID30=null;
-        Token char_literal31=null;
-        Token char_literal33=null;
-        AslParser.expr_list_return expr_list32 =null;
+        Token ID79=null;
+        Token char_literal80=null;
+        Token char_literal82=null;
+        AslParser.expr_list_return expr_list81 =null;
 
 
-        AslTree ID29_tree=null;
-        AslTree ID30_tree=null;
-        AslTree char_literal31_tree=null;
-        AslTree char_literal33_tree=null;
-        RewriteRuleTokenStream stream_26=new RewriteRuleTokenStream(adaptor,"token 26");
-        RewriteRuleTokenStream stream_27=new RewriteRuleTokenStream(adaptor,"token 27");
+        AslTree ID79_tree=null;
+        AslTree char_literal80_tree=null;
+        AslTree char_literal82_tree=null;
+        RewriteRuleTokenStream stream_48=new RewriteRuleTokenStream(adaptor,"token 48");
+        RewriteRuleTokenStream stream_49=new RewriteRuleTokenStream(adaptor,"token 49");
         RewriteRuleTokenStream stream_ID=new RewriteRuleTokenStream(adaptor,"token ID");
         RewriteRuleSubtreeStream stream_expr_list=new RewriteRuleSubtreeStream(adaptor,"rule expr_list");
         try {
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:84:9: ( ID ID '(' ( expr_list )? ')' -> ^( FUNCALL ID ^( ARGLIST ( expr_list )? ) ) )
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:84:11: ID ID '(' ( expr_list )? ')'
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:153:9: ( ID '(' ( expr_list )? ')' -> ^( FUNCALL ID ^( ARGLIST ( expr_list )? ) ) )
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:153:13: ID '(' ( expr_list )? ')'
             {
-            ID29=(Token)match(input,ID,FOLLOW_ID_in_funcall365);  
-            stream_ID.add(ID29);
+            ID79=(Token)match(input,ID,FOLLOW_ID_in_funcall1106);  
+            stream_ID.add(ID79);
 
 
-            ID30=(Token)match(input,ID,FOLLOW_ID_in_funcall367);  
-            stream_ID.add(ID30);
+            char_literal80=(Token)match(input,48,FOLLOW_48_in_funcall1108);  
+            stream_48.add(char_literal80);
 
 
-            char_literal31=(Token)match(input,26,FOLLOW_26_in_funcall369);  
-            stream_26.add(char_literal31);
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:153:20: ( expr_list )?
+            int alt21=2;
+            int LA21_0 = input.LA(1);
 
-
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:84:21: ( expr_list )?
-            int alt7=2;
-            int LA7_0 = input.LA(1);
-
-            if ( (LA7_0==ID) ) {
-                alt7=1;
+            if ( (LA21_0==FALSE||LA21_0==ID||LA21_0==INT||LA21_0==MINUS||LA21_0==NOT||LA21_0==PLUS||LA21_0==TRUE||LA21_0==48) ) {
+                alt21=1;
             }
-            switch (alt7) {
+            switch (alt21) {
                 case 1 :
-                    // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:84:21: expr_list
+                    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:153:20: expr_list
                     {
-                    pushFollow(FOLLOW_expr_list_in_funcall371);
-                    expr_list32=expr_list();
+                    pushFollow(FOLLOW_expr_list_in_funcall1110);
+                    expr_list81=expr_list();
 
                     state._fsp--;
 
-                    stream_expr_list.add(expr_list32.getTree());
+                    stream_expr_list.add(expr_list81.getTree());
 
                     }
                     break;
@@ -1107,8 +2757,8 @@ public TreeAdaptor getTreeAdaptor() {
             }
 
 
-            char_literal33=(Token)match(input,27,FOLLOW_27_in_funcall374);  
-            stream_27.add(char_literal33);
+            char_literal82=(Token)match(input,49,FOLLOW_49_in_funcall1113);  
+            stream_49.add(char_literal82);
 
 
             // AST REWRITE
@@ -1122,9 +2772,9 @@ public TreeAdaptor getTreeAdaptor() {
             RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
             root_0 = (AslTree)adaptor.nil();
-            // 84:36: -> ^( FUNCALL ID ^( ARGLIST ( expr_list )? ) )
+            // 153:35: -> ^( FUNCALL ID ^( ARGLIST ( expr_list )? ) )
             {
-                // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:84:39: ^( FUNCALL ID ^( ARGLIST ( expr_list )? ) )
+                // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:153:38: ^( FUNCALL ID ^( ARGLIST ( expr_list )? ) )
                 {
                 AslTree root_1 = (AslTree)adaptor.nil();
                 root_1 = (AslTree)adaptor.becomeRoot(
@@ -1135,14 +2785,14 @@ public TreeAdaptor getTreeAdaptor() {
                 stream_ID.nextNode()
                 );
 
-                // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:84:52: ^( ARGLIST ( expr_list )? )
+                // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:153:51: ^( ARGLIST ( expr_list )? )
                 {
                 AslTree root_2 = (AslTree)adaptor.nil();
                 root_2 = (AslTree)adaptor.becomeRoot(
                 (AslTree)adaptor.create(ARGLIST, "ARGLIST")
                 , root_2);
 
-                // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:84:62: ( expr_list )?
+                // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:153:61: ( expr_list )?
                 if ( stream_expr_list.hasNext() ) {
                     adaptor.addChild(root_2, stream_expr_list.nextTree());
 
@@ -1191,7 +2841,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "expr_list"
-    // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:87:1: expr_list : ( ID | array_access ) ( ',' ! ( ID | array_access ) )* ;
+    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:157:1: expr_list : expr ( ',' ! expr )* ;
     public final AslParser.expr_list_return expr_list() throws RecognitionException {
         AslParser.expr_list_return retval = new AslParser.expr_list_return();
         retval.start = input.LT(1);
@@ -1199,161 +2849,57 @@ public TreeAdaptor getTreeAdaptor() {
 
         AslTree root_0 = null;
 
-        Token ID34=null;
-        Token char_literal36=null;
-        Token ID37=null;
-        AslParser.array_access_return array_access35 =null;
+        Token char_literal84=null;
+        AslParser.expr_return expr83 =null;
 
-        AslParser.array_access_return array_access38 =null;
+        AslParser.expr_return expr85 =null;
 
 
-        AslTree ID34_tree=null;
-        AslTree char_literal36_tree=null;
-        AslTree ID37_tree=null;
+        AslTree char_literal84_tree=null;
 
         try {
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:87:10: ( ( ID | array_access ) ( ',' ! ( ID | array_access ) )* )
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:87:12: ( ID | array_access ) ( ',' ! ( ID | array_access ) )*
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:157:10: ( expr ( ',' ! expr )* )
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:157:13: expr ( ',' ! expr )*
             {
             root_0 = (AslTree)adaptor.nil();
 
 
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:87:12: ( ID | array_access )
-            int alt8=2;
-            int LA8_0 = input.LA(1);
+            pushFollow(FOLLOW_expr_in_expr_list1146);
+            expr83=expr();
 
-            if ( (LA8_0==ID) ) {
-                int LA8_1 = input.LA(2);
+            state._fsp--;
 
-                if ( (LA8_1==31) ) {
-                    alt8=2;
-                }
-                else if ( ((LA8_1 >= 27 && LA8_1 <= 28)) ) {
-                    alt8=1;
-                }
-                else {
-                    NoViableAltException nvae =
-                        new NoViableAltException("", 8, 1, input);
+            adaptor.addChild(root_0, expr83.getTree());
 
-                    throw nvae;
-
-                }
-            }
-            else {
-                NoViableAltException nvae =
-                    new NoViableAltException("", 8, 0, input);
-
-                throw nvae;
-
-            }
-            switch (alt8) {
-                case 1 :
-                    // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:87:13: ID
-                    {
-                    ID34=(Token)match(input,ID,FOLLOW_ID_in_expr_list406); 
-                    ID34_tree = 
-                    (AslTree)adaptor.create(ID34)
-                    ;
-                    adaptor.addChild(root_0, ID34_tree);
-
-
-                    }
-                    break;
-                case 2 :
-                    // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:87:16: array_access
-                    {
-                    pushFollow(FOLLOW_array_access_in_expr_list408);
-                    array_access35=array_access();
-
-                    state._fsp--;
-
-                    adaptor.addChild(root_0, array_access35.getTree());
-
-                    }
-                    break;
-
-            }
-
-
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:87:30: ( ',' ! ( ID | array_access ) )*
-            loop10:
+            // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:157:18: ( ',' ! expr )*
+            loop22:
             do {
-                int alt10=2;
-                int LA10_0 = input.LA(1);
+                int alt22=2;
+                int LA22_0 = input.LA(1);
 
-                if ( (LA10_0==28) ) {
-                    alt10=1;
+                if ( (LA22_0==50) ) {
+                    alt22=1;
                 }
 
 
-                switch (alt10) {
+                switch (alt22) {
             	case 1 :
-            	    // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:87:31: ',' ! ( ID | array_access )
+            	    // /home/brutus729/Documents/FIB/PRACTICA_CL/Asl/src/parser/Asl.g:157:19: ',' ! expr
             	    {
-            	    char_literal36=(Token)match(input,28,FOLLOW_28_in_expr_list412); 
+            	    char_literal84=(Token)match(input,50,FOLLOW_50_in_expr_list1149); 
 
-            	    // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:87:36: ( ID | array_access )
-            	    int alt9=2;
-            	    int LA9_0 = input.LA(1);
+            	    pushFollow(FOLLOW_expr_in_expr_list1152);
+            	    expr85=expr();
 
-            	    if ( (LA9_0==ID) ) {
-            	        int LA9_1 = input.LA(2);
+            	    state._fsp--;
 
-            	        if ( (LA9_1==31) ) {
-            	            alt9=2;
-            	        }
-            	        else if ( ((LA9_1 >= 27 && LA9_1 <= 28)) ) {
-            	            alt9=1;
-            	        }
-            	        else {
-            	            NoViableAltException nvae =
-            	                new NoViableAltException("", 9, 1, input);
-
-            	            throw nvae;
-
-            	        }
-            	    }
-            	    else {
-            	        NoViableAltException nvae =
-            	            new NoViableAltException("", 9, 0, input);
-
-            	        throw nvae;
-
-            	    }
-            	    switch (alt9) {
-            	        case 1 :
-            	            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:87:37: ID
-            	            {
-            	            ID37=(Token)match(input,ID,FOLLOW_ID_in_expr_list416); 
-            	            ID37_tree = 
-            	            (AslTree)adaptor.create(ID37)
-            	            ;
-            	            adaptor.addChild(root_0, ID37_tree);
-
-
-            	            }
-            	            break;
-            	        case 2 :
-            	            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:87:40: array_access
-            	            {
-            	            pushFollow(FOLLOW_array_access_in_expr_list418);
-            	            array_access38=array_access();
-
-            	            state._fsp--;
-
-            	            adaptor.addChild(root_0, array_access38.getTree());
-
-            	            }
-            	            break;
-
-            	    }
-
+            	    adaptor.addChild(root_0, expr85.getTree());
 
             	    }
             	    break;
 
             	default :
-            	    break loop10;
+            	    break loop22;
                 }
             } while (true);
 
@@ -1381,651 +2927,100 @@ public TreeAdaptor getTreeAdaptor() {
     }
     // $ANTLR end "expr_list"
 
-
-    public static class array_access_return extends ParserRuleReturnScope {
-        AslTree tree;
-        public Object getTree() { return tree; }
-    };
-
-
-    // $ANTLR start "array_access"
-    // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:89:1: array_access : ID ac= '[' NUM ']' -> ^( ARRAY_ACCESS[$ac,\"ARRAY_ACCESS\"] ID NUM ) ;
-    public final AslParser.array_access_return array_access() throws RecognitionException {
-        AslParser.array_access_return retval = new AslParser.array_access_return();
-        retval.start = input.LT(1);
-
-
-        AslTree root_0 = null;
-
-        Token ac=null;
-        Token ID39=null;
-        Token NUM40=null;
-        Token char_literal41=null;
-
-        AslTree ac_tree=null;
-        AslTree ID39_tree=null;
-        AslTree NUM40_tree=null;
-        AslTree char_literal41_tree=null;
-        RewriteRuleTokenStream stream_NUM=new RewriteRuleTokenStream(adaptor,"token NUM");
-        RewriteRuleTokenStream stream_ID=new RewriteRuleTokenStream(adaptor,"token ID");
-        RewriteRuleTokenStream stream_31=new RewriteRuleTokenStream(adaptor,"token 31");
-        RewriteRuleTokenStream stream_32=new RewriteRuleTokenStream(adaptor,"token 32");
-
-        try {
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:90:9: ( ID ac= '[' NUM ']' -> ^( ARRAY_ACCESS[$ac,\"ARRAY_ACCESS\"] ID NUM ) )
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:90:13: ID ac= '[' NUM ']'
-            {
-            ID39=(Token)match(input,ID,FOLLOW_ID_in_array_access442);  
-            stream_ID.add(ID39);
-
-
-            ac=(Token)match(input,31,FOLLOW_31_in_array_access446);  
-            stream_31.add(ac);
-
-
-            NUM40=(Token)match(input,NUM,FOLLOW_NUM_in_array_access448);  
-            stream_NUM.add(NUM40);
-
-
-            char_literal41=(Token)match(input,32,FOLLOW_32_in_array_access450);  
-            stream_32.add(char_literal41);
-
-
-            // AST REWRITE
-            // elements: ID, NUM
-            // token labels: 
-            // rule labels: retval
-            // token list labels: 
-            // rule list labels: 
-            // wildcard labels: 
-            retval.tree = root_0;
-            RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
-
-            root_0 = (AslTree)adaptor.nil();
-            // 90:31: -> ^( ARRAY_ACCESS[$ac,\"ARRAY_ACCESS\"] ID NUM )
-            {
-                // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:90:34: ^( ARRAY_ACCESS[$ac,\"ARRAY_ACCESS\"] ID NUM )
-                {
-                AslTree root_1 = (AslTree)adaptor.nil();
-                root_1 = (AslTree)adaptor.becomeRoot(
-                (AslTree)adaptor.create(ARRAY_ACCESS, ac, "ARRAY_ACCESS")
-                , root_1);
-
-                adaptor.addChild(root_1, 
-                stream_ID.nextNode()
-                );
-
-                adaptor.addChild(root_1, 
-                stream_NUM.nextNode()
-                );
-
-                adaptor.addChild(root_0, root_1);
-                }
-
-            }
-
-
-            retval.tree = root_0;
-
-            }
-
-            retval.stop = input.LT(-1);
-
-
-            retval.tree = (AslTree)adaptor.rulePostProcessing(root_0);
-            adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-    	retval.tree = (AslTree)adaptor.errorNode(input, retval.start, input.LT(-1), re);
-
-        }
-
-        finally {
-        	// do for sure before leaving
-        }
-        return retval;
-    }
-    // $ANTLR end "array_access"
-
-
-    public static class assignation_return extends ParserRuleReturnScope {
-        AslTree tree;
-        public Object getTree() { return tree; }
-    };
-
-
-    // $ANTLR start "assignation"
-    // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:93:1: assignation : ID ASSIGN bool_or ;
-    public final AslParser.assignation_return assignation() throws RecognitionException {
-        AslParser.assignation_return retval = new AslParser.assignation_return();
-        retval.start = input.LT(1);
-
-
-        AslTree root_0 = null;
-
-        Token ID42=null;
-        Token ASSIGN43=null;
-        AslParser.bool_or_return bool_or44 =null;
-
-
-        AslTree ID42_tree=null;
-        AslTree ASSIGN43_tree=null;
-
-        try {
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:93:12: ( ID ASSIGN bool_or )
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:93:14: ID ASSIGN bool_or
-            {
-            root_0 = (AslTree)adaptor.nil();
-
-
-            ID42=(Token)match(input,ID,FOLLOW_ID_in_assignation477); 
-            ID42_tree = 
-            (AslTree)adaptor.create(ID42)
-            ;
-            adaptor.addChild(root_0, ID42_tree);
-
-
-            ASSIGN43=(Token)match(input,ASSIGN,FOLLOW_ASSIGN_in_assignation479); 
-            ASSIGN43_tree = 
-            (AslTree)adaptor.create(ASSIGN43)
-            ;
-            adaptor.addChild(root_0, ASSIGN43_tree);
-
-
-            pushFollow(FOLLOW_bool_or_in_assignation481);
-            bool_or44=bool_or();
-
-            state._fsp--;
-
-            adaptor.addChild(root_0, bool_or44.getTree());
-
-            }
-
-            retval.stop = input.LT(-1);
-
-
-            retval.tree = (AslTree)adaptor.rulePostProcessing(root_0);
-            adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-    	retval.tree = (AslTree)adaptor.errorNode(input, retval.start, input.LT(-1), re);
-
-        }
-
-        finally {
-        	// do for sure before leaving
-        }
-        return retval;
-    }
-    // $ANTLR end "assignation"
-
-
-    public static class bool_or_return extends ParserRuleReturnScope {
-        AslTree tree;
-        public Object getTree() { return tree; }
-    };
-
-
-    // $ANTLR start "bool_or"
-    // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:95:1: bool_or : bool_xor ( OR ^ bool_xor )* ;
-    public final AslParser.bool_or_return bool_or() throws RecognitionException {
-        AslParser.bool_or_return retval = new AslParser.bool_or_return();
-        retval.start = input.LT(1);
-
-
-        AslTree root_0 = null;
-
-        Token OR46=null;
-        AslParser.bool_xor_return bool_xor45 =null;
-
-        AslParser.bool_xor_return bool_xor47 =null;
-
-
-        AslTree OR46_tree=null;
-
-        try {
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:95:8: ( bool_xor ( OR ^ bool_xor )* )
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:95:10: bool_xor ( OR ^ bool_xor )*
-            {
-            root_0 = (AslTree)adaptor.nil();
-
-
-            pushFollow(FOLLOW_bool_xor_in_bool_or489);
-            bool_xor45=bool_xor();
-
-            state._fsp--;
-
-            adaptor.addChild(root_0, bool_xor45.getTree());
-
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:95:19: ( OR ^ bool_xor )*
-            loop11:
-            do {
-                int alt11=2;
-                int LA11_0 = input.LA(1);
-
-                if ( (LA11_0==OR) ) {
-                    alt11=1;
-                }
-
-
-                switch (alt11) {
-            	case 1 :
-            	    // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:95:20: OR ^ bool_xor
-            	    {
-            	    OR46=(Token)match(input,OR,FOLLOW_OR_in_bool_or492); 
-            	    OR46_tree = 
-            	    (AslTree)adaptor.create(OR46)
-            	    ;
-            	    root_0 = (AslTree)adaptor.becomeRoot(OR46_tree, root_0);
-
-
-            	    pushFollow(FOLLOW_bool_xor_in_bool_or495);
-            	    bool_xor47=bool_xor();
-
-            	    state._fsp--;
-
-            	    adaptor.addChild(root_0, bool_xor47.getTree());
-
-            	    }
-            	    break;
-
-            	default :
-            	    break loop11;
-                }
-            } while (true);
-
-
-            }
-
-            retval.stop = input.LT(-1);
-
-
-            retval.tree = (AslTree)adaptor.rulePostProcessing(root_0);
-            adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-    	retval.tree = (AslTree)adaptor.errorNode(input, retval.start, input.LT(-1), re);
-
-        }
-
-        finally {
-        	// do for sure before leaving
-        }
-        return retval;
-    }
-    // $ANTLR end "bool_or"
-
-
-    public static class bool_xor_return extends ParserRuleReturnScope {
-        AslTree tree;
-        public Object getTree() { return tree; }
-    };
-
-
-    // $ANTLR start "bool_xor"
-    // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:97:1: bool_xor : bool_and ( XOR ^ bool_and )* ;
-    public final AslParser.bool_xor_return bool_xor() throws RecognitionException {
-        AslParser.bool_xor_return retval = new AslParser.bool_xor_return();
-        retval.start = input.LT(1);
-
-
-        AslTree root_0 = null;
-
-        Token XOR49=null;
-        AslParser.bool_and_return bool_and48 =null;
-
-        AslParser.bool_and_return bool_and50 =null;
-
-
-        AslTree XOR49_tree=null;
-
-        try {
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:97:9: ( bool_and ( XOR ^ bool_and )* )
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:97:11: bool_and ( XOR ^ bool_and )*
-            {
-            root_0 = (AslTree)adaptor.nil();
-
-
-            pushFollow(FOLLOW_bool_and_in_bool_xor505);
-            bool_and48=bool_and();
-
-            state._fsp--;
-
-            adaptor.addChild(root_0, bool_and48.getTree());
-
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:97:20: ( XOR ^ bool_and )*
-            loop12:
-            do {
-                int alt12=2;
-                int LA12_0 = input.LA(1);
-
-                if ( (LA12_0==XOR) ) {
-                    alt12=1;
-                }
-
-
-                switch (alt12) {
-            	case 1 :
-            	    // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:97:21: XOR ^ bool_and
-            	    {
-            	    XOR49=(Token)match(input,XOR,FOLLOW_XOR_in_bool_xor508); 
-            	    XOR49_tree = 
-            	    (AslTree)adaptor.create(XOR49)
-            	    ;
-            	    root_0 = (AslTree)adaptor.becomeRoot(XOR49_tree, root_0);
-
-
-            	    pushFollow(FOLLOW_bool_and_in_bool_xor511);
-            	    bool_and50=bool_and();
-
-            	    state._fsp--;
-
-            	    adaptor.addChild(root_0, bool_and50.getTree());
-
-            	    }
-            	    break;
-
-            	default :
-            	    break loop12;
-                }
-            } while (true);
-
-
-            }
-
-            retval.stop = input.LT(-1);
-
-
-            retval.tree = (AslTree)adaptor.rulePostProcessing(root_0);
-            adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-    	retval.tree = (AslTree)adaptor.errorNode(input, retval.start, input.LT(-1), re);
-
-        }
-
-        finally {
-        	// do for sure before leaving
-        }
-        return retval;
-    }
-    // $ANTLR end "bool_xor"
-
-
-    public static class bool_and_return extends ParserRuleReturnScope {
-        AslTree tree;
-        public Object getTree() { return tree; }
-    };
-
-
-    // $ANTLR start "bool_and"
-    // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:99:1: bool_and : bool_atom ( AND ^ bool_atom )* ;
-    public final AslParser.bool_and_return bool_and() throws RecognitionException {
-        AslParser.bool_and_return retval = new AslParser.bool_and_return();
-        retval.start = input.LT(1);
-
-
-        AslTree root_0 = null;
-
-        Token AND52=null;
-        AslParser.bool_atom_return bool_atom51 =null;
-
-        AslParser.bool_atom_return bool_atom53 =null;
-
-
-        AslTree AND52_tree=null;
-
-        try {
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:99:9: ( bool_atom ( AND ^ bool_atom )* )
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:99:11: bool_atom ( AND ^ bool_atom )*
-            {
-            root_0 = (AslTree)adaptor.nil();
-
-
-            pushFollow(FOLLOW_bool_atom_in_bool_and521);
-            bool_atom51=bool_atom();
-
-            state._fsp--;
-
-            adaptor.addChild(root_0, bool_atom51.getTree());
-
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:99:21: ( AND ^ bool_atom )*
-            loop13:
-            do {
-                int alt13=2;
-                int LA13_0 = input.LA(1);
-
-                if ( (LA13_0==AND) ) {
-                    alt13=1;
-                }
-
-
-                switch (alt13) {
-            	case 1 :
-            	    // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:99:22: AND ^ bool_atom
-            	    {
-            	    AND52=(Token)match(input,AND,FOLLOW_AND_in_bool_and524); 
-            	    AND52_tree = 
-            	    (AslTree)adaptor.create(AND52)
-            	    ;
-            	    root_0 = (AslTree)adaptor.becomeRoot(AND52_tree, root_0);
-
-
-            	    pushFollow(FOLLOW_bool_atom_in_bool_and527);
-            	    bool_atom53=bool_atom();
-
-            	    state._fsp--;
-
-            	    adaptor.addChild(root_0, bool_atom53.getTree());
-
-            	    }
-            	    break;
-
-            	default :
-            	    break loop13;
-                }
-            } while (true);
-
-
-            }
-
-            retval.stop = input.LT(-1);
-
-
-            retval.tree = (AslTree)adaptor.rulePostProcessing(root_0);
-            adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-    	retval.tree = (AslTree)adaptor.errorNode(input, retval.start, input.LT(-1), re);
-
-        }
-
-        finally {
-        	// do for sure before leaving
-        }
-        return retval;
-    }
-    // $ANTLR end "bool_and"
-
-
-    public static class bool_atom_return extends ParserRuleReturnScope {
-        AslTree tree;
-        public Object getTree() { return tree; }
-    };
-
-
-    // $ANTLR start "bool_atom"
-    // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:101:1: bool_atom : ( ID | '(' ! bool_or ')' !);
-    public final AslParser.bool_atom_return bool_atom() throws RecognitionException {
-        AslParser.bool_atom_return retval = new AslParser.bool_atom_return();
-        retval.start = input.LT(1);
-
-
-        AslTree root_0 = null;
-
-        Token ID54=null;
-        Token char_literal55=null;
-        Token char_literal57=null;
-        AslParser.bool_or_return bool_or56 =null;
-
-
-        AslTree ID54_tree=null;
-        AslTree char_literal55_tree=null;
-        AslTree char_literal57_tree=null;
-
-        try {
-            // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:101:10: ( ID | '(' ! bool_or ')' !)
-            int alt14=2;
-            int LA14_0 = input.LA(1);
-
-            if ( (LA14_0==ID) ) {
-                alt14=1;
-            }
-            else if ( (LA14_0==26) ) {
-                alt14=2;
-            }
-            else {
-                NoViableAltException nvae =
-                    new NoViableAltException("", 14, 0, input);
-
-                throw nvae;
-
-            }
-            switch (alt14) {
-                case 1 :
-                    // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:102:9: ID
-                    {
-                    root_0 = (AslTree)adaptor.nil();
-
-
-                    ID54=(Token)match(input,ID,FOLLOW_ID_in_bool_atom546); 
-                    ID54_tree = 
-                    (AslTree)adaptor.create(ID54)
-                    ;
-                    adaptor.addChild(root_0, ID54_tree);
-
-
-                    }
-                    break;
-                case 2 :
-                    // /home/brutus729/Documents/FIB/CL/PRACTICA/Asl/src/parser/Asl.g:103:11: '(' ! bool_or ')' !
-                    {
-                    root_0 = (AslTree)adaptor.nil();
-
-
-                    char_literal55=(Token)match(input,26,FOLLOW_26_in_bool_atom559); 
-
-                    pushFollow(FOLLOW_bool_or_in_bool_atom562);
-                    bool_or56=bool_or();
-
-                    state._fsp--;
-
-                    adaptor.addChild(root_0, bool_or56.getTree());
-
-                    char_literal57=(Token)match(input,27,FOLLOW_27_in_bool_atom564); 
-
-                    }
-                    break;
-
-            }
-            retval.stop = input.LT(-1);
-
-
-            retval.tree = (AslTree)adaptor.rulePostProcessing(root_0);
-            adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-    	retval.tree = (AslTree)adaptor.errorNode(input, retval.start, input.LT(-1), re);
-
-        }
-
-        finally {
-        	// do for sure before leaving
-        }
-        return retval;
-    }
-    // $ANTLR end "bool_atom"
-
     // Delegated rules
 
 
  
 
-    public static final BitSet FOLLOW_mod_in_prog128 = new BitSet(new long[]{0x0000000000020000L});
-    public static final BitSet FOLLOW_EOF_in_prog131 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_MODULE_in_mod156 = new BitSet(new long[]{0x0000000000002000L});
-    public static final BitSet FOLLOW_ID_in_mod159 = new BitSet(new long[]{0x0000000004000000L});
-    public static final BitSet FOLLOW_params_in_mod161 = new BitSet(new long[]{0x0000000000906000L});
-    public static final BitSet FOLLOW_block_instructions_in_mod163 = new BitSet(new long[]{0x0000000000000400L});
-    public static final BitSet FOLLOW_EMODULE_in_mod165 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_26_in_params176 = new BitSet(new long[]{0x0000000008002000L});
-    public static final BitSet FOLLOW_varslist_in_params178 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_params181 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ID_in_varslist206 = new BitSet(new long[]{0x0000000010000002L});
-    public static final BitSet FOLLOW_28_in_varslist209 = new BitSet(new long[]{0x0000000000002000L});
-    public static final BitSet FOLLOW_ID_in_varslist212 = new BitSet(new long[]{0x0000000010000002L});
-    public static final BitSet FOLLOW_instruction_in_block_instructions239 = new BitSet(new long[]{0x0000000040000000L});
-    public static final BitSet FOLLOW_30_in_block_instructions241 = new BitSet(new long[]{0x0000000000906002L});
-    public static final BitSet FOLLOW_declaration_in_instruction277 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_funcall_in_instruction289 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_assignation_in_instruction301 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_INPUT_in_declaration318 = new BitSet(new long[]{0x0000000080000000L});
-    public static final BitSet FOLLOW_OUTPUT_in_declaration321 = new BitSet(new long[]{0x0000000080000000L});
-    public static final BitSet FOLLOW_WIRE_in_declaration324 = new BitSet(new long[]{0x0000000080000000L});
-    public static final BitSet FOLLOW_array_dec_in_declaration328 = new BitSet(new long[]{0x0000000000002000L});
-    public static final BitSet FOLLOW_varslist_in_declaration330 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_31_in_array_dec338 = new BitSet(new long[]{0x0000000000040000L});
-    public static final BitSet FOLLOW_NUM_in_array_dec340 = new BitSet(new long[]{0x0000000020000000L});
-    public static final BitSet FOLLOW_29_in_array_dec342 = new BitSet(new long[]{0x0000000000040000L});
-    public static final BitSet FOLLOW_NUM_in_array_dec344 = new BitSet(new long[]{0x0000000100000000L});
-    public static final BitSet FOLLOW_32_in_array_dec346 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ID_in_funcall365 = new BitSet(new long[]{0x0000000000002000L});
-    public static final BitSet FOLLOW_ID_in_funcall367 = new BitSet(new long[]{0x0000000004000000L});
-    public static final BitSet FOLLOW_26_in_funcall369 = new BitSet(new long[]{0x0000000008002000L});
-    public static final BitSet FOLLOW_expr_list_in_funcall371 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_funcall374 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ID_in_expr_list406 = new BitSet(new long[]{0x0000000010000002L});
-    public static final BitSet FOLLOW_array_access_in_expr_list408 = new BitSet(new long[]{0x0000000010000002L});
-    public static final BitSet FOLLOW_28_in_expr_list412 = new BitSet(new long[]{0x0000000000002000L});
-    public static final BitSet FOLLOW_ID_in_expr_list416 = new BitSet(new long[]{0x0000000010000002L});
-    public static final BitSet FOLLOW_array_access_in_expr_list418 = new BitSet(new long[]{0x0000000010000002L});
-    public static final BitSet FOLLOW_ID_in_array_access442 = new BitSet(new long[]{0x0000000080000000L});
-    public static final BitSet FOLLOW_31_in_array_access446 = new BitSet(new long[]{0x0000000000040000L});
-    public static final BitSet FOLLOW_NUM_in_array_access448 = new BitSet(new long[]{0x0000000100000000L});
-    public static final BitSet FOLLOW_32_in_array_access450 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ID_in_assignation477 = new BitSet(new long[]{0x0000000000000100L});
-    public static final BitSet FOLLOW_ASSIGN_in_assignation479 = new BitSet(new long[]{0x0000000004002000L});
-    public static final BitSet FOLLOW_bool_or_in_assignation481 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_bool_xor_in_bool_or489 = new BitSet(new long[]{0x0000000000080002L});
-    public static final BitSet FOLLOW_OR_in_bool_or492 = new BitSet(new long[]{0x0000000004002000L});
-    public static final BitSet FOLLOW_bool_xor_in_bool_or495 = new BitSet(new long[]{0x0000000000080002L});
-    public static final BitSet FOLLOW_bool_and_in_bool_xor505 = new BitSet(new long[]{0x0000000002000002L});
-    public static final BitSet FOLLOW_XOR_in_bool_xor508 = new BitSet(new long[]{0x0000000004002000L});
-    public static final BitSet FOLLOW_bool_and_in_bool_xor511 = new BitSet(new long[]{0x0000000002000002L});
-    public static final BitSet FOLLOW_bool_atom_in_bool_and521 = new BitSet(new long[]{0x0000000000000012L});
-    public static final BitSet FOLLOW_AND_in_bool_and524 = new BitSet(new long[]{0x0000000004002000L});
-    public static final BitSet FOLLOW_bool_atom_in_bool_and527 = new BitSet(new long[]{0x0000000000000012L});
-    public static final BitSet FOLLOW_ID_in_bool_atom546 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_26_in_bool_atom559 = new BitSet(new long[]{0x0000000004002000L});
-    public static final BitSet FOLLOW_bool_or_in_bool_atom562 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_bool_atom564 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_func_in_prog163 = new BitSet(new long[]{0x0000000000040000L});
+    public static final BitSet FOLLOW_EOF_in_prog166 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_FUNC_in_func205 = new BitSet(new long[]{0x0000000000400000L});
+    public static final BitSet FOLLOW_ID_in_func208 = new BitSet(new long[]{0x0001000000000000L});
+    public static final BitSet FOLLOW_params_in_func210 = new BitSet(new long[]{0x0008318000C00000L});
+    public static final BitSet FOLLOW_block_instructions_in_func212 = new BitSet(new long[]{0x0000000000001000L});
+    public static final BitSet FOLLOW_ENDFUNC_in_func214 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_48_in_params233 = new BitSet(new long[]{0x0002800000400000L});
+    public static final BitSet FOLLOW_paramlist_in_params235 = new BitSet(new long[]{0x0002000000000000L});
+    public static final BitSet FOLLOW_49_in_params238 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_param_in_paramlist264 = new BitSet(new long[]{0x0004000000000002L});
+    public static final BitSet FOLLOW_50_in_paramlist267 = new BitSet(new long[]{0x0000800000400000L});
+    public static final BitSet FOLLOW_param_in_paramlist270 = new BitSet(new long[]{0x0004000000000002L});
+    public static final BitSet FOLLOW_47_in_param295 = new BitSet(new long[]{0x0000000000400000L});
+    public static final BitSet FOLLOW_ID_in_param299 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_param322 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_instruction_in_block_instructions356 = new BitSet(new long[]{0x0008000000000002L});
+    public static final BitSet FOLLOW_51_in_block_instructions359 = new BitSet(new long[]{0x0008318000C00000L});
+    public static final BitSet FOLLOW_instruction_in_block_instructions361 = new BitSet(new long[]{0x0008000000000002L});
+    public static final BitSet FOLLOW_assign_in_instruction410 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ite_stmt_in_instruction432 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_while_stmt_in_instruction452 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_funcall_in_instruction472 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_return_stmt_in_instruction493 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_read_in_instruction510 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_write_in_instruction535 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_assign593 = new BitSet(new long[]{0x0000000000008000L});
+    public static final BitSet FOLLOW_EQUAL_in_assign597 = new BitSet(new long[]{0x0001081121420000L});
+    public static final BitSet FOLLOW_expr_in_assign599 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_IF_in_ite_stmt628 = new BitSet(new long[]{0x0001081121420000L});
+    public static final BitSet FOLLOW_expr_in_ite_stmt631 = new BitSet(new long[]{0x0000040000000000L});
+    public static final BitSet FOLLOW_THEN_in_ite_stmt633 = new BitSet(new long[]{0x0008318000C00000L});
+    public static final BitSet FOLLOW_block_instructions_in_ite_stmt636 = new BitSet(new long[]{0x0000000000002800L});
+    public static final BitSet FOLLOW_ELSE_in_ite_stmt639 = new BitSet(new long[]{0x0008318000C00000L});
+    public static final BitSet FOLLOW_block_instructions_in_ite_stmt642 = new BitSet(new long[]{0x0000000000002000L});
+    public static final BitSet FOLLOW_ENDIF_in_ite_stmt646 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_WHILE_in_while_stmt669 = new BitSet(new long[]{0x0001081121420000L});
+    public static final BitSet FOLLOW_expr_in_while_stmt672 = new BitSet(new long[]{0x0000000000000400L});
+    public static final BitSet FOLLOW_DO_in_while_stmt674 = new BitSet(new long[]{0x0008318000C00000L});
+    public static final BitSet FOLLOW_block_instructions_in_while_stmt677 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_ENDWHILE_in_while_stmt679 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RETURN_in_return_stmt702 = new BitSet(new long[]{0x0001081121420002L});
+    public static final BitSet FOLLOW_expr_in_return_stmt705 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_READ_in_read724 = new BitSet(new long[]{0x0000000000400000L});
+    public static final BitSet FOLLOW_ID_in_read727 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_WRITE_in_write747 = new BitSet(new long[]{0x00010A1121420000L});
+    public static final BitSet FOLLOW_expr_in_write751 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_STRING_in_write755 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_boolterm_in_expr780 = new BitSet(new long[]{0x0000000400000002L});
+    public static final BitSet FOLLOW_OR_in_expr783 = new BitSet(new long[]{0x0001081121420000L});
+    public static final BitSet FOLLOW_boolterm_in_expr786 = new BitSet(new long[]{0x0000000400000002L});
+    public static final BitSet FOLLOW_boolfact_in_boolterm806 = new BitSet(new long[]{0x0000000000000012L});
+    public static final BitSet FOLLOW_AND_in_boolterm809 = new BitSet(new long[]{0x0001081121420000L});
+    public static final BitSet FOLLOW_boolfact_in_boolterm812 = new BitSet(new long[]{0x0000000000000012L});
+    public static final BitSet FOLLOW_num_expr_in_boolfact832 = new BitSet(new long[]{0x0000000212308002L});
+    public static final BitSet FOLLOW_EQUAL_in_boolfact836 = new BitSet(new long[]{0x0001081121420000L});
+    public static final BitSet FOLLOW_NOT_EQUAL_in_boolfact841 = new BitSet(new long[]{0x0001081121420000L});
+    public static final BitSet FOLLOW_LT_in_boolfact846 = new BitSet(new long[]{0x0001081121420000L});
+    public static final BitSet FOLLOW_LE_in_boolfact851 = new BitSet(new long[]{0x0001081121420000L});
+    public static final BitSet FOLLOW_GT_in_boolfact856 = new BitSet(new long[]{0x0001081121420000L});
+    public static final BitSet FOLLOW_GE_in_boolfact861 = new BitSet(new long[]{0x0001081121420000L});
+    public static final BitSet FOLLOW_num_expr_in_boolfact865 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_term_in_num_expr885 = new BitSet(new long[]{0x0000001020000002L});
+    public static final BitSet FOLLOW_PLUS_in_num_expr890 = new BitSet(new long[]{0x0001081121420000L});
+    public static final BitSet FOLLOW_MINUS_in_num_expr895 = new BitSet(new long[]{0x0001081121420000L});
+    public static final BitSet FOLLOW_term_in_num_expr899 = new BitSet(new long[]{0x0000001020000002L});
+    public static final BitSet FOLLOW_factor_in_term923 = new BitSet(new long[]{0x00000000C0000202L});
+    public static final BitSet FOLLOW_MUL_in_term928 = new BitSet(new long[]{0x0001081121420000L});
+    public static final BitSet FOLLOW_DIV_in_term933 = new BitSet(new long[]{0x0001081121420000L});
+    public static final BitSet FOLLOW_MOD_in_term938 = new BitSet(new long[]{0x0001081121420000L});
+    public static final BitSet FOLLOW_factor_in_term942 = new BitSet(new long[]{0x00000000C0000202L});
+    public static final BitSet FOLLOW_NOT_in_factor965 = new BitSet(new long[]{0x0001080001420000L});
+    public static final BitSet FOLLOW_PLUS_in_factor970 = new BitSet(new long[]{0x0001080001420000L});
+    public static final BitSet FOLLOW_MINUS_in_factor975 = new BitSet(new long[]{0x0001080001420000L});
+    public static final BitSet FOLLOW_atom_in_factor980 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_atom1005 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_INT_in_atom1020 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_TRUE_in_atom1037 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_FALSE_in_atom1043 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_funcall_in_atom1066 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_48_in_atom1080 = new BitSet(new long[]{0x0001081121420000L});
+    public static final BitSet FOLLOW_expr_in_atom1083 = new BitSet(new long[]{0x0002000000000000L});
+    public static final BitSet FOLLOW_49_in_atom1085 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_funcall1106 = new BitSet(new long[]{0x0001000000000000L});
+    public static final BitSet FOLLOW_48_in_funcall1108 = new BitSet(new long[]{0x0003081121420000L});
+    public static final BitSet FOLLOW_expr_list_in_funcall1110 = new BitSet(new long[]{0x0002000000000000L});
+    public static final BitSet FOLLOW_49_in_funcall1113 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_expr_in_expr_list1146 = new BitSet(new long[]{0x0004000000000002L});
+    public static final BitSet FOLLOW_50_in_expr_list1149 = new BitSet(new long[]{0x0001081121420000L});
+    public static final BitSet FOLLOW_expr_in_expr_list1152 = new BitSet(new long[]{0x0004000000000002L});
 
 }
