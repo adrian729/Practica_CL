@@ -35,15 +35,13 @@ options {
 // Imaginary tokens to create some AST nodes
 
 tokens {
-    LIST_FUNCTIONS; // List of functions (the root of the tree)
-    ASSIGN;     // Assignment instruction
+    LIST_MODULES; // List of modules (the root of the tree)
     PARAMS;     // List of parameters in the declaration of a function
     FUNCALL;    // Function call
     ARGLIST;    // List of arguments passed in a function call
     LIST_INSTR; // Block of instructions
-    BOOLEAN;    // Boolean atom (for Boolean constants "true" or "false")
-    PVALUE;     // Parameter by value in the list of parameters
-    PREF;       // Parameter by reference in the list of parameters
+    ARRAY_RANK;
+    ARRAY_ACCESS;
 }
 
 @header {
@@ -57,6 +55,122 @@ tokens {
 
 
 // A program is a list of functions
-prog	: 'a'
+prog    : mod+ EOF -> ^(LIST_MODULES mod+)
         ;
- 
+
+mod: MODULE^ ID params ';'! block_instructions EMODULE! ;
+
+params  : '(' varslist? ')' -> ^(PARAMS varslist?)
+        ;
+
+varslist: ID (','! ID)*
+        ;
+
+block_instructions:
+        ((declaration | instruction) ';')+ -> ^(LIST_INSTR instruction+)
+        ;
+
+//Mirar com va aixo en Verilog.
+instruction:
+        funcall
+        | assignation
+        | ifelse
+        | case_stmt
+        ;
+
+declaration: (INPUT^|OUTPUT^|WIRE^) array_dec? varslist ;
+
+array_dec: '[' NUM ':' NUM ']' -> ^(ARRAY_RANK NUM NUM) ;
+
+funcall : ID ID '(' expr_list? ')' -> ^(FUNCALL ID ^(ARGLIST expr_list?))
+        ;
+
+expr_list: (ID|array_access) (','! (ID|array_access))* ;
+
+array_access  
+        :   ID ac='[' NUM ']' -> ^(ARRAY_ACCESS[$ac,"ARRAY_ACCESS"] ID NUM)
+        ;
+
+assignation: ID ASSIGN logic_or ;
+
+ifelse  : IF^ '('! bool_or ')'! beginend (ELSE^ (ifelse | beginend))?
+        ;
+
+case_stmt: CASE^ '('! ID ')'! (case_item)* (default_item)?
+        ;
+        //TODO: aixo s'haura de retocar
+
+case_item: ID^ ':'! beginend
+        ;
+
+default_item: DEFAULT^ ':'! beginend
+        ;
+
+beginend: BEGIN! (instruction)* END!
+        ;
+
+bool_or : bool_and (OR^ bool_and)* ;
+
+bool_and: bool_atom (AND^ bool_atom)* ;
+
+bool_atom:
+        ID 
+        | '('! bool_or ')'!
+        ;
+//TODO: falten coses aqui.
+
+logic_or: logic_xor (OR^ logic_xor)* ;
+
+logic_xor: logic_and (XOR^ logic_and)* ;
+
+logic_and: logic_atom (AND^ logic_atom)* ;
+
+logic_atom:
+        ID
+        | '('! logic_or ')'!
+        ;
+//TODO: falten coses aqui.
+
+// Basic tokens
+MODULE  : 'module' ;
+EMODULE : 'endmodule' ;
+INPUT   : 'input' ;
+OUTPUT  : 'output' ;
+WIRE    : 'wire' ;
+IF      : 'if' ;
+ELSE    : 'else' ;
+CASE    : 'case' ;
+DEFAULT : 'default' ;
+ENDCASE : 'endcase' ;
+BEGIN   : 'begin' ;
+END     : 'end' ;
+ASSIGN  : '=' ;
+XOR     : '^' ;
+OR      : '|' ;
+AND     : '&' ;
+ID      : ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'0'..'9'|'_'|'$')* ;
+NUM     : ('0'..'9')+ ;
+
+
+
+// C-style comments
+COMMENT : '//' ~('\n'|'\r')* '\r'? '\n' {$channel=HIDDEN;}
+        | '/*' ( options {greedy=false;} : . )* '*/' {$channel=HIDDEN;}
+        ;
+
+// Strings (in quotes) with escape sequences        
+STRING  :  '"' ( ESC_SEQ | ~('\\'|'"') )* '"'
+        ;
+
+fragment
+ESC_SEQ
+    :   '\\' ('b'|'t'|'n'|'f'|'r'|'\"'|'\''|'\\')
+    ;
+
+// White spaces
+WS      : ( ' '
+        | '\t'
+        | '\r'
+        | '\n'
+        ) {$channel=HIDDEN;}
+        ;

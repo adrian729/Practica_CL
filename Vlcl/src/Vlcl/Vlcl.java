@@ -115,6 +115,7 @@ public class Vlcl{
 
         // Start interpretation (only if execution required)
         if (execute) {
+            /*
             // Creates and prepares the interpreter
             Interp I = null;
             int linenumber = -1;
@@ -135,6 +136,7 @@ public class Vlcl{
                 else System.err.println (" (" + infile + ", line " + linenumber + ").");
                 System.err.format (I.getStackTrace(5));
             }
+            */
         }
     }
 

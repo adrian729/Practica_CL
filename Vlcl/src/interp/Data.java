@@ -40,6 +40,9 @@ package interp;
 import parser.*;
 
 public class Data {
+
+    //TODO: ALL!
+
     /** Types of data */
     public enum Type {VOID, BOOLEAN, INTEGER;}
 
@@ -124,11 +127,13 @@ public class Data {
     public void evaluateArithmetic (int op, Data d) {
         assert type == Type.INTEGER && d.type == Type.INTEGER;
         switch (op) {
+            /*
             case VlclLexer.PLUS: value += d.value; break;
             case VlclLexer.MINUS: value -= d.value; break;
             case VlclLexer.MUL: value *= d.value; break;
             case VlclLexer.DIV: checkDivZero(d); value /= d.value; break;
             case VlclLexer.MOD: checkDivZero(d); value %= d.value; break;
+            */
             default: assert false;
         }
     }
@@ -142,12 +147,14 @@ public class Data {
     public Data evaluateRelational (int op, Data d) {
         assert type != Type.VOID && type == d.type;
         switch (op) {
+            /*
             case VlclLexer.EQUAL: return new Data(value == d.value);
             case VlclLexer.NOT_EQUAL: return new Data(value != d.value);
             case VlclLexer.LT: return new Data(value < d.value);
             case VlclLexer.LE: return new Data(value <= d.value);
             case VlclLexer.GT: return new Data(value > d.value);
             case VlclLexer.GE: return new Data(value >= d.value);
+            */
             default: assert false; 
         }
         return null;

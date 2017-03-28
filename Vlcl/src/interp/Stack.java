@@ -40,6 +40,8 @@ import java.util.ListIterator;
  
 public class Stack {
 
+    //TODO: ALL!
+
     /** Stack of activation records */
     private LinkedList<HashMap<String,Data>> Stack;
 
