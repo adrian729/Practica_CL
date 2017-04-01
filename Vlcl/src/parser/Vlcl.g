@@ -228,10 +228,7 @@ term_expr
 
 concat_expr
         : unari_expr
-        | num_rep? cct='{' concat_params '}' -> ^(CONCAT[$cct, "CONCAT"] num_rep? concat_params)
-        ;
-
-num_rep : MTZ
+        | MTZ? cct='{' concat_params '}' -> ^(CONCAT[$cct, "CONCAT"] MTZ? concat_params)
         ;
 
 concat_params
