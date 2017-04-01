@@ -1,3 +1,0 @@
-#!/bin/sh
-
-exec java -enableassertions -jar /home/brutus729/Documents/FIB/PRACTICA_CL/Vlcl/bin/Vlcl.jar "$@"
