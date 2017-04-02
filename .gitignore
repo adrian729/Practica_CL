@@ -1,0 +1,12 @@
+#Vlcl make generated files
+Vlcl/bin/
+Vlcl/classes/
+Vlcl/javadoc/
+Vlcl/src/parser/Vlcl.tokens
+Vlcl/src/parser/VlclLexer.java
+Vlcl/src/parser/VlclParser.java
+
+#test generated file1s
+proves/*.dot
+proves/*.pdf
+

@@ -153,6 +153,7 @@ ifelse_stmt
 
 case_stmt
         : CASE^ '('! expr ')'! (case_item)+ (default_item)?
+        ;
 
 case_item
         : case_opts ':' beginend_stmt -> ^(CASE_ITEM case_opts beginend_stmt)
