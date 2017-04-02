@@ -25,6 +25,13 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+/*
+ *
+ * Gramàtica feta a partir de la plantilla de Jordi Cortadella per Adrià Sánchez
+ * Albanell i Belén San Martín Díez.
+ *
+*/
+
 grammar Vlcl;
 
 options {
@@ -34,18 +41,20 @@ options {
 
 // Imaginary tokens to create some AST nodes
 
-tokens {
-    LIST_MODULES; // List of modules (the root of the tree)
-    PARAMS;     // List of parameters in the declaration of a function
-    FUNCALL;    // Function call
-    ARGLIST;    // List of arguments passed in a function call
-    LIST_INSTR; // Block of instructions
-    ARRAY_RANGE;
-    ARRAY_ACCESS;
-    PART_ARRAY_ACCESS;
-    ASSIGNATION;
-    CONCAT;
-    CASE_ITEM;
+tokens {    
+    LIST_MODULES;       // List of modules (the root of the tree)
+    LIST_INSTR;         // Block of instructions
+    LIST_STMTS;         // Block of statements
+    PARAMS;             // List of parameters in a call
+    ARG_LIST;           // List of arguments passed in a function call
+    ARRAY_ACCESS;       // Access to an array bit
+    PART_ARRAY_ACCESS;  // Access to an array set of consecutive bits
+    ARRAY_RANGE;        // Range of an array    
+    CONCAT;             // Concatenation of wires
+    ASSIGNATION;        // Assignation to a variable
+    CASE_ITEM;          // case struct item
+    MODULE;             // Module call
+    FUNCALL;            // Function call
 }
 
 @header {
@@ -58,7 +67,8 @@ tokens {
 }
 
 
-// A program is a list of functions
+// A program is composed by modules
+
 prog    : mod+ EOF -> ^(LIST_MODULES mod+)
         ;
 
@@ -67,10 +77,14 @@ prog    : mod+ EOF -> ^(LIST_MODULES mod+)
 mod     : MODULE^ ID params ';'! block_instructions ENDMODULE! 
         ;
 
-// Instruccions
+// Instruccions i declaracions
 
-block_instructions:
-        (instruction)* -> ^(LIST_INSTR instruction*)
+block_instructions
+        : (instruction)* -> ^(LIST_INSTR instruction*)
+        ;
+
+block_stmts
+        : (statement)* -> ^(LIST_STMTS statement*)
         ;
 
 instruction
@@ -78,46 +92,39 @@ instruction
         | var_dec
         | param_dec
         | mod_dec
-        | assign
-        | assignation
+        | func_dec
+        | statement
+        ;
+
+statement
+        : assign
+        | assignation_stmt
         | ifelse_stmt
         | case_stmt
         | for_loop
-        | func_dec
-        | funcall
-        ;//TODO
-
-funcall : ID '(' expr_list? ')' -> ^(FUNCALL ID ^(ARGLIST expr_list?))
         ;
 
-expr_list: varcall (','! varcall)* ;
+// Instruccions
 
-// Declaracions
-
+//TODO: mirar si no es millor canviar els "array_dec?" per que surtin amb capçalera a l'arbre
 signal_dec
         : (INPUT^ | OUTPUT^ | INOUT^) array_dec? varslist ';'!
         ;
 
-var_dec : (WIRE^ | REG^) array_dec? varslist ';'!
+var_dec : REG^ array_dec? varslist ';'!
+        | WIRE^ array_dec? (in_assign | varslist) ';'!
         ;
 
 param_dec
-        : PARAMETER^ array_dec? param_assig (','! param_assig)* ';'!
+        : PARAMETER^ array_dec? in_assign (','! in_assign)* ';'!
         ;
 
-param_assig
-        : ID ASSIGNATION expr -> ^(ASSIGNATION ID expr)
+in_assign
+        : ID ASSIGNSIMBOL expr -> ^(ASSIGNATION ID expr)
         ;
 
-mod_dec : ID ID call_params ';'!
+mod_dec : ID ID call_params ';' -> ^(MODULE ID ID call_params)
         ;
-
-assign  : 'assign'
-        ;
-
-assignation 
-        : 'assignation'
-        ; //TODO
 
 func_dec: FUNCTION^ array_dec? ID ';'! func_init beginend_stmt ENDFUNCTION!
         ;
@@ -126,27 +133,57 @@ func_init
         : ((INPUT^ | INOUT^) array_dec? varslist ';'! | var_dec)*
         ;
 
-// Estructures de control
+// Declaracions - Estructures de control
+
+assign  : ASSIGN^ (array_dec ID | concat_expr) ASSIGNSIMBOL! expr ';'!
+        ;
+
+assignation_stmt
+        : (ID | array_acces) ASSIGNSIMBOL^ expr ';'!
+        ;
 
 beginend_stmt
-        : BEGIN! block_instructions END!
+        : BEGIN! block_stmts END!
         ;
 
 ifelse_stmt  
-        : IF^ '('! expr ')'! beginend_stmt (ELSE^ (ifelse_stmt | beginend_stmt))?
+        : IF^ '('! expr ')'! stmt_bloc
+        //( ELSE^ stmt_bloc )?
+        ;//TODO: Arreglar el else, que dona problemes
+
+case_stmt
+        : CASE^ '('! expr ')'! (case_item)+ (default_item)?
+
+case_item
+        : case_opts ':' beginend_stmt -> ^(CASE_ITEM case_opts beginend_stmt)
         ;
 
-case_stmt: CASE^ '('! expr ')'! (case_item)+ (default_item)?
+case_opts
+        : (ID | number) (','! (ID | number))*
         ;
 
-case_item: expr c=':' beginend_stmt -> ^(CASE_ITEM[$c,"CASE_ITEM"] expr beginend_stmt)
+default_item
+        : DEFAULT ':' beginend_stmt -> ^(CASE_ITEM DEFAULT beginend_stmt)
         ;
 
-default_item: DEFAULT c=':' beginend_stmt -> ^(CASE_ITEM[$c,"CASE_ITEM"] DEFAULT beginend_stmt)
+for_loop: FOR^ '('! for_index ';'! for_condition ';'! for_increment ')'!
+        ;//TODO: for molt simple/limitat, mirar si el volem extendre a mes general
+
+for_index
+        : ID ASSIGNSIMBOL^ PLUS? NUM
         ;
 
-for_loop: 'for'
-        ;//TODO
+for_condition
+        : ID COMP^ (PLUS? NUM | ID) 
+        ;
+
+for_increment
+        : ID ASSIGNSIMBOL^ (ID PLUS^ (ID | PLUS? NUM))
+        ;
+
+stmt_bloc
+        : (statement | beginend_stmt)
+        ;
 
 // General
 
@@ -165,7 +202,7 @@ call_params
         ;
 
 callvarslist
-        : varcall (',' varcall)*
+        : varcall (','! varcall)*
         ;
 
 varcall :
@@ -174,21 +211,27 @@ varcall :
         ;
 
 array_acces
-        : ID ac='[' acces_expr ']' -> ^(ARRAY_ACCESS[$ac,"ARRAY_ACCESS"] ID acces_expr)
+        : ID '[' acces_expr ']' -> ^(ARRAY_ACCESS ID acces_expr)
         ;
 
 acces_expr
-        : expr (pac=':' expr -> ^(PART_ARRAY_ACCESS[$pac, "PART_ARRAY_ACCESS"] expr expr)
-               |             -> expr
+        : expr (':' expr -> ^(PART_ARRAY_ACCESS expr expr)
+               |         -> expr
                )
         ;
 
+funcall : ID arg='(' expr_list? ')' -> ^(FUNCALL ID ^(ARG_LIST[$arg, "ARG_LIST"] expr_list?))
+        ;
+
+expr_list: varcall (','! varcall)* ;
+
 // Expressions
+
 expr    : logic_or_expr (COND^ logic_or_expr ':'^ logic_or_expr )?
-        ; //TODO
+        ;
 
 logic_or_expr
-        : bw_and_expr (OR^ bw_and_expr)*
+        : logic_and_expr (OR^ logic_and_expr)*
         ;
 
 logic_and_expr
@@ -228,11 +271,11 @@ term_expr
 
 concat_expr
         : unari_expr
-        | MTZ? cct='{' concat_params '}' -> ^(CONCAT[$cct, "CONCAT"] MTZ? concat_params)
+        | NUM? '{' concat_params '}' -> ^(CONCAT NUM? concat_params)
         ;
 
 concat_params
-        : expr (',' expr)*
+        : expr (','! expr)*
         ;
 
 unari_expr
@@ -254,10 +297,12 @@ paren_expr
 atom    :
         ID
         | array_acces
+        | funcall
         | number
         ;
 
 // Numbers
+
 number  :
         (BIN | OCT | DEC | HEX)
         | NUM (BIN | OCT | DEC | HEX)?
@@ -265,6 +310,7 @@ number  :
 
 
 // Basic tokens
+
 //modul
 MODULE  : 'module' ;
 ENDMODULE : 'endmodule' ;
@@ -290,12 +336,14 @@ CASE    : 'case' ;
 DEFAULT : 'default' ;
 ENDCASE : 'endcase' ;
 
+FOR     : 'for' ;
+
 FUNCTION: 'function' ;
 ENDFUNCTION: 'endfunction' ;
 
 // Assignacio
 ASSIGN  : 'assign' ;
-ASSIGNATION: '=' ;
+ASSIGNSIMBOL: '=' ;
 
 // Operadors
 PLUS    : '+' | '-' ;
@@ -321,8 +369,7 @@ EQ      : '[=!]''=' ;
 COND    : '?' ;
 
 // Numbers
-MTZ     : ('1'..'9') ('0'..'9')* ;
-NUM     : ('0'..'9')+ ('_' ('0'..'9')+)* ;
+NUM     : '0'..'9'+ ;
 BIN     : '\'b' ('0'|'1'|'x'|'X'|'z'|'Z')+ ('_' ('0'|'1'|'x'|'X'|'z'|'Z')+)* ;
 OCT     : '\'o' ('0'..'7')+ ('_' ('0'..'7')+)* ;
 DEC     : '\'d' ('0'..'9')+ ('_' ('0'..'9')+)* ;

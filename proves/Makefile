@@ -1,9 +1,23 @@
+SRCS := $(wildcard *.vl)
+
+.PHONY: all clean distclean
+
 all:
-	Vlcl prova.vl -ast prova.dot -dot -noexec
-	dot -Tpdf -o prova.pdf prova.dot
+	@$(foreach vl,$(SRCS),\
+		echo Creating AST of $(vl);\
+		Vlcl $(vl) -ast $(vl:.vl=.dot) -dot -noexec;\
+		dot -Tpdf -o $(vl:.vl=.pdf) $(vl:.vl=.dot);\
+	)
 
 exec:
-	Vlcl prova.vl -trace prova.trace
+	@$(foreach vl,$(SRCS),\
+		echo Execute $(vl);\
+		Vlcl $(vl) -trace $(vl:.vl=.trace);\
+	)
 
 clean:
-	rm prova.dot prova.pdf prova.trace
+	rm *.dot
+	rm *.pdf
+	rm *.trace
+
+distclean: clean
