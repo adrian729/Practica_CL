@@ -147,9 +147,19 @@ beginend_stmt
         ;
 
 ifelse_stmt  
-        : IF^ '('! expr ')'! stmt_bloc
-        //( ELSE^ stmt_bloc )?
-        ;//TODO: Arreglar el else, que dona problemes
+        : IF^ '('! expr ')'! if_stmt_bloc else_stmt
+        ;
+
+if_stmt_bloc
+        : assign
+        | assignation_stmt
+        | case_stmt
+        | for_loop
+        ;
+
+else_stmt
+        : ELSE^ statement
+        ; // TODO: aixo no m'agrada
 
 case_stmt
         : CASE^ '('! expr ')'! (case_item)+ (default_item)?
