@@ -51,10 +51,12 @@ tokens {
     PART_ARRAY_ACCESS;  // Access to an array set of consecutive bits
     ARRAY_RANGE;        // Range of an array    
     CONCAT;             // Concatenation of wires
+    CONCAT_MULT;        // Repetirion of a concat parameter
     ASSIGNATION;        // Assignation to a variable
     CASE_ITEM;          // case struct item
     MODULE;             // Module call
     FUNCALL;            // Function call
+    NUM_CONST;             //Number distinc
 }
 
 @header {
@@ -74,7 +76,7 @@ prog    : mod+ EOF -> ^(LIST_MODULES mod+)
 
 // Moduls
 
-mod     : MODULE^ ID params ';'! block_instructions ENDMODULE! 
+mod     : MODULE! ID^ params ';'! block_instructions ENDMODULE! 
         ;
 
 // Instruccions i declaracions
@@ -147,18 +149,11 @@ beginend_stmt
         ;
 
 ifelse_stmt  
-        : IF^ '('! expr ')'! if_stmt_bloc else_stmt
-        ;
-
-if_stmt_bloc
-        : assign
-        | assignation_stmt
-        | case_stmt
-        | for_loop
+        : IF^ '('! expr ')'! intern_stmt_bloc else_stmt?
         ;
 
 else_stmt
-        : ELSE^ statement
+        : ELSE^ (ifelse_stmt | intern_stmt_bloc)
         ; // TODO: aixo no m'agrada
 
 case_stmt
@@ -177,9 +172,9 @@ default_item
         : DEFAULT ':' beginend_stmt -> ^(CASE_ITEM DEFAULT beginend_stmt)
         ;
 
-for_loop: FOR^ '('! for_index ';'! for_condition ';'! for_increment ')'!
+for_loop: FOR^ '('! for_index ';'! for_condition ';'! for_increment ')'! intern_stmt_bloc
         ;//TODO: for molt simple/limitat, mirar si el volem extendre a mes general
-
+            //TODO: no mola que nomes pugui seguirlo un if_stmt_bloc, pero si no peta el ifelse.. mirar d'arreglar-ho
 for_index
         : ID ASSIGNSIMBOL^ PLUS? NUM
         ;
@@ -192,15 +187,18 @@ for_increment
         : ID ASSIGNSIMBOL^ (ID PLUS^ (ID | PLUS? NUM))
         ;
 
-stmt_bloc
-        : (statement | beginend_stmt)
+funcall : ID arg='(' callvarslist? ')' -> ^(FUNCALL ID ^(ARG_LIST[$arg, "ARG_LIST"] callvarslist?))
+        ;
+
+intern_stmt_bloc
+        : assign
+        | assignation_stmt
+        | case_stmt
+        | for_loop
+        | beginend_stmt
         ;
 
 // General
-
-array_dec
-        : '[' NUM ':' NUM ']' -> ^(ARRAY_RANGE NUM NUM)
-        ;
 
 params  : '(' varslist ')' -> ^(PARAMS varslist)
         ;
@@ -217,8 +215,13 @@ callvarslist
         ;
 
 varcall :
-        ID 
+        ID
         | array_acces
+        ;
+
+
+array_dec
+        : '[' NUM ':' NUM ']' -> ^(ARRAY_RANGE NUM NUM)
         ;
 
 array_acces
@@ -231,14 +234,13 @@ acces_expr
                )
         ;
 
-funcall : ID arg='(' expr_list? ')' -> ^(FUNCALL ID ^(ARG_LIST[$arg, "ARG_LIST"] expr_list?))
-        ;
-
-expr_list: varcall (','! varcall)* ;
-
 // Expressions
 
-expr    : logic_or_expr (COND^ logic_or_expr ':'^ logic_or_expr )?
+expr    : logic_or_expr (COND^ cond_expr)?
+        ;
+
+cond_expr
+        : logic_or_expr ':'! logic_or_expr
         ;
 
 logic_or_expr
@@ -282,7 +284,10 @@ term_expr
 
 concat_expr
         : unari_expr
-        | NUM? '{' concat_params '}' -> ^(CONCAT NUM? concat_params)
+        | num_mult? '{' concat_params '}' -> ^(CONCAT num_mult? concat_params)
+        ;
+
+num_mult: NUM -> ^(CONCAT_MULT NUM)
         ;
 
 concat_params
@@ -314,9 +319,11 @@ atom    :
 
 // Numbers
 
-number  :
-        (BIN | OCT | DEC | HEX)
-        | NUM (BIN | OCT | DEC | HEX)?
+number  : base_num
+        | NUM
+        | NUM base_num -> ^(NUM_CONST NUM base_num?)
+        ;
+base_num: (BIN | OCT | DEC | HEX)
         ;
 
 
@@ -374,8 +381,8 @@ AND     : '&&' ;
 OR      : '||' ;
 NOT     : '!' ;
 
-COMP    : '[><]''='? ;
-EQ      : '[=!]''=' ;
+COMP    : '<' | '>' | '<=' | '>=' ;
+EQ      : '==' | '!=' ;
 
 COND    : '?' ;
 

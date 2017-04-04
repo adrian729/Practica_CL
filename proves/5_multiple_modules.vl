@@ -1,0 +1,14 @@
+module module1 (a, b, c, d, e);
+	input a, b;
+	output [5:1] c, d;
+	input e;
+endmodule
+
+module module2 (a, b);
+	input a;
+	output [5:1] b;
+endmodule
+
+module module3 (a);
+	inout a;
+endmodule

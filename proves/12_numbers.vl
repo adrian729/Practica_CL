@@ -1,0 +1,20 @@
+module numbers_module (cin, cout);
+
+	wire [200:0] b1, b2, o1, o2, d0, d1, d2, h1, h2;
+
+	// Decimal sense base especificada
+	d0 = 101;
+
+	// Sense mida
+	b1 = 'b10; // binari
+	o1 = 'o76543210; // octal
+	d1 = 'd123456789; // decimal
+	h1 = 'habcdefABCDEF0123456789; // hexadecimal
+
+	// Amb mida especificada
+	b2 = 23'b11011;
+	o2 = 23'o77;
+	d2 = 100'd1010;
+	h2 = 16'habcdef;
+
+endmodule

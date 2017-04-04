@@ -1,0 +1,27 @@
+/*
+	AIXO ES UN COMENTARI DE BLOC
+*/
+
+module module1 (a, b, c, d, e);
+	input a, b; // AIXO UN COMENTARI DE LINIA
+	output [5:1] c, d;
+	input e;
+endmodule
+
+module module2 (a, b);
+	input a;  // AIXO UN ALTRE COMENTARI DE LINIA
+	output [5:1] b;
+endmodule // AIXO UN ALTRE COMENTARI DE LINIA
+
+/*
+	AIXO ES UN ALTRE COMENTARI DE BLOC
+*/
+
+module module3 (a); // AIXO UN ALTRE COMENTARI DE LINIA
+	inout a;
+endmodule
+
+/*
+	AIXO ES UN ALTRE COMENTARI DE BLOC
+	AMB MES LINIES!!!!
+*/

@@ -1,0 +1,5 @@
+module vectors_module (a, b, c, d, e, f, g);
+	input [3:1] a, b;
+	output [5:1] c, d;
+	inout [2:0] e, f;
+endmodule

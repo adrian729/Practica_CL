@@ -1,0 +1,5 @@
+module void_module (cin, cout, io_wire);
+	input cin;
+	output cout;
+	inout io_wire;
+endmodule
