@@ -132,7 +132,11 @@ func_dec: FUNCTION^ array_dec? ID ';'! func_init beginend_stmt ENDFUNCTION!
         ;
 
 func_init
-        : ((INPUT^ | INOUT^) array_dec? varslist ';'! | var_dec)*
+        : (func_input | var_dec)*
+        ;
+
+func_input
+        : (INPUT^ | INOUT^) array_dec? varslist ';'!
         ;
 
 // Declaracions - Estructures de control
@@ -157,7 +161,7 @@ else_stmt
         ; // TODO: aixo no m'agrada
 
 case_stmt
-        : CASE^ '('! expr ')'! (case_item)+ (default_item)?
+        : CASE^ '('! expr ')'! (case_item)+ (default_item)? ENDCASE!
         ;
 
 case_item
