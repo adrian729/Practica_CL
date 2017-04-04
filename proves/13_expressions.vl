@@ -1,5 +1,8 @@
 module expressions_module (cin, cout);
 
+	input cin;
+	output cout;
+
 	wire a, b, c, d;
 
 	// Operadors aritmètics unaris

@@ -295,7 +295,7 @@ concat_params
         ;
 
 unari_expr
-        : PLUS^? red_expr
+        : red_expr
         ;
 
 red_expr: (ANDBW^ | ORBW^ | XORS^ | NAND^ | NOR^)? bitlogic_neg
@@ -306,8 +306,7 @@ bitlogic_neg
         ;
 
 paren_expr
-        : atom 
-        | '('! expr ')'!
+        : PLUS? (atom | '('! expr ')'!)
         ;
 
 atom    :
