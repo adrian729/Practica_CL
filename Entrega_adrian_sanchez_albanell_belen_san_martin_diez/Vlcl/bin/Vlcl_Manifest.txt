@@ -1,0 +1,2 @@
+Main-Class: Vlcl.Vlcl
+Class-Path: /home/brutus729/Documents/FIB/PRACTICA_CL/Entrega_adrian_sanchez_albanell_belen_san_martin_diez/Vlcl/libs/antlr-3.4-complete.jar /home/brutus729/Documents/FIB/PRACTICA_CL/Entrega_adrian_sanchez_albanell_belen_san_martin_diez/Vlcl/libs/commons-cli-1.2.jar

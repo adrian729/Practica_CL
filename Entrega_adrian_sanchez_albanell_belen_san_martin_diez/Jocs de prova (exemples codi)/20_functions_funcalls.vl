@@ -1,0 +1,36 @@
+module expressions_module (cin, cout);
+	input [7:0] cin;
+	output [7:0] cout;
+
+	function [7:0] adder;
+		input [7:0] a, b;
+		reg c;
+		begin
+			c = 0;
+			for (i = 0; i <= 7; i = i + 1) begin
+				adder[i] = a[i] ^ b[i] ^ c;
+				c = a[i] & b[i] | a[i] & c | b[i] & c;
+			end
+		end
+	endfunction
+
+	wire [10:2] b;
+	output cout1, cout2;
+	wire enable;
+	wire a, c;
+	case(cin)
+		200, a: begin
+			if (cin == 1'b1)
+				cout1 = a & b;
+			else if (cin == 1'b0 && enable == 1'b1)
+				begin
+					cout1 = a & b & c;
+					cout2 = b - c;
+				end
+			else 
+				a = adder(a, b);
+		end
+	endcase
+
+endmodule
+

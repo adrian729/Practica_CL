@@ -1,0 +1,117 @@
+digraph {
+
+	ordering=out;
+	ranksep=.4;
+	bgcolor="lightgrey"; node [shape=box, fixedsize=false, fontsize=12, fontname="Helvetica-bold", fontcolor="blue"
+		width=.25, height=.25, color="black", fillcolor="white", style="filled, solid, bold"];
+	edge [arrowsize=.5, color="black", style="bold"]
+
+  n0 [label="LIST_MODULES"];
+  n1 [label="module1"];
+  n1 [label="module1"];
+  n2 [label="PARAMS"];
+  n2 [label="PARAMS"];
+  n3 [label="cin"];
+  n4 [label="cout"];
+  n5 [label="LIST_INSTR"];
+  n5 [label="LIST_INSTR"];
+  n6 [label="input"];
+  n6 [label="input"];
+  n7 [label="cin"];
+  n8 [label="output"];
+  n8 [label="output"];
+  n9 [label="cout"];
+  n10 [label="wire"];
+  n10 [label="wire"];
+  n11 [label="a"];
+  n12 [label="wire"];
+  n12 [label="wire"];
+  n13 [label="b"];
+  n14 [label="c"];
+  n15 [label="d"];
+  n16 [label="wire"];
+  n16 [label="wire"];
+  n17 [label="ARRAY_RANGE"];
+  n17 [label="ARRAY_RANGE"];
+  n18 [label="7"];
+  n19 [label="0"];
+  n20 [label="e"];
+  n21 [label="wire"];
+  n21 [label="wire"];
+  n22 [label="ARRAY_RANGE"];
+  n22 [label="ARRAY_RANGE"];
+  n23 [label="19"];
+  n24 [label="10"];
+  n25 [label="f"];
+  n26 [label="g"];
+  n27 [label="h"];
+  n28 [label="reg"];
+  n28 [label="reg"];
+  n29 [label="r"];
+  n30 [label="reg"];
+  n30 [label="reg"];
+  n31 [label="s"];
+  n32 [label="t"];
+  n33 [label="u"];
+  n34 [label="reg"];
+  n34 [label="reg"];
+  n35 [label="ARRAY_RANGE"];
+  n35 [label="ARRAY_RANGE"];
+  n36 [label="5"];
+  n37 [label="1"];
+  n38 [label="v"];
+  n39 [label="reg"];
+  n39 [label="reg"];
+  n40 [label="ARRAY_RANGE"];
+  n40 [label="ARRAY_RANGE"];
+  n41 [label="2"];
+  n42 [label="1"];
+  n43 [label="w"];
+  n44 [label="x"];
+
+  n0 -> n1 // "LIST_MODULES" -> "module1"
+  n1 -> n2 // "module1" -> "PARAMS"
+  n2 -> n3 // "PARAMS" -> "cin"
+  n2 -> n4 // "PARAMS" -> "cout"
+  n1 -> n5 // "module1" -> "LIST_INSTR"
+  n5 -> n6 // "LIST_INSTR" -> "input"
+  n6 -> n7 // "input" -> "cin"
+  n5 -> n8 // "LIST_INSTR" -> "output"
+  n8 -> n9 // "output" -> "cout"
+  n5 -> n10 // "LIST_INSTR" -> "wire"
+  n10 -> n11 // "wire" -> "a"
+  n5 -> n12 // "LIST_INSTR" -> "wire"
+  n12 -> n13 // "wire" -> "b"
+  n12 -> n14 // "wire" -> "c"
+  n12 -> n15 // "wire" -> "d"
+  n5 -> n16 // "LIST_INSTR" -> "wire"
+  n16 -> n17 // "wire" -> "ARRAY_RANGE"
+  n17 -> n18 // "ARRAY_RANGE" -> "7"
+  n17 -> n19 // "ARRAY_RANGE" -> "0"
+  n16 -> n20 // "wire" -> "e"
+  n5 -> n21 // "LIST_INSTR" -> "wire"
+  n21 -> n22 // "wire" -> "ARRAY_RANGE"
+  n22 -> n23 // "ARRAY_RANGE" -> "19"
+  n22 -> n24 // "ARRAY_RANGE" -> "10"
+  n21 -> n25 // "wire" -> "f"
+  n21 -> n26 // "wire" -> "g"
+  n21 -> n27 // "wire" -> "h"
+  n5 -> n28 // "LIST_INSTR" -> "reg"
+  n28 -> n29 // "reg" -> "r"
+  n5 -> n30 // "LIST_INSTR" -> "reg"
+  n30 -> n31 // "reg" -> "s"
+  n30 -> n32 // "reg" -> "t"
+  n30 -> n33 // "reg" -> "u"
+  n5 -> n34 // "LIST_INSTR" -> "reg"
+  n34 -> n35 // "reg" -> "ARRAY_RANGE"
+  n35 -> n36 // "ARRAY_RANGE" -> "5"
+  n35 -> n37 // "ARRAY_RANGE" -> "1"
+  n34 -> n38 // "reg" -> "v"
+  n5 -> n39 // "LIST_INSTR" -> "reg"
+  n39 -> n40 // "reg" -> "ARRAY_RANGE"
+  n40 -> n41 // "ARRAY_RANGE" -> "2"
+  n40 -> n42 // "ARRAY_RANGE" -> "1"
+  n39 -> n43 // "reg" -> "w"
+  n39 -> n44 // "reg" -> "x"
+
+}

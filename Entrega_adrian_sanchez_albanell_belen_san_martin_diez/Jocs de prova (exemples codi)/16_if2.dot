@@ -1,0 +1,156 @@
+digraph {
+
+	ordering=out;
+	ranksep=.4;
+	bgcolor="lightgrey"; node [shape=box, fixedsize=false, fontsize=12, fontname="Helvetica-bold", fontcolor="blue"
+		width=.25, height=.25, color="black", fillcolor="white", style="filled, solid, bold"];
+	edge [arrowsize=.5, color="black", style="bold"]
+
+  n0 [label="LIST_MODULES"];
+  n1 [label="expressions_module"];
+  n1 [label="expressions_module"];
+  n2 [label="PARAMS"];
+  n2 [label="PARAMS"];
+  n3 [label="cin"];
+  n4 [label="cout"];
+  n5 [label="LIST_INSTR"];
+  n5 [label="LIST_INSTR"];
+  n6 [label="input"];
+  n6 [label="input"];
+  n7 [label="cin"];
+  n8 [label="output"];
+  n8 [label="output"];
+  n9 [label="cout1"];
+  n10 [label="cout2"];
+  n11 [label="wire"];
+  n11 [label="wire"];
+  n12 [label="enable"];
+  n13 [label="wire"];
+  n13 [label="wire"];
+  n14 [label="b"];
+  n15 [label="c"];
+  n16 [label="if"];
+  n16 [label="if"];
+  n17 [label="=="];
+  n17 [label="=="];
+  n18 [label="cin"];
+  n19 [label="NUM_CONST"];
+  n19 [label="NUM_CONST"];
+  n20 [label="1"];
+  n21 [label="'b1"];
+  n22 [label="="];
+  n22 [label="="];
+  n23 [label="cout1"];
+  n24 [label="&"];
+  n24 [label="&"];
+  n25 [label="a"];
+  n26 [label="b"];
+  n27 [label="else"];
+  n27 [label="else"];
+  n28 [label="if"];
+  n28 [label="if"];
+  n29 [label="&&"];
+  n29 [label="&&"];
+  n30 [label="=="];
+  n30 [label="=="];
+  n31 [label="cin"];
+  n32 [label="NUM_CONST"];
+  n32 [label="NUM_CONST"];
+  n33 [label="1"];
+  n34 [label="'b0"];
+  n35 [label="=="];
+  n35 [label="=="];
+  n36 [label="enable"];
+  n37 [label="NUM_CONST"];
+  n37 [label="NUM_CONST"];
+  n38 [label="1"];
+  n39 [label="'b1"];
+  n40 [label="LIST_STMTS"];
+  n40 [label="LIST_STMTS"];
+  n41 [label="="];
+  n41 [label="="];
+  n42 [label="cout1"];
+  n43 [label="&"];
+  n43 [label="&"];
+  n44 [label="&"];
+  n44 [label="&"];
+  n45 [label="a"];
+  n46 [label="b"];
+  n47 [label="c"];
+  n48 [label="="];
+  n48 [label="="];
+  n49 [label="cout2"];
+  n50 [label="-"];
+  n50 [label="-"];
+  n51 [label="b"];
+  n52 [label="c"];
+  n53 [label="else"];
+  n53 [label="else"];
+  n54 [label="="];
+  n54 [label="="];
+  n55 [label="cout1"];
+  n56 [label="NUM_CONST"];
+  n56 [label="NUM_CONST"];
+  n57 [label="1"];
+  n58 [label="'b0"];
+
+  n0 -> n1 // "LIST_MODULES" -> "expressions_module"
+  n1 -> n2 // "expressions_module" -> "PARAMS"
+  n2 -> n3 // "PARAMS" -> "cin"
+  n2 -> n4 // "PARAMS" -> "cout"
+  n1 -> n5 // "expressions_module" -> "LIST_INSTR"
+  n5 -> n6 // "LIST_INSTR" -> "input"
+  n6 -> n7 // "input" -> "cin"
+  n5 -> n8 // "LIST_INSTR" -> "output"
+  n8 -> n9 // "output" -> "cout1"
+  n8 -> n10 // "output" -> "cout2"
+  n5 -> n11 // "LIST_INSTR" -> "wire"
+  n11 -> n12 // "wire" -> "enable"
+  n5 -> n13 // "LIST_INSTR" -> "wire"
+  n13 -> n14 // "wire" -> "b"
+  n13 -> n15 // "wire" -> "c"
+  n5 -> n16 // "LIST_INSTR" -> "if"
+  n16 -> n17 // "if" -> "=="
+  n17 -> n18 // "==" -> "cin"
+  n17 -> n19 // "==" -> "NUM_CONST"
+  n19 -> n20 // "NUM_CONST" -> "1"
+  n19 -> n21 // "NUM_CONST" -> "'b1"
+  n16 -> n22 // "if" -> "="
+  n22 -> n23 // "=" -> "cout1"
+  n22 -> n24 // "=" -> "&"
+  n24 -> n25 // "&" -> "a"
+  n24 -> n26 // "&" -> "b"
+  n16 -> n27 // "if" -> "else"
+  n27 -> n28 // "else" -> "if"
+  n28 -> n29 // "if" -> "&&"
+  n29 -> n30 // "&&" -> "=="
+  n30 -> n31 // "==" -> "cin"
+  n30 -> n32 // "==" -> "NUM_CONST"
+  n32 -> n33 // "NUM_CONST" -> "1"
+  n32 -> n34 // "NUM_CONST" -> "'b0"
+  n29 -> n35 // "&&" -> "=="
+  n35 -> n36 // "==" -> "enable"
+  n35 -> n37 // "==" -> "NUM_CONST"
+  n37 -> n38 // "NUM_CONST" -> "1"
+  n37 -> n39 // "NUM_CONST" -> "'b1"
+  n28 -> n40 // "if" -> "LIST_STMTS"
+  n40 -> n41 // "LIST_STMTS" -> "="
+  n41 -> n42 // "=" -> "cout1"
+  n41 -> n43 // "=" -> "&"
+  n43 -> n44 // "&" -> "&"
+  n44 -> n45 // "&" -> "a"
+  n44 -> n46 // "&" -> "b"
+  n43 -> n47 // "&" -> "c"
+  n40 -> n48 // "LIST_STMTS" -> "="
+  n48 -> n49 // "=" -> "cout2"
+  n48 -> n50 // "=" -> "-"
+  n50 -> n51 // "-" -> "b"
+  n50 -> n52 // "-" -> "c"
+  n28 -> n53 // "if" -> "else"
+  n53 -> n54 // "else" -> "="
+  n54 -> n55 // "=" -> "cout1"
+  n54 -> n56 // "=" -> "NUM_CONST"
+  n56 -> n57 // "NUM_CONST" -> "1"
+  n56 -> n58 // "NUM_CONST" -> "'b0"
+
+}

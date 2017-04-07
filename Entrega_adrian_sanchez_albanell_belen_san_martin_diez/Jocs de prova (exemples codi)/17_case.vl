@@ -1,0 +1,17 @@
+module expressions_module (cin, cout);
+	input [7:0] cin;
+	output cout;
+
+	case (cin)
+		2'b11: begin
+			cout = 1;
+		end
+		2'b10, 2'b01: begin
+			cout = 2;
+		end
+		default: begin
+			cout = 3;
+		end
+	endcase
+
+endmodule

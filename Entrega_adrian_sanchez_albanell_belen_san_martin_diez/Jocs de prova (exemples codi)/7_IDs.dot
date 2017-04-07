@@ -1,0 +1,58 @@
+digraph {
+
+	ordering=out;
+	ranksep=.4;
+	bgcolor="lightgrey"; node [shape=box, fixedsize=false, fontsize=12, fontname="Helvetica-bold", fontcolor="blue"
+		width=.25, height=.25, color="black", fillcolor="white", style="filled, solid, bold"];
+	edge [arrowsize=.5, color="black", style="bold"]
+
+  n0 [label="LIST_MODULES"];
+  n1 [label="prova_IDs_module"];
+  n1 [label="prova_IDs_module"];
+  n2 [label="PARAMS"];
+  n2 [label="PARAMS"];
+  n3 [label="a"];
+  n4 [label="_b"];
+  n5 [label="a343"];
+  n6 [label="_b343"];
+  n7 [label="a$"];
+  n8 [label="_b$"];
+  n9 [label="_a_3_45$...sd2$23$_"];
+  n10 [label="LIST_INSTR"];
+  n10 [label="LIST_INSTR"];
+  n11 [label="input"];
+  n11 [label="input"];
+  n12 [label="_a_3_45$...sd2$23$_"];
+  n13 [label="output"];
+  n13 [label="output"];
+  n14 [label="a"];
+  n15 [label="_b"];
+  n16 [label="a343"];
+  n17 [label="_b343"];
+  n18 [label="a$"];
+  n19 [label="inout"];
+  n19 [label="inout"];
+  n20 [label="_b$"];
+
+  n0 -> n1 // "LIST_MODULES" -> "prova_IDs_module"
+  n1 -> n2 // "prova_IDs_module" -> "PARAMS"
+  n2 -> n3 // "PARAMS" -> "a"
+  n2 -> n4 // "PARAMS" -> "_b"
+  n2 -> n5 // "PARAMS" -> "a343"
+  n2 -> n6 // "PARAMS" -> "_b343"
+  n2 -> n7 // "PARAMS" -> "a$"
+  n2 -> n8 // "PARAMS" -> "_b$"
+  n2 -> n9 // "PARAMS" -> "_a_3_45$...sd2$23$_"
+  n1 -> n10 // "prova_IDs_module" -> "LIST_INSTR"
+  n10 -> n11 // "LIST_INSTR" -> "input"
+  n11 -> n12 // "input" -> "_a_3_45$...sd2$23$_"
+  n10 -> n13 // "LIST_INSTR" -> "output"
+  n13 -> n14 // "output" -> "a"
+  n13 -> n15 // "output" -> "_b"
+  n13 -> n16 // "output" -> "a343"
+  n13 -> n17 // "output" -> "_b343"
+  n13 -> n18 // "output" -> "a$"
+  n10 -> n19 // "LIST_INSTR" -> "inout"
+  n19 -> n20 // "inout" -> "_b$"
+
+}

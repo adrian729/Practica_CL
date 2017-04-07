@@ -1,0 +1,15 @@
+module expressions_module (cin, cout);
+	input cin;
+	output cout1, cout2;
+	wire enable;
+	wire b, c;
+
+	if (cin == 1'b1)
+		cout1 = a & b;
+	else if (cin == 1'b0 && enable == 1'b1)
+		begin
+			cout1 = a & b & c;
+			cout2 = b - c;
+		end
+	else cout1 = 1'b0;
+endmodule

@@ -1,0 +1,42 @@
+digraph {
+
+	ordering=out;
+	ranksep=.4;
+	bgcolor="lightgrey"; node [shape=box, fixedsize=false, fontsize=12, fontname="Helvetica-bold", fontcolor="blue"
+		width=.25, height=.25, color="black", fillcolor="white", style="filled, solid, bold"];
+	edge [arrowsize=.5, color="black", style="bold"]
+
+  n0 [label="LIST_MODULES"];
+  n1 [label="void_module"];
+  n1 [label="void_module"];
+  n2 [label="PARAMS"];
+  n2 [label="PARAMS"];
+  n3 [label="cin"];
+  n4 [label="cout"];
+  n5 [label="io_wire"];
+  n6 [label="LIST_INSTR"];
+  n6 [label="LIST_INSTR"];
+  n7 [label="input"];
+  n7 [label="input"];
+  n8 [label="cin"];
+  n9 [label="output"];
+  n9 [label="output"];
+  n10 [label="cout"];
+  n11 [label="inout"];
+  n11 [label="inout"];
+  n12 [label="io_wire"];
+
+  n0 -> n1 // "LIST_MODULES" -> "void_module"
+  n1 -> n2 // "void_module" -> "PARAMS"
+  n2 -> n3 // "PARAMS" -> "cin"
+  n2 -> n4 // "PARAMS" -> "cout"
+  n2 -> n5 // "PARAMS" -> "io_wire"
+  n1 -> n6 // "void_module" -> "LIST_INSTR"
+  n6 -> n7 // "LIST_INSTR" -> "input"
+  n7 -> n8 // "input" -> "cin"
+  n6 -> n9 // "LIST_INSTR" -> "output"
+  n9 -> n10 // "output" -> "cout"
+  n6 -> n11 // "LIST_INSTR" -> "inout"
+  n11 -> n12 // "inout" -> "io_wire"
+
+}

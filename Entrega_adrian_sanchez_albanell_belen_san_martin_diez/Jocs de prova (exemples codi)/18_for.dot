@@ -1,0 +1,232 @@
+digraph {
+
+	ordering=out;
+	ranksep=.4;
+	bgcolor="lightgrey"; node [shape=box, fixedsize=false, fontsize=12, fontname="Helvetica-bold", fontcolor="blue"
+		width=.25, height=.25, color="black", fillcolor="white", style="filled, solid, bold"];
+	edge [arrowsize=.5, color="black", style="bold"]
+
+  n0 [label="LIST_MODULES"];
+  n1 [label="expressions_module"];
+  n1 [label="expressions_module"];
+  n2 [label="PARAMS"];
+  n2 [label="PARAMS"];
+  n3 [label="cin"];
+  n4 [label="cout"];
+  n5 [label="LIST_INSTR"];
+  n5 [label="LIST_INSTR"];
+  n6 [label="input"];
+  n6 [label="input"];
+  n7 [label="ARRAY_RANGE"];
+  n7 [label="ARRAY_RANGE"];
+  n8 [label="7"];
+  n9 [label="0"];
+  n10 [label="cin"];
+  n11 [label="output"];
+  n11 [label="output"];
+  n12 [label="ARRAY_RANGE"];
+  n12 [label="ARRAY_RANGE"];
+  n13 [label="7"];
+  n14 [label="0"];
+  n15 [label="cout"];
+  n16 [label="wire"];
+  n16 [label="wire"];
+  n17 [label="ARRAY_RANGE"];
+  n17 [label="ARRAY_RANGE"];
+  n18 [label="10"];
+  n19 [label="2"];
+  n20 [label="b"];
+  n21 [label="for"];
+  n21 [label="for"];
+  n22 [label="="];
+  n22 [label="="];
+  n23 [label="i"];
+  n24 [label="0"];
+  n25 [label="<"];
+  n25 [label="<"];
+  n26 [label="i"];
+  n27 [label="8"];
+  n28 [label="+"];
+  n28 [label="+"];
+  n29 [label="="];
+  n29 [label="="];
+  n30 [label="i"];
+  n31 [label="i"];
+  n32 [label="1"];
+  n33 [label="="];
+  n33 [label="="];
+  n34 [label="ARRAY_ACCESS"];
+  n34 [label="ARRAY_ACCESS"];
+  n35 [label="cout"];
+  n36 [label="i"];
+  n37 [label="&"];
+  n37 [label="&"];
+  n38 [label="ARRAY_ACCESS"];
+  n38 [label="ARRAY_ACCESS"];
+  n39 [label="cin"];
+  n40 [label="i"];
+  n41 [label="ARRAY_ACCESS"];
+  n41 [label="ARRAY_ACCESS"];
+  n42 [label="b"];
+  n43 [label="-"];
+  n43 [label="-"];
+  n44 [label="7"];
+  n45 [label="i"];
+  n46 [label="for"];
+  n46 [label="for"];
+  n47 [label="="];
+  n47 [label="="];
+  n48 [label="i"];
+  n49 [label="0"];
+  n50 [label="<"];
+  n50 [label="<"];
+  n51 [label="i"];
+  n52 [label="8"];
+  n53 [label="+"];
+  n53 [label="+"];
+  n54 [label="="];
+  n54 [label="="];
+  n55 [label="i"];
+  n56 [label="i"];
+  n57 [label="1"];
+  n58 [label="for"];
+  n58 [label="for"];
+  n59 [label="="];
+  n59 [label="="];
+  n60 [label="j"];
+  n61 [label="0"];
+  n62 [label="<"];
+  n62 [label="<"];
+  n63 [label="j"];
+  n64 [label="8"];
+  n65 [label="+"];
+  n65 [label="+"];
+  n66 [label="="];
+  n66 [label="="];
+  n67 [label="j"];
+  n68 [label="j"];
+  n69 [label="2"];
+  n70 [label="="];
+  n70 [label="="];
+  n71 [label="ARRAY_ACCESS"];
+  n71 [label="ARRAY_ACCESS"];
+  n72 [label="cout"];
+  n73 [label="+"];
+  n73 [label="+"];
+  n74 [label="i"];
+  n75 [label="j"];
+  n76 [label="&"];
+  n76 [label="&"];
+  n77 [label="&"];
+  n77 [label="&"];
+  n78 [label="ARRAY_ACCESS"];
+  n78 [label="ARRAY_ACCESS"];
+  n79 [label="cin"];
+  n80 [label="i"];
+  n81 [label="ARRAY_ACCESS"];
+  n81 [label="ARRAY_ACCESS"];
+  n82 [label="b"];
+  n83 [label="-"];
+  n83 [label="-"];
+  n84 [label="7"];
+  n85 [label="j"];
+  n86 [label="ARRAY_ACCESS"];
+  n86 [label="ARRAY_ACCESS"];
+  n87 [label="cout"];
+  n88 [label="+"];
+  n88 [label="+"];
+  n89 [label="i"];
+  n90 [label="j"];
+
+  n0 -> n1 // "LIST_MODULES" -> "expressions_module"
+  n1 -> n2 // "expressions_module" -> "PARAMS"
+  n2 -> n3 // "PARAMS" -> "cin"
+  n2 -> n4 // "PARAMS" -> "cout"
+  n1 -> n5 // "expressions_module" -> "LIST_INSTR"
+  n5 -> n6 // "LIST_INSTR" -> "input"
+  n6 -> n7 // "input" -> "ARRAY_RANGE"
+  n7 -> n8 // "ARRAY_RANGE" -> "7"
+  n7 -> n9 // "ARRAY_RANGE" -> "0"
+  n6 -> n10 // "input" -> "cin"
+  n5 -> n11 // "LIST_INSTR" -> "output"
+  n11 -> n12 // "output" -> "ARRAY_RANGE"
+  n12 -> n13 // "ARRAY_RANGE" -> "7"
+  n12 -> n14 // "ARRAY_RANGE" -> "0"
+  n11 -> n15 // "output" -> "cout"
+  n5 -> n16 // "LIST_INSTR" -> "wire"
+  n16 -> n17 // "wire" -> "ARRAY_RANGE"
+  n17 -> n18 // "ARRAY_RANGE" -> "10"
+  n17 -> n19 // "ARRAY_RANGE" -> "2"
+  n16 -> n20 // "wire" -> "b"
+  n5 -> n21 // "LIST_INSTR" -> "for"
+  n21 -> n22 // "for" -> "="
+  n22 -> n23 // "=" -> "i"
+  n22 -> n24 // "=" -> "0"
+  n21 -> n25 // "for" -> "<"
+  n25 -> n26 // "<" -> "i"
+  n25 -> n27 // "<" -> "8"
+  n21 -> n28 // "for" -> "+"
+  n28 -> n29 // "+" -> "="
+  n29 -> n30 // "=" -> "i"
+  n29 -> n31 // "=" -> "i"
+  n28 -> n32 // "+" -> "1"
+  n21 -> n33 // "for" -> "="
+  n33 -> n34 // "=" -> "ARRAY_ACCESS"
+  n34 -> n35 // "ARRAY_ACCESS" -> "cout"
+  n34 -> n36 // "ARRAY_ACCESS" -> "i"
+  n33 -> n37 // "=" -> "&"
+  n37 -> n38 // "&" -> "ARRAY_ACCESS"
+  n38 -> n39 // "ARRAY_ACCESS" -> "cin"
+  n38 -> n40 // "ARRAY_ACCESS" -> "i"
+  n37 -> n41 // "&" -> "ARRAY_ACCESS"
+  n41 -> n42 // "ARRAY_ACCESS" -> "b"
+  n41 -> n43 // "ARRAY_ACCESS" -> "-"
+  n43 -> n44 // "-" -> "7"
+  n43 -> n45 // "-" -> "i"
+  n5 -> n46 // "LIST_INSTR" -> "for"
+  n46 -> n47 // "for" -> "="
+  n47 -> n48 // "=" -> "i"
+  n47 -> n49 // "=" -> "0"
+  n46 -> n50 // "for" -> "<"
+  n50 -> n51 // "<" -> "i"
+  n50 -> n52 // "<" -> "8"
+  n46 -> n53 // "for" -> "+"
+  n53 -> n54 // "+" -> "="
+  n54 -> n55 // "=" -> "i"
+  n54 -> n56 // "=" -> "i"
+  n53 -> n57 // "+" -> "1"
+  n46 -> n58 // "for" -> "for"
+  n58 -> n59 // "for" -> "="
+  n59 -> n60 // "=" -> "j"
+  n59 -> n61 // "=" -> "0"
+  n58 -> n62 // "for" -> "<"
+  n62 -> n63 // "<" -> "j"
+  n62 -> n64 // "<" -> "8"
+  n58 -> n65 // "for" -> "+"
+  n65 -> n66 // "+" -> "="
+  n66 -> n67 // "=" -> "j"
+  n66 -> n68 // "=" -> "j"
+  n65 -> n69 // "+" -> "2"
+  n58 -> n70 // "for" -> "="
+  n70 -> n71 // "=" -> "ARRAY_ACCESS"
+  n71 -> n72 // "ARRAY_ACCESS" -> "cout"
+  n71 -> n73 // "ARRAY_ACCESS" -> "+"
+  n73 -> n74 // "+" -> "i"
+  n73 -> n75 // "+" -> "j"
+  n70 -> n76 // "=" -> "&"
+  n76 -> n77 // "&" -> "&"
+  n77 -> n78 // "&" -> "ARRAY_ACCESS"
+  n78 -> n79 // "ARRAY_ACCESS" -> "cin"
+  n78 -> n80 // "ARRAY_ACCESS" -> "i"
+  n77 -> n81 // "&" -> "ARRAY_ACCESS"
+  n81 -> n82 // "ARRAY_ACCESS" -> "b"
+  n81 -> n83 // "ARRAY_ACCESS" -> "-"
+  n83 -> n84 // "-" -> "7"
+  n83 -> n85 // "-" -> "j"
+  n76 -> n86 // "&" -> "ARRAY_ACCESS"
+  n86 -> n87 // "ARRAY_ACCESS" -> "cout"
+  n86 -> n88 // "ARRAY_ACCESS" -> "+"
+  n88 -> n89 // "+" -> "i"
+  n88 -> n90 // "+" -> "j"
+
+}

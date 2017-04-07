@@ -1,0 +1,300 @@
+digraph {
+
+	ordering=out;
+	ranksep=.4;
+	bgcolor="lightgrey"; node [shape=box, fixedsize=false, fontsize=12, fontname="Helvetica-bold", fontcolor="blue"
+		width=.25, height=.25, color="black", fillcolor="white", style="filled, solid, bold"];
+	edge [arrowsize=.5, color="black", style="bold"]
+
+  n0 [label="LIST_MODULES"];
+  n1 [label="expressions_module"];
+  n1 [label="expressions_module"];
+  n2 [label="PARAMS"];
+  n2 [label="PARAMS"];
+  n3 [label="cin"];
+  n4 [label="cout"];
+  n5 [label="LIST_INSTR"];
+  n5 [label="LIST_INSTR"];
+  n6 [label="input"];
+  n6 [label="input"];
+  n7 [label="ARRAY_RANGE"];
+  n7 [label="ARRAY_RANGE"];
+  n8 [label="7"];
+  n9 [label="0"];
+  n10 [label="cin"];
+  n11 [label="output"];
+  n11 [label="output"];
+  n12 [label="ARRAY_RANGE"];
+  n12 [label="ARRAY_RANGE"];
+  n13 [label="7"];
+  n14 [label="0"];
+  n15 [label="cout"];
+  n16 [label="wire"];
+  n16 [label="wire"];
+  n17 [label="ARRAY_RANGE"];
+  n17 [label="ARRAY_RANGE"];
+  n18 [label="10"];
+  n19 [label="2"];
+  n20 [label="b"];
+  n21 [label="output"];
+  n21 [label="output"];
+  n22 [label="cout1"];
+  n23 [label="cout2"];
+  n24 [label="wire"];
+  n24 [label="wire"];
+  n25 [label="enable"];
+  n26 [label="wire"];
+  n26 [label="wire"];
+  n27 [label="a"];
+  n28 [label="c"];
+  n29 [label="case"];
+  n29 [label="case"];
+  n30 [label="cin"];
+  n31 [label="CASE_ITEM"];
+  n31 [label="CASE_ITEM"];
+  n32 [label="200"];
+  n33 [label="a"];
+  n34 [label="LIST_STMTS"];
+  n34 [label="LIST_STMTS"];
+  n35 [label="if"];
+  n35 [label="if"];
+  n36 [label="=="];
+  n36 [label="=="];
+  n37 [label="cin"];
+  n38 [label="NUM_CONST"];
+  n38 [label="NUM_CONST"];
+  n39 [label="1"];
+  n40 [label="'b1"];
+  n41 [label="="];
+  n41 [label="="];
+  n42 [label="cout1"];
+  n43 [label="&"];
+  n43 [label="&"];
+  n44 [label="a"];
+  n45 [label="b"];
+  n46 [label="else"];
+  n46 [label="else"];
+  n47 [label="if"];
+  n47 [label="if"];
+  n48 [label="&&"];
+  n48 [label="&&"];
+  n49 [label="=="];
+  n49 [label="=="];
+  n50 [label="cin"];
+  n51 [label="NUM_CONST"];
+  n51 [label="NUM_CONST"];
+  n52 [label="1"];
+  n53 [label="'b0"];
+  n54 [label="=="];
+  n54 [label="=="];
+  n55 [label="enable"];
+  n56 [label="NUM_CONST"];
+  n56 [label="NUM_CONST"];
+  n57 [label="1"];
+  n58 [label="'b1"];
+  n59 [label="LIST_STMTS"];
+  n59 [label="LIST_STMTS"];
+  n60 [label="="];
+  n60 [label="="];
+  n61 [label="cout1"];
+  n62 [label="&"];
+  n62 [label="&"];
+  n63 [label="&"];
+  n63 [label="&"];
+  n64 [label="a"];
+  n65 [label="b"];
+  n66 [label="c"];
+  n67 [label="="];
+  n67 [label="="];
+  n68 [label="cout2"];
+  n69 [label="-"];
+  n69 [label="-"];
+  n70 [label="b"];
+  n71 [label="c"];
+  n72 [label="else"];
+  n72 [label="else"];
+  n73 [label="for"];
+  n73 [label="for"];
+  n74 [label="="];
+  n74 [label="="];
+  n75 [label="i"];
+  n76 [label="0"];
+  n77 [label="<"];
+  n77 [label="<"];
+  n78 [label="i"];
+  n79 [label="8"];
+  n80 [label="+"];
+  n80 [label="+"];
+  n81 [label="="];
+  n81 [label="="];
+  n82 [label="i"];
+  n83 [label="i"];
+  n84 [label="1"];
+  n85 [label="for"];
+  n85 [label="for"];
+  n86 [label="="];
+  n86 [label="="];
+  n87 [label="j"];
+  n88 [label="0"];
+  n89 [label="<"];
+  n89 [label="<"];
+  n90 [label="j"];
+  n91 [label="8"];
+  n92 [label="+"];
+  n92 [label="+"];
+  n93 [label="="];
+  n93 [label="="];
+  n94 [label="j"];
+  n95 [label="j"];
+  n96 [label="2"];
+  n97 [label="="];
+  n97 [label="="];
+  n98 [label="ARRAY_ACCESS"];
+  n98 [label="ARRAY_ACCESS"];
+  n99 [label="cout"];
+  n100 [label="+"];
+  n100 [label="+"];
+  n101 [label="i"];
+  n102 [label="j"];
+  n103 [label="&"];
+  n103 [label="&"];
+  n104 [label="&"];
+  n104 [label="&"];
+  n105 [label="ARRAY_ACCESS"];
+  n105 [label="ARRAY_ACCESS"];
+  n106 [label="cin"];
+  n107 [label="i"];
+  n108 [label="ARRAY_ACCESS"];
+  n108 [label="ARRAY_ACCESS"];
+  n109 [label="b"];
+  n110 [label="-"];
+  n110 [label="-"];
+  n111 [label="7"];
+  n112 [label="j"];
+  n113 [label="ARRAY_ACCESS"];
+  n113 [label="ARRAY_ACCESS"];
+  n114 [label="cout"];
+  n115 [label="+"];
+  n115 [label="+"];
+  n116 [label="i"];
+  n117 [label="j"];
+
+  n0 -> n1 // "LIST_MODULES" -> "expressions_module"
+  n1 -> n2 // "expressions_module" -> "PARAMS"
+  n2 -> n3 // "PARAMS" -> "cin"
+  n2 -> n4 // "PARAMS" -> "cout"
+  n1 -> n5 // "expressions_module" -> "LIST_INSTR"
+  n5 -> n6 // "LIST_INSTR" -> "input"
+  n6 -> n7 // "input" -> "ARRAY_RANGE"
+  n7 -> n8 // "ARRAY_RANGE" -> "7"
+  n7 -> n9 // "ARRAY_RANGE" -> "0"
+  n6 -> n10 // "input" -> "cin"
+  n5 -> n11 // "LIST_INSTR" -> "output"
+  n11 -> n12 // "output" -> "ARRAY_RANGE"
+  n12 -> n13 // "ARRAY_RANGE" -> "7"
+  n12 -> n14 // "ARRAY_RANGE" -> "0"
+  n11 -> n15 // "output" -> "cout"
+  n5 -> n16 // "LIST_INSTR" -> "wire"
+  n16 -> n17 // "wire" -> "ARRAY_RANGE"
+  n17 -> n18 // "ARRAY_RANGE" -> "10"
+  n17 -> n19 // "ARRAY_RANGE" -> "2"
+  n16 -> n20 // "wire" -> "b"
+  n5 -> n21 // "LIST_INSTR" -> "output"
+  n21 -> n22 // "output" -> "cout1"
+  n21 -> n23 // "output" -> "cout2"
+  n5 -> n24 // "LIST_INSTR" -> "wire"
+  n24 -> n25 // "wire" -> "enable"
+  n5 -> n26 // "LIST_INSTR" -> "wire"
+  n26 -> n27 // "wire" -> "a"
+  n26 -> n28 // "wire" -> "c"
+  n5 -> n29 // "LIST_INSTR" -> "case"
+  n29 -> n30 // "case" -> "cin"
+  n29 -> n31 // "case" -> "CASE_ITEM"
+  n31 -> n32 // "CASE_ITEM" -> "200"
+  n31 -> n33 // "CASE_ITEM" -> "a"
+  n31 -> n34 // "CASE_ITEM" -> "LIST_STMTS"
+  n34 -> n35 // "LIST_STMTS" -> "if"
+  n35 -> n36 // "if" -> "=="
+  n36 -> n37 // "==" -> "cin"
+  n36 -> n38 // "==" -> "NUM_CONST"
+  n38 -> n39 // "NUM_CONST" -> "1"
+  n38 -> n40 // "NUM_CONST" -> "'b1"
+  n35 -> n41 // "if" -> "="
+  n41 -> n42 // "=" -> "cout1"
+  n41 -> n43 // "=" -> "&"
+  n43 -> n44 // "&" -> "a"
+  n43 -> n45 // "&" -> "b"
+  n35 -> n46 // "if" -> "else"
+  n46 -> n47 // "else" -> "if"
+  n47 -> n48 // "if" -> "&&"
+  n48 -> n49 // "&&" -> "=="
+  n49 -> n50 // "==" -> "cin"
+  n49 -> n51 // "==" -> "NUM_CONST"
+  n51 -> n52 // "NUM_CONST" -> "1"
+  n51 -> n53 // "NUM_CONST" -> "'b0"
+  n48 -> n54 // "&&" -> "=="
+  n54 -> n55 // "==" -> "enable"
+  n54 -> n56 // "==" -> "NUM_CONST"
+  n56 -> n57 // "NUM_CONST" -> "1"
+  n56 -> n58 // "NUM_CONST" -> "'b1"
+  n47 -> n59 // "if" -> "LIST_STMTS"
+  n59 -> n60 // "LIST_STMTS" -> "="
+  n60 -> n61 // "=" -> "cout1"
+  n60 -> n62 // "=" -> "&"
+  n62 -> n63 // "&" -> "&"
+  n63 -> n64 // "&" -> "a"
+  n63 -> n65 // "&" -> "b"
+  n62 -> n66 // "&" -> "c"
+  n59 -> n67 // "LIST_STMTS" -> "="
+  n67 -> n68 // "=" -> "cout2"
+  n67 -> n69 // "=" -> "-"
+  n69 -> n70 // "-" -> "b"
+  n69 -> n71 // "-" -> "c"
+  n47 -> n72 // "if" -> "else"
+  n72 -> n73 // "else" -> "for"
+  n73 -> n74 // "for" -> "="
+  n74 -> n75 // "=" -> "i"
+  n74 -> n76 // "=" -> "0"
+  n73 -> n77 // "for" -> "<"
+  n77 -> n78 // "<" -> "i"
+  n77 -> n79 // "<" -> "8"
+  n73 -> n80 // "for" -> "+"
+  n80 -> n81 // "+" -> "="
+  n81 -> n82 // "=" -> "i"
+  n81 -> n83 // "=" -> "i"
+  n80 -> n84 // "+" -> "1"
+  n73 -> n85 // "for" -> "for"
+  n85 -> n86 // "for" -> "="
+  n86 -> n87 // "=" -> "j"
+  n86 -> n88 // "=" -> "0"
+  n85 -> n89 // "for" -> "<"
+  n89 -> n90 // "<" -> "j"
+  n89 -> n91 // "<" -> "8"
+  n85 -> n92 // "for" -> "+"
+  n92 -> n93 // "+" -> "="
+  n93 -> n94 // "=" -> "j"
+  n93 -> n95 // "=" -> "j"
+  n92 -> n96 // "+" -> "2"
+  n85 -> n97 // "for" -> "="
+  n97 -> n98 // "=" -> "ARRAY_ACCESS"
+  n98 -> n99 // "ARRAY_ACCESS" -> "cout"
+  n98 -> n100 // "ARRAY_ACCESS" -> "+"
+  n100 -> n101 // "+" -> "i"
+  n100 -> n102 // "+" -> "j"
+  n97 -> n103 // "=" -> "&"
+  n103 -> n104 // "&" -> "&"
+  n104 -> n105 // "&" -> "ARRAY_ACCESS"
+  n105 -> n106 // "ARRAY_ACCESS" -> "cin"
+  n105 -> n107 // "ARRAY_ACCESS" -> "i"
+  n104 -> n108 // "&" -> "ARRAY_ACCESS"
+  n108 -> n109 // "ARRAY_ACCESS" -> "b"
+  n108 -> n110 // "ARRAY_ACCESS" -> "-"
+  n110 -> n111 // "-" -> "7"
+  n110 -> n112 // "-" -> "j"
+  n103 -> n113 // "&" -> "ARRAY_ACCESS"
+  n113 -> n114 // "ARRAY_ACCESS" -> "cout"
+  n113 -> n115 // "ARRAY_ACCESS" -> "+"
+  n115 -> n116 // "+" -> "i"
+  n115 -> n117 // "+" -> "j"
+
+}

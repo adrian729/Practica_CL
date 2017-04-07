@@ -1,0 +1,95 @@
+module expressions_module (cin, cout);
+
+	input cin;
+	output cout;
+
+	wire a, b, c, d;
+
+	// Operadors aritmètics unaris
+
+	// Operador “+”
+	a = +8'h12;	
+	// Operador “-”
+	b = -23'b111;
+
+	// Operadors aritmètics binaris
+	// Operador “+”
+	a = b + c;
+	// Operador “-”
+	a = b - c;
+	// Operador ”*”
+	a = b * c;
+	// Operador ”/”: divisió entera.
+	a = b / c;
+	// Operador ”%”
+	a = b % c;
+
+	// Operadors relacionals
+	// Operador “<”
+	a = a < b;
+	// Operador “>”
+	a = a > b;
+	// Operador “<=”
+	a = a <= b;
+	// Operador “>=”
+	a = a >= b;
+
+
+	// Operadors d’igualtat
+	// Operador “==”
+	a = a == b;
+	// Operador “!=”
+	a = a != b;
+
+
+	// Operadors lògics
+	// Operador “!” negació lògica.
+	a = !a;
+	// Operador “&&” AND lògica.
+	a = a && b;
+	// Operador “||” OR lògica.
+	a = a || b;
+
+	// Operadors bit-wise (bit a bit)
+	// Operador “~” negació.
+	a = ~a;
+	// Operador “&” AND.
+	a = a & b;
+	// Operador “|” OR.
+	a = a | b;
+	// Operador “^” OR exclusiva o XOR.
+	a = a ^ b;
+
+	// Operadors de reducció
+	// Operador “&” AND.
+	a = & a;
+	// Operador “|” OR.
+	a = |a;
+	// Operador “^” OR exclusiva o XOR.
+	a = ^ a;
+	// Operador “~&” NAND.
+	a = ~& a;
+	// Operador “~|” NOR.
+	a = ~| a;
+	// Operador “~^” o “^~” OR exclusiva negada o XNOR.
+	a = ~^ a;
+	a = ^~ a;
+
+	// Operadors de desplaçament
+	// Operador “<<”
+	a = b << 2;
+	// Operador “>>”.
+	a = b >> 2;
+
+	// Operador condicional
+	// Operador “? :”
+	a = (b == c) ? a + b : a - c;
+
+	// Operador concatenació
+	// Operador “{ }” permet concatenar els operants per formar un vector.
+	a = {a, b}; // El resultat tindrà mida bits d'a més bits de b
+	a = { a[4:0], b[2:0] }; // El resultat tindra mida 8
+	a = { 3{a} }; // Equivalent a { a, a, a }
+	a = {b, 2{ c, d } }; // Equivalent a { b, c, d, c, d }
+	
+endmodule

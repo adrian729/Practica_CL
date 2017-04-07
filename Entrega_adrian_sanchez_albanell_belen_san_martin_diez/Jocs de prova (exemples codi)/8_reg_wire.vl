@@ -1,0 +1,12 @@
+module module1 (cin, cout);
+	input cin;
+	output cout;
+	wire a;
+	wire b, c, d;
+	wire [7:0] e;
+	wire [19:10] f, g, h;
+	reg r;
+	reg s, t, u;
+	reg [5:1] v;
+	reg [2:1] w, x;
+endmodule

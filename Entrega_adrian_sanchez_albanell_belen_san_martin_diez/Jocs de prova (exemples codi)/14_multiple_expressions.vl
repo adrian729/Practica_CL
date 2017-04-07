@@ -1,0 +1,7 @@
+module expressions_module (cin, cout);
+	input cin;
+	output cout;
+
+	wire expr1 = 23 ? ^~(5 + 6 * 3 + -32'hAf3) << 3 && -(~^-123) : |(a + b) * 10'b1xx;
+
+endmodule
