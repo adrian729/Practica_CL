@@ -1,3 +1,0 @@
-#!/bin/sh
-
-exec java -enableassertions -jar /home/brutus729/Documents/FIB/PRACTICA_CL/Entrega_adrian_sanchez_albanell_belen_san_martin_diez/Vlcl/bin/Vlcl.jar "$@"
