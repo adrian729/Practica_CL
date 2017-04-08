@@ -6,7 +6,7 @@ Vlcl/src/parser/Vlcl.tokens
 Vlcl/src/parser/VlclLexer.java
 Vlcl/src/parser/VlclParser.java
 
-#test generated file1s
-Jocs\ de\ prova\ (exemples\ codi)/*.dot
-Jocs\ de\ prova\ (exemples\ codi)/*.pdf
+#test generated files
+Jocs de prova (exemples codi)/*.dot
+Jocs de prova (exemples codi)/*.pdf
 
