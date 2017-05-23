@@ -1,0 +1,15 @@
+-> Matriu
+
+	-> Colors diferents files /columnes consec a les connexions
+	-> I si despres d'haver afegit alguns elements, en trobem que han d'anar mes enrere???
+	 (exemple: comencem a col·locar des d'un input, i trobem que un altre input te un cami mes llarg...)
+	 	--> Solucio(?) precalculat cami mes llarg al graf des d'un input! Generar la matriu pensant ja en aixo.
+	 	 -> problema: si comencem nomes dels inputs, encara podem trobar alguna estructura mes llarga que no comenci en input (pot començar en un nombre, per exemple)
+	 	 	--> Solucio(?): precalcular graf (nomes nodes que son accessibles des dels inputs), generar llistat de vertex, calcular camins des dels inputs (recordar que es un graf dirigit) guardant la distancia a la que estan de l'output mes llunya. Calcular des dels nodes no accedits distancia que estan de l'output mes llunya que tinguin. Si estan mes lluny que el input mes llunya actualitzar la distancia.
+
+	 	 	-> Basicament, calcular distancia maxima des d'un extrem (node sense inputs)
+	 	 	al output mes llunya al que arrivi per modelar el tamany del graf.
+
+
+IMP!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+-> Generar la maleida estructura del programa!! (lectura de nodes de l'arbre i fer saltar errors que calgui)

@@ -61,24 +61,4 @@ public class VlclTree extends CommonTree {
     /** Define the integer value of the node. */
     public void setIntValue() { intValue = Integer.parseInt(getText()); }
 
-    /** Get the Boolean value of the node. */
-    public boolean getBooleanValue() { return intValue != 0; }
-
-    /** Define the Boolean value of the node. */
-    public void setBooleanValue() {
-        intValue = getText().equals("true") ? 1 : 0;
-    }
-
-    /** Get the string value of the node. */
-    public String getStringValue() { return strValue; }
-
-    /**
-     * Define the string value of the node. It removes the
-     * enclosing quotes. In this way, it can be printed as it is.
-     */
-    public void setStringValue() {
-        String s = getText();
-        // Do not store the " at the extremes of the string
-        strValue = s.substring(1,s.length()-1);
-    }
 }

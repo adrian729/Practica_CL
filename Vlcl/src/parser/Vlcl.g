@@ -52,7 +52,6 @@ tokens {
     ARRAY_RANGE;        // Range of an array    
     CONCAT;             // Concatenation of wires
     CONCAT_MULT;        // Repetirion of a concat parameter
-    ASSIGNATION;        // Assignation to a variable
     CASE_ITEM;          // case struct item
     MODULE;             // Module call
     FUNCALL;            // Function call
@@ -90,7 +89,7 @@ block_stmts
         ;
 
 instruction
-        : signal_dec 
+        : signal_dec
         | var_dec
         | param_dec
         | mod_dec
@@ -121,8 +120,9 @@ param_dec
         : PARAMETER^ array_dec? in_assign (','! in_assign)* ';'!
         ;
 
+//CHANGE: unides totes les assignacions al AST.
 in_assign
-        : ID ASSIGNSIMBOL expr -> ^(ASSIGNATION ID expr)
+        : ID ASSIGNSIMBOL expr -> ^(ASSIGNSIMBOL ID expr)
         ;
 
 mod_dec : ID ID call_params ';' -> ^(MODULE ID ID call_params)
@@ -141,7 +141,8 @@ func_input
 
 // Declaracions - Estructures de control
 
-assign  : ASSIGN^ (array_dec ID | concat_expr) ASSIGNSIMBOL! expr ';'!
+//CHANGE: unides totes les assignacions.
+assign  : ASSIGN! (array_dec ID | concat_expr) ASSIGNSIMBOL^ expr ';'!
         ;
 
 assignation_stmt
@@ -177,7 +178,7 @@ default_item
         ;
 
 for_loop: FOR^ '('! for_index ';'! for_condition ';'! for_increment ')'! intern_stmt_bloc
-        ;//TODO: for molt simple/limitat, mirar si el volem extendre a mes general
+        ;   //TODO: for molt simple/limitat, mirar si el volem extendre a mes general
             //TODO: no mola que nomes pugui seguirlo un if_stmt_bloc, pero si no peta el ifelse.. mirar d'arreglar-ho
 for_index
         : ID ASSIGNSIMBOL^ PLUS? NUM
@@ -187,8 +188,13 @@ for_condition
         : ID COMP^ (PLUS? NUM | ID) 
         ;
 
+//CHANGE: Arreglat un petit error en la gramatica a l'hora de fer l'increment
 for_increment
-        : ID ASSIGNSIMBOL^ (ID PLUS^ (ID | PLUS? NUM))
+        : ID ASSIGNSIMBOL^ for_increment_expr
+        ;
+
+for_increment_expr
+        : (ID PLUS^ (ID | PLUS? NUM))
         ;
 
 funcall : ID arg='(' callvarslist? ')' -> ^(FUNCALL ID ^(ARG_LIST[$arg, "ARG_LIST"] callvarslist?))

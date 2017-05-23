@@ -1,4 +1,4 @@
-module module1 (a, b, c, d, e);
+module module1 (a, a, c, d, e);
 	input a, b;
 	output [5:1] c, d;
 	input e;

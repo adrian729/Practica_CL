@@ -11,7 +11,7 @@ all:
 
 exec:
 	@$(foreach vl,$(SRCS),\
-		echo Execute $(vl);\
+		echo % Execute $(vl);\
 		Vlcl $(vl);\
 	)
 

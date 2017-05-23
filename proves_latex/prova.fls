@@ -1,0 +1,10 @@
+PWD /home/brutus729/Documents/FIB/PRACTICA_CL/proves_latex
+INPUT /etc/texmf/web2c/texmf.cnf
+INPUT /usr/share/texmf/web2c/texmf.cnf
+INPUT /usr/share/texlive/texmf-dist/web2c/texmf.cnf
+INPUT /var/lib/texmf/web2c/pdftex/pdflatex.fmt
+INPUT /home/brutus729/Documents/FIB/PRACTICA_CL/proves_latex/prova.tex
+OUTPUT /home/brutus729/Documents/FIB/PRACTICA_CL/proves_latex/prova.log
+INPUT /usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmti10.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmcsc10.tfm

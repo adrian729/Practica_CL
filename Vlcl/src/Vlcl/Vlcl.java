@@ -55,8 +55,6 @@ public class Vlcl{
     private static String astfile = null;
     /** Flag indicating that the AST must be written in dot format. */
     private static boolean dotformat = false;
-    /** Name of the file storing the trace of the program. */
-    private static String tracefile = null;
     /** Flag to indicate whether the program must be executed after parsing. */
     private static boolean execute = true;
       
@@ -115,28 +113,16 @@ public class Vlcl{
 
         // Start interpretation (only if execution required)
         if (execute) {
-            /*
             // Creates and prepares the interpreter
             Interp I = null;
-            int linenumber = -1;
             try {
-                I = new Interp(t, tracefile); // prepares the interpreter
-                I.Run();                  // Executes the code
+                I = new Interp(t); // prepares the interpreter
+                I.Run();           // Executes the code       
             } catch (RuntimeException e) {
-                if (I != null) linenumber = I.lineNumber();
-                System.err.print ("Runtime error");
-                if (linenumber < 0) System.err.print (": ");
-                else System.err.print (" (" + infile + ", line " + linenumber + "): ");
-                System.err.println (e.getMessage() + ".");
-                System.err.format (I.getStackTrace());
-            } catch (StackOverflowError e) {
-                if (I != null) linenumber = I.lineNumber();
-                System.err.print("Stack overflow error");
-                if (linenumber < 0) System.err.print (".");
-                else System.err.println (" (" + infile + ", line " + linenumber + ").");
-                System.err.format (I.getStackTrace(5));
+                if(e.getMessage() != null)
+                    System.err.println("Runtime error: " + e.getMessage());
+                else System.err.println(e);
             }
-            */
         }
     }
 
@@ -156,17 +142,11 @@ public class Vlcl{
                         .hasArg()
                         .withDescription ("write the AST")
                         .create ("ast");
-        Option trace = OptionBuilder
-                        .withArgName ("file")
-                        .hasArg()
-                        .withDescription ("write a trace of function calls during the execution of the program")
-                        .create ("trace");
                                        
         Options options = new Options();
         options.addOption(help);
         options.addOption(dot);
         options.addOption(ast);
-        options.addOption(trace);
         options.addOption(noexec);
         CommandLineParser clp = new GnuParser();
         CommandLine line = null;
@@ -197,10 +177,7 @@ public class Vlcl{
 
         // Option -ast dotfile
         if (line.hasOption ("ast")) astfile = line.getOptionValue ("ast");
-        
-        // Option -trace dotfile
-        if (line.hasOption ("trace")) tracefile = line.getOptionValue ("trace");
-        
+
         // Option -noexec
         if (line.hasOption ("noexec")) execute = false;
 
