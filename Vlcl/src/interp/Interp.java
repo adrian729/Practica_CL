@@ -64,6 +64,7 @@ public class Interp {
         outStr += docHead();
         for(int i = 0; i < n; ++i) {
             createModule(this.T.getChild(i));
+            Data.resetData(true);
         }
         outStr += docFooter();
         System.out.print(outStr);
@@ -93,7 +94,7 @@ public class Interp {
         Data.setActModName(modName);
         addModuleParams(t.getChild(0));
         executeBlockInstructions(t.getChild(1));
-        if(Data.getActModParamsUsed().size() > 0)
+        if(Data.getActModUnusedParams().size() > 0)
             throw new RuntimeException("alguna senyal del modul no ha estat declarada.");
         Data.checkModParamTypes();
         int posx, posy;
@@ -261,6 +262,7 @@ public class Interp {
     */
     private void executeModuleDec(VlclTree t) {
         //TODO
+        // Compte per no confondre el node amb moduls
     }
 
 //TODO

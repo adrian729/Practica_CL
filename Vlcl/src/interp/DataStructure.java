@@ -17,7 +17,7 @@ public class DataStructure {
     private String actModule; // Modul actual.
     private int minPosX, maxPosY; // Posicions per calcular on possar el nom del modul.
     private List<String> params; // parametres del modul (ordenats com a la capçalera).
-    private Set<String> paramsUsed; // parametres sense inicialitzar del modul.
+    private Set<String> unusedParams; // parametres sense inicialitzar del modul.
     private Map<String, SignalRange> inputs, outputs, inouts; // inputs outputs i inouts del modul actual.
 
     /**
@@ -26,18 +26,19 @@ public class DataStructure {
     public DataStructure() {
         GlobalModules = new HashMap<String, Module>();
         // Fer el reset inicialitza les dades buides.
-        resetData();
+        resetData(false);
     }
 
     /**
     * Reseteja les dades no Globals.
     */
-    public void resetData() {
+    public void resetData(boolean addModule) {
+        if(addModule) addActModToGlobal();
         countNodes = minPosX = maxPosY = 0;
         Data = new HashMap<String, DataNode>();
         actModule = "";
         params = new ArrayList<String>();
-        paramsUsed = new HashSet<String>();
+        unusedParams = new HashSet<String>();
         inputs = new HashMap<String, SignalRange>();
         inouts = new HashMap<String, SignalRange>();
         outputs = new HashMap<String, SignalRange>();
@@ -95,8 +96,14 @@ public class DataStructure {
         return maxPosY;
     }
 
-    public Set<String> getActModParamsUsed() {
-        return paramsUsed;
+    public Set<String> getActModUnusedParams() {
+        return unusedParams;
+    }
+
+    public Module getModule(String mName) {
+        if(!GlobalModules.containsKey(mName))
+            throw new RuntimeException("module does not exist.");
+        return GlobalModules.get(mName);
     }
 
     // setters
@@ -109,7 +116,7 @@ public class DataStructure {
         if(params.contains(paramName))
             throw new RuntimeException("multiple parameters with the same name.");
         params.add(paramName);
-        paramsUsed.add(paramName);
+        unusedParams.add(paramName);
     }
 
     public void addActModInput(String iName, SignalRange iRange) {
@@ -127,11 +134,11 @@ public class DataStructure {
     public void addSignalToActMod(String sName, SignalRange sRange, 
         Map<String, SignalRange> ssMap)
     {
-        if(!paramsUsed.contains(sName))
+        if(!unusedParams.contains(sName))
             throw new RuntimeException(
                 "the signal is not a parameter or has been declared already."
             );
-        paramsUsed.remove(sName);
+        unusedParams.remove(sName);
         ssMap.put(sName, sRange);
     }
 
@@ -152,12 +159,30 @@ public class DataStructure {
     }
 
     private void addActModToGlobal() {
-        /*TODO:
-            -> crear un node amb:
-                -> nom del modul
-                -> tipus MODULE
-                -> entrades i sortides (mida, tipus (WIRE, REG) i si son input/output/inout)
-        */
+        Module actMod = new Module();
+        for(String pName : params) {
+            if(!Data.containsKey(pName))
+                throw new RuntimeException(
+                    "Unused or undeclared signal."
+                );
+            SignalRange pRange;
+            if(inputs.containsKey(pName)) {
+                pRange = inputs.get(pName);
+            }
+            else if(outputs.containsKey(pName)) {
+                pRange = outputs.get(pName);
+            }
+            else if(inouts.containsKey(pName)) {
+                pRange = inouts.get(pName);
+            }
+            else throw new RuntimeException(
+                "bad module parameters."
+            );
+            NodeType nType = Data.get(pName).getType();
+            boolean isReg = false;
+            if(nType == NodeType.REG) isReg = true;
+            actMod.setSignal(new SignalItem(pRange, pName, isReg));
+        }
     }
 
     //Exists
