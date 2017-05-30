@@ -256,8 +256,12 @@ public class Interp {
         }
     }
 
-//TODO
-    private void executeModuleDec(VlclTree t) {}
+    /*
+    * Executa la crida a un modul i crea un nou node amb el modul.
+    */
+    private void executeModuleDec(VlclTree t) {
+        //TODO
+    }
 
 //TODO
     private void executeFunctionDec(VlclTree t) {}

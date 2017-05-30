@@ -9,7 +9,7 @@ import java.util.HashSet;
 
 public class DataStructure {
 
-    private Set<String> GlobalModules; // Moduls creats fins al moment (i accessibles).
+    private Map<String, Module> GlobalModules; // Moduls creats fins al moment (i accessibles).
     private Map<String, DataNode> Data; // Conjunt de nodes (dades).
     private int countNodes; // Numero de nodes a Data.
                             // Util per generar identificadors unics per al HashMap.
@@ -24,31 +24,17 @@ public class DataStructure {
     * Inicialitza l'estructura de dades.
     */
     public DataStructure() {
-        GlobalModules = new HashSet<String>();
-        Data = new HashMap<String, DataNode>();
-        countNodes = minPosX = maxPosY = 0;
-        actModule = "";
-        params = new ArrayList<String>();
-        paramsUsed = new HashSet<String>();
-        inputs = new HashMap<String, SignalRange>();
-        inouts = new HashMap<String, SignalRange>();
-        outputs = new HashMap<String, SignalRange>();
+        GlobalModules = new HashMap<String, Module>();
+        // Fer el reset inicialitza les dades buides.
+        resetData();
     }
 
     /**
-    * Reseteja les dades mantenint les dades globals a GlobalModules i Data.
+    * Reseteja les dades no Globals.
     */
     public void resetData() {
         countNodes = minPosX = maxPosY = 0;
-        // Keep global vars
-        Map<String, DataNode> tmpData = new HashMap<String, DataNode>();
-        if(GlobalModules.size() > 0) {
-            countNodes = GlobalModules.size();
-            for(String key : GlobalModules) {
-                tmpData.put(key, Data.get(key));
-            }            
-        }
-        Data = new HashMap<String, DataNode>(tmpData);
+        Data = new HashMap<String, DataNode>();
         actModule = "";
         params = new ArrayList<String>();
         paramsUsed = new HashSet<String>();
@@ -174,23 +160,9 @@ public class DataStructure {
         */
     }
 
-
-
     //Exists
     public boolean existsWire(String wName) {
         return Data.containsKey(wName);
-    }
-
-
-    // Definicio nomenclatures per als nodes.
-    /*
-    * Per distingir els moduls d'altres variables
-    * (ja que podem crear variables que s'anomenin com un modul ja existent
-    * i no ha de donar problemes)
-    */
-    private static final String modNameTail = "\\\\MOD";
-    private static final String convertToModName(String name) {
-        return name + modNameTail;
     }
 
     /*

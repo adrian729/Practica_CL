@@ -1,3 +1,10 @@
+-> Mirar si no es millor canviar i guardar per separat les coses "generals", que no siguin moduls propiament dits (PE: moduls (anteriors, no creats com nodes), funcions dins el modul actual que es poden cridar, parametres que es poden fer servir, etc..)
+
+
+
+
+--> Mirar de recollir els posicions amb dot2tex i generar el dibuix a partir d'alla
+
 -> Matriu
 
 	-> Colors diferents files /columnes consec a les connexions
@@ -13,3 +20,8 @@
 
 IMP!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 -> Generar la maleida estructura del programa!! (lectura de nodes de l'arbre i fer saltar errors que calgui)
+
+
+
+/////////////COMENTARIS///////////////////
+Afegits comentaris amb la paraula inicial CHANGE: per als canvis fets durant la creacio de l'interpret en la gramàtica.

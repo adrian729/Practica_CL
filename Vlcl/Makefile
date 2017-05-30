@@ -45,10 +45,12 @@ PARSER_SRC =	$(PARSER)/$(TARGET)Lexer.java \
 INTERP_SRC =	$(INTERP)/Interp.java \
 				$(INTERP)/$(TARGET)Tree.java \
 				$(INTERP)/VlclTreeAdaptor.java \
-				$(INTERP)/DataStructure.java \
-				$(INTERP)/DataNode.java \
 				$(INTERP)/NodeType.java \
-				$(INTERP)/SignalRange.java
+				$(INTERP)/SignalRange.java \
+				$(INTERP)/SignalItem.java \
+				$(INTERP)/Module.java \
+				$(INTERP)/DataNode.java \
+				$(INTERP)/DataStructure.java
 
 ALL_SRC =		$(MAIN_SRC) $(PARSER_SRC) $(INTERP_SRC)
 
