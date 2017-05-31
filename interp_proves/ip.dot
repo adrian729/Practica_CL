@@ -7,8 +7,8 @@ digraph {
 	edge [arrowsize=.5, color="black", style="bold"]
 
   n0 [label="LIST_MODULES"];
-  n1 [label="module3"];
-  n1 [label="module3"];
+  n1 [label="module1"];
+  n1 [label="module1"];
   n2 [label="PARAMS"];
   n2 [label="PARAMS"];
   n3 [label="cin"];
@@ -85,12 +85,79 @@ digraph {
   n52 [label="^"];
   n53 [label="cin"];
   n54 [label="TRUE"];
+  n55 [label="module2"];
+  n55 [label="module2"];
+  n56 [label="PARAMS"];
+  n56 [label="PARAMS"];
+  n57 [label="cin"];
+  n58 [label="cout"];
+  n59 [label="LIST_INSTR"];
+  n59 [label="LIST_INSTR"];
+  n60 [label="input"];
+  n60 [label="input"];
+  n61 [label="cin"];
+  n62 [label="output"];
+  n62 [label="output"];
+  n63 [label="ARRAY_RANGE"];
+  n63 [label="ARRAY_RANGE"];
+  n64 [label="5"];
+  n65 [label="3"];
+  n66 [label="cout"];
+  n67 [label="wire"];
+  n67 [label="wire"];
+  n68 [label="cin"];
+  n69 [label="reg"];
+  n69 [label="reg"];
+  n70 [label="ARRAY_RANGE"];
+  n70 [label="ARRAY_RANGE"];
+  n71 [label="5"];
+  n72 [label="3"];
+  n73 [label="cout"];
+  n74 [label="MODULE"];
+  n74 [label="MODULE"];
+  n75 [label="module1"];
+  n76 [label="m1"];
+  n77 [label="PARAMS"];
+  n77 [label="PARAMS"];
+  n78 [label="ARRAY_ACCESS"];
+  n78 [label="ARRAY_ACCESS"];
+  n79 [label="cin"];
+  n80 [label="0"];
+  n81 [label="ARRAY_ACCESS"];
+  n81 [label="ARRAY_ACCESS"];
+  n82 [label="cout"];
+  n83 [label="PART_ARRAY_ACCESS"];
+  n83 [label="PART_ARRAY_ACCESS"];
+  n84 [label="5"];
+  n85 [label="3"];
+  n86 [label="="];
+  n86 [label="="];
+  n87 [label="ARRAY_RANGE"];
+  n87 [label="ARRAY_RANGE"];
+  n88 [label="2"];
+  n89 [label="0"];
+  n90 [label="a"];
+  n91 [label="c"];
+  n92 [label="="];
+  n92 [label="="];
+  n93 [label="p"];
+  n94 [label="d"];
+  n95 [label="="];
+  n95 [label="="];
+  n96 [label="ARRAY_ACCESS"];
+  n96 [label="ARRAY_ACCESS"];
+  n97 [label="t"];
+  n98 [label="PART_ARRAY_ACCESS"];
+  n98 [label="PART_ARRAY_ACCESS"];
+  n99 [label="3"];
+  n100 [label="2"];
+  n101 [label="s"];
 
-  n0 -> n1 // "LIST_MODULES" -> "module3"
-  n1 -> n2 // "module3" -> "PARAMS"
+  n0 -> n1 // "LIST_MODULES" -> "module1"
+  n1 -> n2 // "module1" -> "PARAMS"
   n2 -> n3 // "PARAMS" -> "cin"
   n2 -> n4 // "PARAMS" -> "cout"
-  n1 -> n5 // "module3" -> "LIST_INSTR"
+  n1 -> n5 // "module1" -> "LIST_INSTR"
   n5 -> n6 // "LIST_INSTR" -> "input"
   n6 -> n7 // "input" -> "cin"
   n5 -> n8 // "LIST_INSTR" -> "output"
@@ -140,5 +207,52 @@ digraph {
   n50 -> n52 // "=" -> "^"
   n52 -> n53 // "^" -> "cin"
   n52 -> n54 // "^" -> "TRUE"
+  n0 -> n55 // "LIST_MODULES" -> "module2"
+  n55 -> n56 // "module2" -> "PARAMS"
+  n56 -> n57 // "PARAMS" -> "cin"
+  n56 -> n58 // "PARAMS" -> "cout"
+  n55 -> n59 // "module2" -> "LIST_INSTR"
+  n59 -> n60 // "LIST_INSTR" -> "input"
+  n60 -> n61 // "input" -> "cin"
+  n59 -> n62 // "LIST_INSTR" -> "output"
+  n62 -> n63 // "output" -> "ARRAY_RANGE"
+  n63 -> n64 // "ARRAY_RANGE" -> "5"
+  n63 -> n65 // "ARRAY_RANGE" -> "3"
+  n62 -> n66 // "output" -> "cout"
+  n59 -> n67 // "LIST_INSTR" -> "wire"
+  n67 -> n68 // "wire" -> "cin"
+  n59 -> n69 // "LIST_INSTR" -> "reg"
+  n69 -> n70 // "reg" -> "ARRAY_RANGE"
+  n70 -> n71 // "ARRAY_RANGE" -> "5"
+  n70 -> n72 // "ARRAY_RANGE" -> "3"
+  n69 -> n73 // "reg" -> "cout"
+  n59 -> n74 // "LIST_INSTR" -> "MODULE"
+  n74 -> n75 // "MODULE" -> "module1"
+  n74 -> n76 // "MODULE" -> "m1"
+  n74 -> n77 // "MODULE" -> "PARAMS"
+  n77 -> n78 // "PARAMS" -> "ARRAY_ACCESS"
+  n78 -> n79 // "ARRAY_ACCESS" -> "cin"
+  n78 -> n80 // "ARRAY_ACCESS" -> "0"
+  n77 -> n81 // "PARAMS" -> "ARRAY_ACCESS"
+  n81 -> n82 // "ARRAY_ACCESS" -> "cout"
+  n81 -> n83 // "ARRAY_ACCESS" -> "PART_ARRAY_ACCESS"
+  n83 -> n84 // "PART_ARRAY_ACCESS" -> "5"
+  n83 -> n85 // "PART_ARRAY_ACCESS" -> "3"
+  n59 -> n86 // "LIST_INSTR" -> "="
+  n86 -> n87 // "=" -> "ARRAY_RANGE"
+  n87 -> n88 // "ARRAY_RANGE" -> "2"
+  n87 -> n89 // "ARRAY_RANGE" -> "0"
+  n86 -> n90 // "=" -> "a"
+  n86 -> n91 // "=" -> "c"
+  n59 -> n92 // "LIST_INSTR" -> "="
+  n92 -> n93 // "=" -> "p"
+  n92 -> n94 // "=" -> "d"
+  n59 -> n95 // "LIST_INSTR" -> "="
+  n95 -> n96 // "=" -> "ARRAY_ACCESS"
+  n96 -> n97 // "ARRAY_ACCESS" -> "t"
+  n96 -> n98 // "ARRAY_ACCESS" -> "PART_ARRAY_ACCESS"
+  n98 -> n99 // "PART_ARRAY_ACCESS" -> "3"
+  n98 -> n100 // "PART_ARRAY_ACCESS" -> "2"
+  n95 -> n101 // "=" -> "s"
 
 }

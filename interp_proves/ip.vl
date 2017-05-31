@@ -1,4 +1,4 @@
-module module3 (cin, cout);
+module module1 (cin, cout);
 
 	input cin;
 	output [5:3] cout;
@@ -9,7 +9,24 @@ module module3 (cin, cout);
 	parameter ADD = 1'b1;
 	parameter TRUE = 1, FALSE = 0;
 	parameter [1:0] S0 = 3, S1 = 1, S2 = 2;
-	parameter [3:0] C = cin ^ TRUE;
+	parameter [3:0] C = cin ^ TRUE;	
 
+endmodule
 
+module module2 (cin, cout);
+
+	input cin;
+	output [5:3] cout;
+
+	wire cin;
+	reg [5:3] cout;
+
+	module1 m1 (cin[0], cout[5:3]);
+
+	assign [2:0] a = c;
+
+	p = d;
+
+	t[3:2] = s;
+	
 endmodule

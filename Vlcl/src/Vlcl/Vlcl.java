@@ -115,14 +115,17 @@ public class Vlcl{
         if (execute) {
             // Creates and prepares the interpreter
             Interp I = null;
-            try {
+            //TODO: uncomment try catch
+            //try {
                 I = new Interp(t); // prepares the interpreter
                 I.Run();           // Executes the code       
+            /*
             } catch (RuntimeException e) {
                 if(e.getMessage() != null)
                     System.err.println("Runtime error: " + e.getMessage());
                 else System.err.println(e);
             }
+            */
         }
     }
 

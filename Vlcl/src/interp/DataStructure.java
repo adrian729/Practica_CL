@@ -9,7 +9,7 @@ import java.util.HashSet;
 
 public class DataStructure {
 
-    private Map<String, Module> GlobalModules; // Moduls creats fins al moment (i accessibles).
+    private Map<String, List<SignalRange>> GlobalModules; // Moduls creats fins al moment (i accessibles).
     private Map<String, DataNode> Data; // Conjunt de nodes (dades).
     private int countNodes; // Numero de nodes a Data.
                             // Util per generar identificadors unics per al HashMap.
@@ -24,7 +24,7 @@ public class DataStructure {
     * Inicialitza l'estructura de dades.
     */
     public DataStructure() {
-        GlobalModules = new HashMap<String, Module>();
+        GlobalModules = new HashMap<String, List<SignalRange>>();
         // Fer el reset inicialitza les dades buides.
         resetData(false);
     }
@@ -100,7 +100,7 @@ public class DataStructure {
         return unusedParams;
     }
 
-    public Module getModule(String mName) {
+    public List<SignalRange> getModuleParams(String mName) {
         if(!GlobalModules.containsKey(mName))
             throw new RuntimeException("module does not exist.");
         return GlobalModules.get(mName);
@@ -158,18 +158,28 @@ public class DataStructure {
         ++countNodes;
     }
 
+    public void addVarOutput(String varName, String outName, SignalRange outRange) {
+        if(!Data.containsKey(varName))
+            throw new RuntimeException(
+                "the variable does not exists, can't have an output."
+            );
+        if(!Data.containsKey(outName))
+            throw new RuntimeException(
+                "the variable does not exists, can't be an output."
+            );
+        DataNode n = Data.get(varName);
+        n.setOutput(new SignalItem(outRange, outName));
+        Data.put(varName, n);
+    }
+
     private void addActModToGlobal() {
-        Module actMod = new Module();
+        List<SignalRange> actModParams = new ArrayList<SignalRange>();
         for(String pName : params) {
-            if(!Data.containsKey(pName))
-                throw new RuntimeException(
-                    "Unused or undeclared signal."
-                );
             SignalRange pRange;
             if(inputs.containsKey(pName)) {
                 pRange = inputs.get(pName);
             }
-            else if(outputs.containsKey(pName)) {
+            else if(outputs.containsKey(pName)) {                
                 pRange = outputs.get(pName);
             }
             else if(inouts.containsKey(pName)) {
@@ -178,16 +188,26 @@ public class DataStructure {
             else throw new RuntimeException(
                 "bad module parameters."
             );
-            NodeType nType = Data.get(pName).getType();
-            boolean isReg = false;
-            if(nType == NodeType.REG) isReg = true;
-            actMod.setSignal(new SignalItem(pRange, pName, isReg));
+            actModParams.add(new SignalRange(pRange));
         }
+        GlobalModules.put(actModule, actModParams);
+    }
+
+    public void tryValidRange(String name, SignalRange sr) {
+        if(!Data.containsKey(name))
+            throw new RuntimeException(
+                "the variable does not exists so the range is not valid."
+            );
+        SignalRange nRange = Data.get(name).getRange();
+        if(sr.max < sr.min || sr.max > nRange.max || sr.min < nRange.min)
+            throw new RuntimeException(
+                "not a valid range on array access."
+            );
     }
 
     //Exists
-    public boolean existsWire(String wName) {
-        return Data.containsKey(wName);
+    public boolean existsVar(String vName) {
+        return Data.containsKey(vName);
     }
 
     /*

@@ -29,6 +29,7 @@ package interp;
 
 import parser.*;
 
+import java.util.List;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -223,7 +224,7 @@ public class Interp {
         if(child.getType() == VlclLexer.ASSIGNSIMBOL) {
             //TODO: mirar si es pot unificar amb les demes assignacions
             VlclTree exprTree = child.getChild(1);
-            executeAssignDec(varName, exprTree);
+            executeExpression(varName, r, exprTree);
         }
         // Si hi ha mes fills els declarem.
         // En el cas de que fos una assignacio ja sabem que no hi haura mes.
@@ -252,7 +253,7 @@ public class Interp {
             String paramName = child.getChild(0).getText();
             Data.addVar(paramName, "", r, nType);
             VlclTree exprTree = child.getChild(1);
-            executeAssignDec(paramName, exprTree);            
+            executeExpression(paramName, r, exprTree);            
             child = t.getChild(++nChild);
         }
     }
@@ -261,25 +262,165 @@ public class Interp {
     * Executa la crida a un modul i crea un nou node amb el modul.
     */
     private void executeModuleDec(VlclTree t) {
-        //TODO
-        // Compte per no confondre el node amb moduls
+        assert t.getType() == VlclLexer.MODULE;
+        String moduleType = t.getChild(0).getText();
+        List<SignalRange> modParams = Data.getModuleParams(moduleType);
+        String modDecName = t.getChild(1).getText();
+        Data.addVar(modDecName, modDecName, new SignalRange(), NodeType.MODULE);
+        VlclTree params = t.getChild(2);
+        assert params.getType() == VlclLexer.PARAMS;
+        for(int i = 0; i < modParams.size(); ++i){
+            VlclTree cParam = params.getChild(i);
+            if(cParam == null)
+                throw new RuntimeException(
+                    "not enought parameters on a module declaration."
+                );
+            String pName;
+            SignalRange sr = new SignalRange();
+            if(cParam.getType() == VlclLexer.ARRAY_ACCESS) {
+                pName = cParam.getChild(0).getText();                
+                if(cParam.getChild(1).getType() == VlclLexer.PART_ARRAY_ACCESS) {
+                    sr = getRange(cParam.getChild(1));
+                }
+                else {
+                    int acc = cParam.getChild(1).getIntValue();
+                    sr = new SignalRange(acc, acc);
+                }
+            }
+            else pName = cParam.getText();
+            Data.tryValidRange(pName, sr);
+            Data.addVarOutput(modDecName, pName, sr);
+        }
     }
 
 //TODO
     private void executeFunctionDec(VlclTree t) {}
 
 //TODO
-    private void executeStatement(VlclTree t) {}
+    private void executeStatement(VlclTree t) {
+        switch(t.getType()) {
+            case VlclLexer.ASSIGNSIMBOL:
+                String varName;
+                SignalRange sr = new SignalRange();
+                int nChild = 0;
+                VlclTree child = t.getChild(nChild);
+                if(child.getType() == VlclLexer.ARRAY_RANGE) {
+                    sr = getRange(child);
+                    child = t.getChild(++nChild);
+                    varName = child.getText();
+                }
+                else if(child.getType() == VlclLexer.ARRAY_ACCESS) {
+                    varName = child.getChild(0).getText();
+                    if(child.getChild(1).getType() == VlclLexer.PART_ARRAY_ACCESS) {
+                        sr = getRange(child.getChild(1));
+                    }
+                    else {
+                        int acc = child.getChild(1).getIntValue();
+                        sr = new SignalRange(acc, acc);
+                    }
+                }
+                else varName = child.getText();
+                executeExpression(varName, sr, t.getChild(++nChild));
+                break;
+        }
+    }
 
-//TODO
-    private void executeExpression(VlclTree t) {}
-
-
-//TODO
     /*
-    * Assigna el resultat de l'expressio definida a exprTree a la variable amb nom varName.
+    * Executa una expressio i assigna com a output varName (amb rang range).
     */
-    private void executeAssignDec(String varName, VlclTree exprTree) {}
+    private void executeExpression(String varName, SignalRange range, VlclTree exprTree) {
+        Data.tryValidRange(varName, range);
+        String nText = "";
+        NodeType nType = NodeType.BOX;
+        if(exprTree.getType() == VlclLexer.NUM_CONST) {
+            nText = exprTree.getChild(0).getText() + exprTree.getChild(1).getText();
+        }
+        else if(exprTree.getType() == VlclLexer.ID) {
+            Data.addVarOutput(exprTree.getText(), varName, range);
+        }
+        else if(exprTree.getType() == VlclLexer.ARRAY_ACCESS) {
+            
+        }
+
+        /*
+        TODO:
+        
+        UNARIS
+
+        // Operador “+”
+        a = +8'h12; 
+        // Operador “-”
+        b = -23'b111;
+        // Operador “!” negació lògica.
+        a = !a;
+        // Operador “~” negació.
+        a = ~a;
+        // Operador “&” AND.
+        a = & a;
+        // Operador “|” OR.
+        a = |a;
+        // Operador “^” OR exclusiva o XOR.
+        a = ^ a;
+        // Operador “~&” NAND.
+        a = ~& a;
+        // Operador “~|” NOR.
+        a = ~| a;
+        // Operador “~^” o “^~” OR exclusiva negada o XNOR.
+        a = ~^ a;
+        a = ^~ a;
+
+        BINARIS
+        // Operador “+”
+        a = b + c;
+        // Operador “-”
+        a = b - c;
+        // Operador ”*”
+        a = b * c;
+        // Operador ”/”: divisió entera.
+        a = b / c;
+        // Operador ”%”
+        a = b % c;
+        // Operador “<”
+        a = a < b;
+        // Operador “>”
+        a = a > b;
+        // Operador “<=”
+        a = a <= b;
+        // Operador “>=”
+        a = a >= b;
+        // Operador “==”
+        a = a == b;
+        // Operador “!=”
+        a = a != b;
+        // Operador “&&” AND lògica.
+        a = a && b;
+        // Operador “||” OR lògica.
+        a = a || b;
+        // Operador “&” AND.
+        a = a & b;
+        // Operador “|” OR.
+        a = a | b;
+        // Operador “^” OR exclusiva o XOR.
+        a = a ^ b;
+        // Operador “<<”
+        a = b << 2;
+        // Operador “>>”.
+        a = b >> 2;
+
+        ALTRES
+
+        // Operador condicional
+        // Operador “? :”
+        a = (b == c) ? a + b : a - c;
+
+        // Operador concatenació
+        // Operador “{ }” permet concatenar els operants per formar un vector.
+        a = {a, b}; // El resultat tindrà mida bits d'a més bits de b
+        a = { a[4:0], b[2:0] }; // El resultat tindra mida 8
+        a = { 3{a} }; // Equivalent a { a, a, a }
+        a = {b, 2{ c, d } }; // Equivalent a { b, c, d, c, d }
+        */
+    }
 
     /*
     * Retorna un rang definit per una expressio de rang a l'arbre.
@@ -300,7 +441,7 @@ public class Interp {
     * Capcelera document latex.
     */
     private String docHead() {
-        return "\\documentclass[tikz,border=10pt,12pt,x11names]{standalone}\n" +
+        return  "\\documentclass[tikz,border=10pt,12pt,x11names]{standalone}\n" +
                 "\\usepackage{tikz}\n" +
                 "\\usetikzlibrary{circuits.logic.US} % TiKZ Library for US Logic Circuits.\n" +
                 "\\begin{document}\n";

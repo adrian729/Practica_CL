@@ -48,9 +48,9 @@ INTERP_SRC =	$(INTERP)/Interp.java \
 				$(INTERP)/NodeType.java \
 				$(INTERP)/SignalRange.java \
 				$(INTERP)/SignalItem.java \
-				$(INTERP)/Module.java \
 				$(INTERP)/DataNode.java \
-				$(INTERP)/DataStructure.java
+				$(INTERP)/DataStructure.java \
+				$(INTERP)/ReadFile.java
 
 ALL_SRC =		$(MAIN_SRC) $(PARSER_SRC) $(INTERP_SRC)
 

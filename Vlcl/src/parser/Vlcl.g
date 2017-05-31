@@ -315,8 +315,9 @@ bitlogic_neg
         : (NOT^ | NOTBW^)? paren_expr
         ;
 
+//CHANGE: arreglat error a operacions aritmetiques unaries.
 paren_expr
-        : PLUS? (atom | '('! expr ')'!)
+        : PLUS^ (atom | '('! expr ')'!) | (atom | '('! expr ')'!)
         ;
 
 atom    :
