@@ -319,6 +319,7 @@ public class DataStructure {
             default:
                 draw = "draw";
         }
+        return draw;
     }
     
     public String printModuleTex() {
@@ -328,7 +329,7 @@ public class DataStructure {
         for(Map.Entry<String, DataNode> node : Data.entrySet()) {
             Coords pos = rf.getCoordsFromNode(node.getKey());
             String text = node.getValue().getText();
-            String draw = setDraw(node.getValue.getType());
+            String draw = setDraw(node.getValue().getType());
             res +=  "\t\t\\node[" + draw + "] at (" + pos.getFirstCoord() + "bp," + pos.getSecCoord() + "bp) {" + text + "};\n";
         }
         return res;
