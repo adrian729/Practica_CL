@@ -317,7 +317,37 @@ public class DataStructure {
         }
         return tex;
     }
-
+    
+    private String setDraw(NodeType t) {
+        String draw;
+        switch (t) {
+            case AND:
+                draw = "and gate";
+                break;
+            case OR:
+                draw = "or gate";
+                break;
+            case NOT:
+                draw = "not gate";
+                break;
+            case XOR:
+                draw = "xor gate";
+                break;
+            case NAND:
+                draw = "nand gate";
+                break;
+            case NOR:
+                draw = "nor gate";
+                break;
+            case XNOR:
+                draw = "xnor gate";
+                break;
+            default:
+                draw = "draw";
+        }
+        return draw;
+    }
+    
     public String printModuleTex() {
         String res = "\n";
         ReadFile rf = new ReadFile();
@@ -325,7 +355,8 @@ public class DataStructure {
         for(Map.Entry<String, DataNode> node : Data.entrySet()) {
             Coords pos = rf.getCoordsFromNode(node.getKey());
             String text = node.getValue().getText();
-            res +=  "\t\t\\node[draw] at (" + pos.getFirstCoord() + "bp," + pos.getSecCoord() + "bp) {" + text + "};\n";
+            String draw = setDraw(node.getValue().getType());
+            res +=  "\t\t\\node[" + draw + "] at (" + pos.getFirstCoord() + "bp," + pos.getSecCoord() + "bp) {" + text + "};\n";
         }
         return res;
     }
