@@ -222,6 +222,17 @@ public class DataStructure {
                 "not a valid range on array access: " + sr.max + " " + sr.min + " with " + nRange.max + " " + nRange.min
             );
     }
+    
+    
+    public String printModuleDot() {
+        PrintDot dot = new PrintDot();
+        dot.moduleHead();
+        for (Map.Entry<String, DataNode> node : Data.entrySet()) {
+            newNode(node.getKey(),node.getValue());
+        }
+        dot.moduleFooter();
+        return dot.getDot();
+    }
 
     //Exists
     public boolean existsVar(String vName) {
