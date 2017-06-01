@@ -298,6 +298,14 @@ public class Interp {
 
 //TODO
     private void executeStatement(VlclTree t) {
+        /*
+        statement
+        : assign
+        | assignation_stmt
+        | ifelse_stmt
+        | case_stmt
+        | for_loop
+        */
         switch(t.getType()) {
             case VlclLexer.ASSIGNSIMBOL:
                 String varName;
@@ -320,6 +328,7 @@ public class Interp {
                     }
                 }
                 else varName = child.getText();
+                Data.tryValidRange(varName, sr);
                 executeExpression(varName, sr, t.getChild(++nChild));
                 break;
         }
@@ -329,96 +338,119 @@ public class Interp {
     * Executa una expressio i assigna com a output varName (amb rang range).
     */
     private void executeExpression(String varName, SignalRange range, VlclTree exprTree) {
-        Data.tryValidRange(varName, range);
-        String nText = "";
-        NodeType nType = NodeType.BOX;
         if(exprTree.getType() == VlclLexer.NUM_CONST) {
-            nText = exprTree.getChild(0).getText() + exprTree.getChild(1).getText();
+            String num = exprTree.getChild(0).getText() + exprTree.getChild(1).getText();
+            Data.addVar(num, num, new SignalRange(), NodeType.BOX);
         }
         else if(exprTree.getType() == VlclLexer.ID) {
             Data.addVarOutput(exprTree.getText(), varName, range);
         }
         else if(exprTree.getType() == VlclLexer.ARRAY_ACCESS) {
-            
+            String name = exprTree.getChild(0).getText();
+            SignalRange sr = new SignalRange();
+            VlclTree accChild = exprTree.getChild(1);
+            if(accChild.getType == VlclLexer.PART_ARRAY_ACCESS) {
+                sr = getRange(accChild);
+            }
+            else {
+                int r = accChild.getIntValue();
+                sr = new SignalRange(r, r);
+            }
+            Data.tryValidRange(name, sr);
+            Data.addVarInputOutput(name, varName, range, sr);
+        }
+        else {
+            String nText = "";
+            NodeType nType = NodeType.BOX;
+            SignalRange sr = new SignalRange();
+
+            switch(exprTree.getType()) {
+                default:
+                    nText = exprTree.getText();
+            }
+            String nodeName = Data.addVar(num, nText, new SignalRange(), NodeType.BOX);
+            int nChild = 0;
+            VlclTree child = exprTree.getChild(nChild);
+            while(child != null) {
+                executeExpression(nodeName, sr, child);
+                child = exprTree.getChild(++nChild);
+            }
         }
 
         /*
         TODO:
-        
-        UNARIS
+            UNARIS
+            // Operador “+”
+            a = +8'h12; 
+            // Operador “-”
+            b = -23'b111;
+            // Operador “!” negació lògica.
+            a = !a;
+            // Operador “~” negació.
+            a = ~a;
+            // Operador “&” AND.
+            a = & a;
+            // Operador “|” OR.
+            a = |a;
+            // Operador “^” OR exclusiva o XOR.
+            a = ^ a;
+            // Operador “~&” NAND.
+            a = ~& a;
+            // Operador “~|” NOR.
+            a = ~| a;
+            // Operador “~^” o “^~” OR exclusiva negada o XNOR.
+            a = ~^ a;
+            a = ^~ a;
 
-        // Operador “+”
-        a = +8'h12; 
-        // Operador “-”
-        b = -23'b111;
-        // Operador “!” negació lògica.
-        a = !a;
-        // Operador “~” negació.
-        a = ~a;
-        // Operador “&” AND.
-        a = & a;
-        // Operador “|” OR.
-        a = |a;
-        // Operador “^” OR exclusiva o XOR.
-        a = ^ a;
-        // Operador “~&” NAND.
-        a = ~& a;
-        // Operador “~|” NOR.
-        a = ~| a;
-        // Operador “~^” o “^~” OR exclusiva negada o XNOR.
-        a = ~^ a;
-        a = ^~ a;
+            BINARIS
+            // Operador “+”
+            a = b + c;
+            // Operador “-”
+            a = b - c;
+            // Operador ”*”
+            a = b * c;
+            // Operador ”/”: divisió entera.
+            a = b / c;
+            // Operador ”%”
+            a = b % c;
+            // Operador “<”
+            a = a < b;
+            // Operador “>”
+            a = a > b;
+            // Operador “<=”
+            a = a <= b;
+            // Operador “>=”
+            a = a >= b;
+            // Operador “==”
+            a = a == b;
+            // Operador “!=”
+            a = a != b;
+            // Operador “&&” AND lògica.
+            a = a && b;
+            // Operador “||” OR lògica.
+            a = a || b;
+            // Operador “&” AND.
+            a = a & b;
+            // Operador “|” OR.
+            a = a | b;
+            // Operador “^” OR exclusiva o XOR.
+            a = a ^ b;
+            // Operador “<<”
+            a = b << 2;
+            // Operador “>>”.
+            a = b >> 2;
 
-        BINARIS
-        // Operador “+”
-        a = b + c;
-        // Operador “-”
-        a = b - c;
-        // Operador ”*”
-        a = b * c;
-        // Operador ”/”: divisió entera.
-        a = b / c;
-        // Operador ”%”
-        a = b % c;
-        // Operador “<”
-        a = a < b;
-        // Operador “>”
-        a = a > b;
-        // Operador “<=”
-        a = a <= b;
-        // Operador “>=”
-        a = a >= b;
-        // Operador “==”
-        a = a == b;
-        // Operador “!=”
-        a = a != b;
-        // Operador “&&” AND lògica.
-        a = a && b;
-        // Operador “||” OR lògica.
-        a = a || b;
-        // Operador “&” AND.
-        a = a & b;
-        // Operador “|” OR.
-        a = a | b;
-        // Operador “^” OR exclusiva o XOR.
-        a = a ^ b;
-        // Operador “<<”
-        a = b << 2;
-        // Operador “>>”.
-        a = b >> 2;
+            ALTRES
+            // Operador condicional
+            // Operador “? :”
+            a = (b == c) ? a + b : a - c;
 
-        ALTRES
-
-        // Operador condicional
-        // Operador “? :”
-        a = (b == c) ? a + b : a - c;
-
-        // Operador concatenació
-        // Operador “{ }” permet concatenar els operants per formar un vector.
-        a = {a, b}; // El resultat tindrà mida bits d'a més bits de b
-        a = { a[4:0], b[2:0] }; // El resultat tindra mida 8
-        a = { 3{a} }; // Equivalent a { a, a, a }
-        a = {b, 2{ c, d } }; // Equivalent a { b, c, d, c, d }
+            // Operador concatenació
+            // Operador “{ }” permet concatenar els operants per formar un vector.
+            a = {a, b}; // El resultat tindrà mida bits d'a més bits de b
+            a = { a[4:0], b[2:0] }; // El resultat tindra mida 8
+            a = { 3{a} }; // Equivalent a { a, a, a }
+            a = {b, 2{ c, d } }; // Equivalent a { b, c, d, c, d }
         */
     }
 

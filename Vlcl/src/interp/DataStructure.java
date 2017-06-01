@@ -142,7 +142,8 @@ public class DataStructure {
         ssMap.put(sName, sRange);
     }
 
-    public void addVar(String varName, String varText, SignalRange varRange, NodeType nType) {
+    public String addVar(String varName, String varText, SignalRange varRange, NodeType nType) {
+        if(varName == "") varName = nextNodeName();
         if(Data.containsKey(varName))
             throw new RuntimeException(
                 "multiple definition of variable."
@@ -151,6 +152,8 @@ public class DataStructure {
         node.setText(varText);
         node.setRange(new SignalRange(varRange));
         addNode(varName, node);
+
+        return varName;
     }
 
     public void addNode(String nodeName, DataNode node) {
@@ -169,6 +172,21 @@ public class DataStructure {
             );
         DataNode n = Data.get(varName);
         n.setOutput(new SignalItem(outRange, outName));
+        Data.put(varName, n);
+    }
+
+    public void addVarInputOutput(String varName, 
+        String outName, SignalRange outRange, SignalRange inRange) {
+        if(!Data.containsKey(varName))
+            throw new RuntimeException(
+                "the variable does not exists, can't have an output."
+            );
+        if(!Data.containsKey(outName))
+            throw new RuntimeException(
+                "the variable does not exists, can't be an output."
+            );
+        DataNode n = Data.get(varName);
+        n.setRangeOutput(new SignalItem(outRange, outName), inRange);
         Data.put(varName, n);
     }
 
@@ -214,9 +232,9 @@ public class DataStructure {
     * Per poder afegir als nodes variables generiques, o quasevol variable que volguem guardar.
     * (Una & usada com a operador, per exemple, que generara un node).
     */
-    private String nextNodeTail() {
+    private String nextNodeName() {
         assert countNodes >= 0;
-        return "\\\\" + countNodes;
+        return "node\\\\" + countNodes;
     }
 
 }
