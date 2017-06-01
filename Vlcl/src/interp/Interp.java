@@ -94,7 +94,7 @@ public class Interp {
 
         String tex;
 
-        String command = "dot2tex " + dot;
+        String command = "echo " + dot + " > graph.dot && dot2tex graph.dot";
 
         String tex = obj.executeCommand(command);
     }
