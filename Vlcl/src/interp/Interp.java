@@ -85,6 +85,19 @@ public class Interp {
         int n = t.getChildCount();
         for (int i = 0; i < n; ++i) PreProcessVlcl(t.getChild(i));
     }
+    
+    /**
+    * Converteix el dot a format tex
+    */
+    private String dot2tex(String dot) {
+        ExecuteShellComand obj = new ExecuteShellComand();
+
+        String tex;
+
+        String command = "dot2tex " + dot;
+
+        String tex = obj.executeCommand(command);
+    }
 
     /**
     * Llegeix i crea el latex del module t.
@@ -103,6 +116,8 @@ public class Interp {
         posy = Data.getMaxPosY();
         outStr += moduleHead(modName, posx, posy);
 
+        String dot = Data.printModuleDot();
+        String tex = dot2tex(dot);
         outStr += moduleFooter();
         
     }
