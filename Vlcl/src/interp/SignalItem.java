@@ -8,4 +8,8 @@ public class SignalItem {
     	this.range = range;
         this.name = name;
     }
+    
+    public String getName() {
+        return name;
+    }
 }
