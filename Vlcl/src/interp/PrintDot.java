@@ -5,11 +5,9 @@ import java.util.List;
 public class PrintDot {
 
     private String dot;
-    private int num;
     
     public PrintDot() {
         dot = "";
-        num = 1;
     }
     
     public String getDot() {
@@ -18,8 +16,6 @@ public class PrintDot {
     
     public void moduleHead() {
         dot += "digraph ";
-        dot += num;
-        ++num;
         dot += " {\n";
     }
 
