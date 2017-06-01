@@ -6,6 +6,11 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Set;
 import java.util.HashSet;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.lang.Process;
+import java.lang.Exception;
+import java.io.PrintWriter;
 
 public class DataStructure {
 
@@ -162,14 +167,18 @@ public class DataStructure {
     }
 
     public void addVarOutput(String varName, String outName, SignalRange outRange) {
-        if(!Data.containsKey(varName))
+        if(!Data.containsKey(varName)) {
+            tryInitSignal(varName);
             throw new RuntimeException(
                 "the variable does not exists, can't have an output: " + varName
             );
-        if(!Data.containsKey(outName))
+        }
+        if(!Data.containsKey(outName)) {
+            tryInitSignal(varName);
             throw new RuntimeException(
                 "the variable does not exists, can't be an output: " + outName
             );
+        }
         DataNode n = Data.get(varName);
         n.setOutput(new SignalItem(outRange, outName));
         Data.put(varName, n);
@@ -177,10 +186,12 @@ public class DataStructure {
 
     public void addVarInputOutput(String varName, 
         String outName, SignalRange outRange, SignalRange inRange) {
-        if(!Data.containsKey(varName))
+        if(!Data.containsKey(varName)) {
+            tryInitSignal(varName);
             throw new RuntimeException(
                 "the variable does not exists, can't have an output: " + varName
             );
+        }
         if(!Data.containsKey(outName))
             throw new RuntimeException(
                 "the variable does not exists, can't be an output: " + outName
@@ -222,17 +233,8 @@ public class DataStructure {
                 "not a valid range on array access: " + sr.max + " " + sr.min + " with " + nRange.max + " " + nRange.min
             );
     }
-    
-    
-    public String printModuleDot() {
-        PrintDot dot = new PrintDot();
-        dot.moduleHead();
-        for (Map.Entry<String, DataNode> node : Data.entrySet()) {
-            newNode(node.getKey(),node.getValue());
-        }
-        dot.moduleFooter();
-        return dot.getDot();
-    }
+
+    private tryInitSignal(String varName) {}
 
     //Exists
     public boolean existsVar(String vName) {
@@ -245,7 +247,61 @@ public class DataStructure {
     */
     private String nextNodeName() {
         assert countNodes >= 0;
-        return "node\\\\" + countNodes;
+        return "nodeº" + countNodes;
+    }
+
+
+    //Files
+
+    private String printModuleDot() {
+        PrintDot dot = new PrintDot();
+        dot.moduleHead();
+        for(Map.Entry<String, DataNode> node : Data.entrySet()) {
+            dot.newNode(node.getKey(),node.getValue());
+        }
+        dot.moduleFooter();
+        return dot.getDot();
+    }
+
+    /**
+    * Converteix el dot a format tex
+    */
+    private String dot2tex(String dot) {
+        String tex = "";
+        try {            
+            PrintWriter writer = new PrintWriter("graph.dot", "UTF-8");
+            writer.print(dot);
+            writer.close();
+            String command ="dot2tex graph.dot";
+            Runtime run = Runtime.getRuntime();
+            Process cmdProc = run.exec(new String[]{"/bin/sh", "-c", command});
+            cmdProc.waitFor();
+            BufferedReader reader = new BufferedReader(
+                new InputStreamReader(cmdProc.getInputStream())
+            );
+            String line;
+            while((line = reader.readLine()) != null) {
+                tex += line + "\n";
+            }
+        } catch (Exception e) {
+            if(e.getMessage() != null)
+                System.err.println("Runtime error: " + e.getMessage());
+            else System.err.println(e);
+            System.exit(1);
+        }
+        return tex;
+    }
+
+    public String printModuleTex() {
+        String res = "\n";
+        ReadFile rf = new ReadFile();
+        rf.getNodeCoordsFromTex(dot2tex(printModuleDot()));
+        for(Map.Entry<String, DataNode> node : Data.entrySet()) {
+            Coords pos = rf.getCoordsFromNode(node.getKey());
+            String text = node.getValue().getText();
+            res +=  "\t\t\\node[draw] at (" + pos.getFirstCoord() + "bp," + pos.getSecCoord() + "bp) {" + text + "};\n";
+        }
+        return res;
     }
 
 }

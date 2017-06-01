@@ -2,26 +2,26 @@ package interp;
 
 public class Coords {
 
-    private int first, second;
+    private Double first, second;
 
     public Coords() {
-    	first = 0;
-    	second = 0;
+    	first = 0.;
+    	second = 0.;
     }
 
-    public void setFirstCoord(int coord) {
+    public void setFirstCoord(Double coord) {
     	first = coord;
     }
 
-    public void setSecCoord(int coord) {
+    public void setSecCoord(Double coord) {
     	second = coord;
     }
     
-    public int getFirstCoord() {
+    public Double getFirstCoord() {
         return first;
     }
     
-    public int getSecCoord() {
+    public Double getSecCoord() {
         return second;
     }
 }

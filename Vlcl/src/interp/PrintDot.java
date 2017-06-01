@@ -17,6 +17,7 @@ public class PrintDot {
     public void moduleHead() {
         dot += "digraph ";
         dot += " {\n";
+        dot += " rankdir=LR;\n";
     }
 
     public void newNode(String name, DataNode node) {

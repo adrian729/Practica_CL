@@ -85,19 +85,6 @@ public class Interp {
         int n = t.getChildCount();
         for (int i = 0; i < n; ++i) PreProcessVlcl(t.getChild(i));
     }
-    
-    /**
-    * Converteix el dot a format tex
-    */
-    private String dot2tex(String dot) {
-        ExecuteShellComand obj = new ExecuteShellComand();
-
-        String tex;
-
-        String command = "echo " + dot + " > graph.dot && dot2tex graph.dot";
-
-        String tex = obj.executeCommand(command);
-    }
 
     /**
     * Llegeix i crea el latex del module t.
@@ -115,9 +102,7 @@ public class Interp {
         posx = Data.getMinPosX();
         posy = Data.getMaxPosY();
         outStr += moduleHead(modName, posx, posy);
-
-        String dot = Data.printModuleDot();
-        String tex = dot2tex(dot);
+        outStr += Data.printModuleTex();
         outStr += moduleFooter();
         
     }
@@ -429,7 +414,7 @@ public class Interp {
                 default:
                     nText = exprTree.getText();
             }
-            String nodeName = Data.addVar(nText, nText, new SignalRange(), nType);
+            String nodeName = Data.addVar("", nText, new SignalRange(), nType);
             int nChild = 0;
             VlclTree child = exprTree.getChild(nChild);
             while(child != null) {

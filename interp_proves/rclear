@@ -1,0 +1,25 @@
+% Execute ip.vl
+\documentclass[tikz,border=10pt,12pt,x11names]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{circuits.logic.US} % TiKZ Library for US Logic Circuits.
+\begin{document}
+
+	\begin{tikzpicture}[circuit logic US,
+						tiny circuit symbols,
+						every circuit symbol/.style={
+						fill=white,draw}]
+
+		\node[draw] at (-2,2) {module1};
+
+	\end{tikzpicture}
+
+	\begin{tikzpicture}[circuit logic US,
+						tiny circuit symbols,
+						every circuit symbol/.style={
+						fill=white,draw}]
+
+		\node[draw] at (-2,2) {module2};
+
+	\end{tikzpicture}
+
+\end{document}
