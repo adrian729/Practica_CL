@@ -50,7 +50,9 @@ INTERP_SRC =	$(INTERP)/Interp.java \
 				$(INTERP)/SignalItem.java \
 				$(INTERP)/DataNode.java \
 				$(INTERP)/DataStructure.java \
-				$(INTERP)/ReadFile.java
+				$(INTERP)/ReadFile.java \
+				$(INTERP)/PrintDot.java\
+				$(INTERP)/Coords.java
 
 ALL_SRC =		$(MAIN_SRC) $(PARSER_SRC) $(INTERP_SRC)
 
