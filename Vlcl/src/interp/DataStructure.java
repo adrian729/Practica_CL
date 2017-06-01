@@ -192,10 +192,12 @@ public class DataStructure {
                 "the variable does not exists, can't have an output: " + varName
             );
         }
-        if(!Data.containsKey(outName))
+        if(!Data.containsKey(outName)) {
+            tryInitSignal(varName);
             throw new RuntimeException(
                 "the variable does not exists, can't be an output: " + outName
             );
+        }
         DataNode n = Data.get(varName);
         n.setRangeOutput(new SignalItem(outRange, outName), inRange);
         Data.put(varName, n);
@@ -223,10 +225,12 @@ public class DataStructure {
     }
 
     public void tryValidRange(String name, SignalRange sr) {
-        if(!Data.containsKey(name))
+        if(!Data.containsKey(name)) {
+            tryInitSignal(name);
             throw new RuntimeException(
                 "the variable does not exists so the range is not valid: " + name
             );
+        }
         SignalRange nRange = Data.get(name).getRange();
         if(sr.max < sr.min || sr.max > nRange.max || sr.min < nRange.min)
             throw new RuntimeException(
@@ -234,7 +238,29 @@ public class DataStructure {
             );
     }
 
-    private tryInitSignal(String varName) {}
+    private void tryInitSignal(String varName) {
+        for(String iName : inputs.keySet()) {
+            if(iName == varName) {
+                SignalRange sr = inputs.get(iName);
+                System.out.println(addVar(varName, varName, sr, NodeType.WIRE));
+                return;
+            }
+        }
+        for(String oName : outputs.keySet()) {
+            if(oName == varName) {
+                SignalRange sr = outputs.get(oName);
+                System.out.println(addVar(varName, varName, sr, NodeType.WIRE));
+                return;
+            }
+        }
+        for(String ioName : inouts.keySet()) {
+            if(ioName == varName) {
+                SignalRange sr = inouts.get(ioName);
+                System.out.println(addVar(varName, varName, sr, NodeType.WIRE));
+                return;
+            }
+        }
+    }
 
     //Exists
     public boolean existsVar(String vName) {

@@ -123,6 +123,7 @@ public class Interp {
         int nChild = 0;
         VlclTree child = t.getChild(0);
         while(child != null) {
+            System.out.println("PATATA " + child.getText());
             switch(child.getType()) {
                 // signal_dec
                 case VlclLexer.INPUT:
@@ -166,7 +167,7 @@ public class Interp {
                 t.getType() == VlclLexer.INOUT;
         int nChild = 0;
         VlclTree child = t.getChild(0);
-        // Definim el rang del senyal (si no es un vector de bits, sera -1 -1).
+        // Definim el rang del senyal (si no es un vector de bits, sera 0 0).
         SignalRange r = new SignalRange();
         if(child.getType() == VlclLexer.ARRAY_RANGE) {
             r = getRange(child);
