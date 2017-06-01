@@ -20,14 +20,14 @@ public class PrintDot {
         dot += "digraph ";
         dot += num;
         ++num;
-        dot += " {\n"
+        dot += " {\n";
     }
 
     public void newNode(String name, DataNode node) {
         dot += name + " -> {";
         List<SignalItem> outputs = node.getOutputs();
-        for(int i = 0; i < ouputs.size(); ++i) {
-            dot += outputs[i].getName();
+        for(int i = 0; i < outputs.size(); ++i) {
+            dot += (outputs.get(i)).getName();
             dot += " ";
         }
         dot += "}\n";
