@@ -102,7 +102,7 @@ public class DataStructure {
 
     public List<SignalRange> getModuleParams(String mName) {
         if(!GlobalModules.containsKey(mName))
-            throw new RuntimeException("module does not exist.");
+            throw new RuntimeException("module does not exist: " + mName);
         return GlobalModules.get(mName);
     }
 
@@ -114,7 +114,7 @@ public class DataStructure {
     // adders
     public void addActModParam(String paramName) {
         if(params.contains(paramName))
-            throw new RuntimeException("multiple parameters with the same name.");
+            throw new RuntimeException("multiple parameters with the same name: " + paramName);
         params.add(paramName);
         unusedParams.add(paramName);
     }
@@ -136,7 +136,7 @@ public class DataStructure {
     {
         if(!unusedParams.contains(sName))
             throw new RuntimeException(
-                "the signal is not a parameter or has been declared already."
+                "the signal is not a parameter or has been declared already: " + sName
             );
         unusedParams.remove(sName);
         ssMap.put(sName, sRange);
@@ -146,7 +146,7 @@ public class DataStructure {
         if(varName == "") varName = nextNodeName();
         if(Data.containsKey(varName))
             throw new RuntimeException(
-                "multiple definition of variable."
+                "multiple definition of variable: " + varName
             );
         DataNode node = new DataNode(nType);
         node.setText(varText);
@@ -164,11 +164,11 @@ public class DataStructure {
     public void addVarOutput(String varName, String outName, SignalRange outRange) {
         if(!Data.containsKey(varName))
             throw new RuntimeException(
-                "the variable does not exists, can't have an output."
+                "the variable does not exists, can't have an output: " + varName
             );
         if(!Data.containsKey(outName))
             throw new RuntimeException(
-                "the variable does not exists, can't be an output."
+                "the variable does not exists, can't be an output: " + outName
             );
         DataNode n = Data.get(varName);
         n.setOutput(new SignalItem(outRange, outName));
@@ -179,11 +179,11 @@ public class DataStructure {
         String outName, SignalRange outRange, SignalRange inRange) {
         if(!Data.containsKey(varName))
             throw new RuntimeException(
-                "the variable does not exists, can't have an output."
+                "the variable does not exists, can't have an output: " + varName
             );
         if(!Data.containsKey(outName))
             throw new RuntimeException(
-                "the variable does not exists, can't be an output."
+                "the variable does not exists, can't be an output: " + outName
             );
         DataNode n = Data.get(varName);
         n.setRangeOutput(new SignalItem(outRange, outName), inRange);
@@ -214,12 +214,12 @@ public class DataStructure {
     public void tryValidRange(String name, SignalRange sr) {
         if(!Data.containsKey(name))
             throw new RuntimeException(
-                "the variable does not exists so the range is not valid."
+                "the variable does not exists so the range is not valid: " + name
             );
         SignalRange nRange = Data.get(name).getRange();
         if(sr.max < sr.min || sr.max > nRange.max || sr.min < nRange.min)
             throw new RuntimeException(
-                "not a valid range on array access."
+                "not a valid range on array access: " + sr.max + " " + sr.min + " with " + nRange.max + " " + nRange.min
             );
     }
 

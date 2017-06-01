@@ -222,7 +222,6 @@ public class Interp {
         Data.addVar(varName, varName, r, nType);
         // Un cop afegida la variable, si era amb assignacio fem l'assignacio.
         if(child.getType() == VlclLexer.ASSIGNSIMBOL) {
-            //TODO: mirar si es pot unificar amb les demes assignacions
             VlclTree exprTree = child.getChild(1);
             executeExpression(varName, r, exprTree);
         }
@@ -294,18 +293,12 @@ public class Interp {
     }
 
 //TODO
-    private void executeFunctionDec(VlclTree t) {}
+    private void executeFunctionDec(VlclTree t) {
+
+    }
 
 //TODO
     private void executeStatement(VlclTree t) {
-        /*
-        statement
-        : assign
-        | assignation_stmt
-        | ifelse_stmt
-        | case_stmt
-        | for_loop
-        */
         switch(t.getType()) {
             case VlclLexer.ASSIGNSIMBOL:
                 String varName;
@@ -332,6 +325,13 @@ public class Interp {
                 executeExpression(varName, sr, t.getChild(++nChild));
                 break;
         }
+        /*
+            TODO
+                statement
+                | ifelse_stmt
+                | case_stmt
+                | for_loop
+        */
     }
 
     /*
@@ -339,8 +339,13 @@ public class Interp {
     */
     private void executeExpression(String varName, SignalRange range, VlclTree exprTree) {
         if(exprTree.getType() == VlclLexer.NUM_CONST) {
-            String num = exprTree.getChild(0).getText() + exprTree.getChild(1).getText();
-            Data.addVar(num, num, new SignalRange(), NodeType.BOX);
+            String num = exprTree.getChild(0).getText();
+            if(exprTree.getChild(1) != null) num += exprTree.getChild(1).getText();
+            Data.addVar("", num, new SignalRange(), NodeType.BOX);
+        }
+        else if(exprTree.getType() == VlclLexer.NUM) {
+            String num = exprTree.getText();            
+            Data.addVar("", num, new SignalRange(), NodeType.BOX);
         }
         else if(exprTree.getType() == VlclLexer.ID) {
             Data.addVarOutput(exprTree.getText(), varName, range);
@@ -349,7 +354,7 @@ public class Interp {
             String name = exprTree.getChild(0).getText();
             SignalRange sr = new SignalRange();
             VlclTree accChild = exprTree.getChild(1);
-            if(accChild.getType == VlclLexer.PART_ARRAY_ACCESS) {
+            if(accChild.getType() == VlclLexer.PART_ARRAY_ACCESS) {
                 sr = getRange(accChild);
             }
             else {
@@ -359,16 +364,57 @@ public class Interp {
             Data.tryValidRange(name, sr);
             Data.addVarInputOutput(name, varName, range, sr);
         }
+        else if(exprTree.getText() == "+" && exprTree.getChildCount() == 1) {
+             executeExpression(varName, range, exprTree.getChild(0));
+        }
         else {
             String nText = "";
             NodeType nType = NodeType.BOX;
             SignalRange sr = new SignalRange();
 
-            switch(exprTree.getType()) {
+            switch(exprTree.getText()) {
+                case "-":
+                    if(exprTree.getChildCount() == 1) nText = "NEG";
+                    else nText = "SUBS";
+                    break;
+                case "+":
+                    nText = "SUM";
+                    break;
+                case "*":
+                    nText = "MUL";
+                    break;
+                case "/":
+                    nText = "DIV";
+                    break;
+                case "%":
+                    nText = "MOD";
+                    break;
+                case "~":
+                    nType = NodeType.NOT;
+                    break;
+                case "&":
+                    nType = NodeType.AND;
+                    break;
+                case "|":
+                    nType = NodeType.OR;
+                    break;
+                case "^":
+                    nType = NodeType.XOR;
+                    break;
+                case "~&":
+                    nType = NodeType.NAND;
+                    break;
+                case "~|":
+                    nType = NodeType.NOR;
+                    break;
+                case "~^":
+                case "^~":
+                    nType = NodeType.XNOR;
+                    break;
                 default:
                     nText = exprTree.getText();
             }
-            String nodeName = Data.addVar(num, nText, new SignalRange(), NodeType.BOX);
+            String nodeName = Data.addVar(nText, nText, new SignalRange(), nType);
             int nChild = 0;
             VlclTree child = exprTree.getChild(nChild);
             while(child != null) {
@@ -379,67 +425,6 @@ public class Interp {
 
         /*
         TODO:
-            UNARIS
-            // Operador “+”
-            a = +8'h12; 
-            // Operador “-”
-            b = -23'b111;
-            // Operador “!” negació lògica.
-            a = !a;
-            // Operador “~” negació.
-            a = ~a;
-            // Operador “&” AND.
-            a = & a;
-            // Operador “|” OR.
-            a = |a;
-            // Operador “^” OR exclusiva o XOR.
-            a = ^ a;
-            // Operador “~&” NAND.
-            a = ~& a;
-            // Operador “~|” NOR.
-            a = ~| a;
-            // Operador “~^” o “^~” OR exclusiva negada o XNOR.
-            a = ~^ a;
-            a = ^~ a;
-
-            BINARIS
-            // Operador “+”
-            a = b + c;
-            // Operador “-”
-            a = b - c;
-            // Operador ”*”
-            a = b * c;
-            // Operador ”/”: divisió entera.
-            a = b / c;
-            // Operador ”%”
-            a = b % c;
-            // Operador “<”
-            a = a < b;
-            // Operador “>”
-            a = a > b;
-            // Operador “<=”
-            a = a <= b;
-            // Operador “>=”
-            a = a >= b;
-            // Operador “==”
-            a = a == b;
-            // Operador “!=”
-            a = a != b;
-            // Operador “&&” AND lògica.
-            a = a && b;
-            // Operador “||” OR lògica.
-            a = a || b;
-            // Operador “&” AND.
-            a = a & b;
-            // Operador “|” OR.
-            a = a | b;
-            // Operador “^” OR exclusiva o XOR.
-            a = a ^ b;
-            // Operador “<<”
-            a = b << 2;
-            // Operador “>>”.
-            a = b >> 2;
-
             ALTRES
             // Operador condicional
             // Operador “? :”

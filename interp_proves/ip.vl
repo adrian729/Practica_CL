@@ -13,8 +13,9 @@ module module1 (cin, cout);
 
 endmodule
 
-module module2 (cin, cout);
 
+module module2 (cin, cout);
+	
 	input cin;
 	output [5:3] cout;
 
@@ -23,10 +24,10 @@ module module2 (cin, cout);
 
 	module1 m1 (cin[0], cout[5:3]);
 
-	assign [2:0] a = c;
+	wire [4:0] a;
+	assign [3:1] a = cin << 23;
+	assign [4:0] a = 34 & 22 && 12 | 14;
 
-	p = d;
-
-	t[3:2] = s;
+	a = cin;
 	
 endmodule
