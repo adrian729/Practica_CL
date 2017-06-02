@@ -50,11 +50,8 @@ tokens {
     ARRAY_ACCESS;       // Access to an array bit
     PART_ARRAY_ACCESS;  // Access to an array set of consecutive bits
     ARRAY_RANGE;        // Range of an array    
-    CONCAT;             // Concatenation of wires
-    CONCAT_MULT;        // Repetirion of a concat parameter
     CASE_ITEM;          // case struct item
     MODULE;             // Module call
-    FUNCALL;            // Function call
     NUM_CONST;             //Number distinc
 }
 
@@ -93,16 +90,12 @@ instruction
         | var_dec
         | param_dec
         | mod_dec
-        | func_dec
         | statement
         ;
 
 statement
         : assign
         | assignation_stmt
-        | ifelse_stmt
-        | case_stmt
-        | for_loop
         ;
 
 // Instruccions
@@ -128,84 +121,14 @@ in_assign
 mod_dec : ID ID call_params ';' -> ^(MODULE ID ID call_params)
         ;
 
-func_dec: FUNCTION^ array_dec? ID ';'! func_init beginend_stmt ENDFUNCTION!
-        ;
-
-func_init
-        : (func_input | var_dec)*
-        ;
-
-func_input
-        : (INPUT^ | INOUT^) array_dec? varslist ';'!
-        ;
-
 // Declaracions - Estructures de control
 
 //CHANGE: unides totes les assignacions.
-assign  : ASSIGN! (array_dec ID | concat_expr) ASSIGNSIMBOL^ expr ';'!
+assign  : ASSIGN! array_dec ID ASSIGNSIMBOL^ expr ';'!
         ;
 
 assignation_stmt
         : (ID | array_acces) ASSIGNSIMBOL^ expr ';'!
-        ;
-
-beginend_stmt
-        : BEGIN! block_stmts END!
-        ;
-
-ifelse_stmt  
-        : IF^ '('! expr ')'! intern_stmt_bloc else_stmt?
-        ;
-
-else_stmt
-        : ELSE^ (ifelse_stmt | intern_stmt_bloc)
-        ; // TODO: aixo no m'agrada
-
-case_stmt
-        : CASE^ '('! expr ')'! (case_item)+ (default_item)? ENDCASE!
-        ;
-
-case_item
-        : case_opts ':' beginend_stmt -> ^(CASE_ITEM case_opts beginend_stmt)
-        ;
-
-case_opts
-        : (ID | number) (','! (ID | number))*
-        ;
-
-default_item
-        : DEFAULT ':' beginend_stmt -> ^(CASE_ITEM DEFAULT beginend_stmt)
-        ;
-
-for_loop: FOR^ '('! for_index ';'! for_condition ';'! for_increment ')'! intern_stmt_bloc
-        ;   //TODO: for molt simple/limitat, mirar si el volem extendre a mes general
-            //TODO: no mola que nomes pugui seguirlo un if_stmt_bloc, pero si no peta el ifelse.. mirar d'arreglar-ho
-for_index
-        : ID ASSIGNSIMBOL^ PLUS? NUM
-        ;
-
-for_condition
-        : ID COMP^ (PLUS? NUM | ID) 
-        ;
-
-//CHANGE: Arreglat un petit error en la gramatica a l'hora de fer l'increment
-for_increment
-        : ID ASSIGNSIMBOL^ for_increment_expr
-        ;
-
-for_increment_expr
-        : (ID PLUS^ (ID | PLUS? NUM))
-        ;
-
-funcall : ID arg='(' callvarslist? ')' -> ^(FUNCALL ID ^(ARG_LIST[$arg, "ARG_LIST"] callvarslist?))
-        ;
-
-intern_stmt_bloc
-        : assign
-        | assignation_stmt
-        | case_stmt
-        | for_loop
-        | beginend_stmt
         ;
 
 // General
@@ -246,15 +169,7 @@ acces_expr
 
 // Expressions
 
-expr    : logic_or_expr (COND^ cond_expr)?
-        ;
-
-cond_expr
-        : logic_or_expr ':'! logic_or_expr
-        ;
-
-logic_or_expr
-        : logic_and_expr (OR^ logic_and_expr)*
+expr    : logic_and_expr (OR^ logic_and_expr)*
         ;
 
 logic_and_expr
@@ -289,19 +204,7 @@ plus_expr
         ;
 
 term_expr
-        : concat_expr (TERM^ concat_expr)*
-        ;
-
-concat_expr
-        : unari_expr
-        | num_mult? '{' concat_params '}' -> ^(CONCAT num_mult? concat_params)
-        ;
-
-num_mult: NUM -> ^(CONCAT_MULT NUM)
-        ;
-
-concat_params
-        : expr (','! expr)*
+        : unari_expr (TERM^ unari_expr)*
         ;
 
 unari_expr
@@ -323,7 +226,6 @@ paren_expr
 atom    :
         ID
         | array_acces
-        | funcall
         | number
         ;
 
@@ -353,22 +255,6 @@ WIRE    : 'wire' ;
 REG     : 'reg' ;
 PARAMETER: 'parameter' ;
 
-// Estructures de control
-BEGIN   : 'begin' ;
-END     : 'end' ;
-
-IF      : 'if' ;
-ELSE    : 'else' ;
-
-CASE    : 'case' ;
-DEFAULT : 'default' ;
-ENDCASE : 'endcase' ;
-
-FOR     : 'for' ;
-
-FUNCTION: 'function' ;
-ENDFUNCTION: 'endfunction' ;
-
 // Assignacio
 ASSIGN  : 'assign' ;
 ASSIGNSIMBOL: '=' ;
@@ -393,8 +279,6 @@ NOT     : '!' ;
 
 COMP    : '<' | '>' | '<=' | '>=' ;
 EQ      : '==' | '!=' ;
-
-COND    : '?' ;
 
 // Numbers
 NUM     : '0'..'9'+ ;

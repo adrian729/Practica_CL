@@ -1,0 +1,9 @@
+module parameters_module (a, cin, cout);
+	input a, cin;
+	output cout;
+	wire a, cin, cout;
+	parameter ADD = 1'b1;
+	parameter TRUE = 1, FALSE = 0;
+	parameter [1:0] S0 = 3, S1 = 1, S2 = 2;
+  	cout = a & cin & (a | TRUE);
+endmodule

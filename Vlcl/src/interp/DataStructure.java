@@ -20,7 +20,7 @@ public class DataStructure {
                             // Util per generar identificadors unics per al HashMap.
 
     private String actModule; // Modul actual.
-    private int minPosX, maxPosY; // Posicions per calcular on possar el nom del modul.
+    private double minPosX, maxPosY; // Posicions per calcular on possar el nom del modul.
     private List<String> params; // parametres del modul (ordenats com a la capçalera).
     private Set<String> unusedParams; // parametres sense inicialitzar del modul.
     private Map<String, SignalRange> inputs, outputs, inouts; // inputs outputs i inouts del modul actual.
@@ -39,7 +39,8 @@ public class DataStructure {
     */
     public void resetData(boolean addModule) {
         if(addModule) addActModToGlobal();
-        countNodes = minPosX = maxPosY = 0;
+        countNodes = 0;
+        minPosX = maxPosY = 0;
         Data = new HashMap<String, DataNode>();
         actModule = "";
         params = new ArrayList<String>();
@@ -93,11 +94,11 @@ public class DataStructure {
         return actModule;
     }
 
-    public int getMinPosX() {
+    public double getMinPosX() {
         return minPosX;
     }
 
-    public int getMaxPosY() {
+    public double getMaxPosY() {
         return maxPosY;
     }
 
@@ -347,18 +348,83 @@ public class DataStructure {
         }
         return draw;
     }
+
+    private String setDir(NodeType t) {
+        String dir;
+        switch (t) {
+            case AND:
+            case OR:
+            case NOT:
+            case XOR:
+            case NAND:
+            case NOR:
+            case XNOR:
+                dir = "output";
+                break;
+            default:
+                dir = "east";
+        }
+        return dir;
+    }
     
     public String printModuleTex() {
-        String res = "\n";
+        String res1, res2;
+        res1 = res2 = "\n"; //res1 nodes, res2 draws
         ReadFile rf = new ReadFile();
         rf.getNodeCoordsFromTex(dot2tex(printModuleDot()));
+        Map<String, Integer> num_inps_node = new HashMap<String, Integer>();
         for(Map.Entry<String, DataNode> node : Data.entrySet()) {
-            Coords pos = rf.getCoordsFromNode(node.getKey());
-            String text = node.getValue().getText();
-            String draw = setDraw(node.getValue().getType());
-            res +=  "\t\t\\node[" + draw + "] at (" + pos.getFirstCoord() + "bp," + pos.getSecCoord() + "bp) {" + text + "};\n";
+            DataNode n = node.getValue();            
+            List<SignalItem> outs = n.getOutputs();
+            for(SignalItem sItem : outs) {
+                int num = 0;
+                if(num_inps_node.containsKey(sItem.name)) num = num_inps_node.get(sItem.name);
+                ++num;
+                num_inps_node.put(sItem.name, num);
+            }
         }
-        return res;
+        Map<String, String> drawType = new HashMap<String, String>();
+        for(Map.Entry<String, DataNode> node : Data.entrySet()) {
+            DataNode n = node.getValue();
+            String nodeName = node.getKey();
+            Coords pos = rf.getCoordsFromNode(nodeName);
+            if(pos.getFirstCoord() < minPosX) minPosX = pos.getFirstCoord();
+            if(pos.getSecCoord() > maxPosY) maxPosY = pos.getSecCoord();
+            String text = n.getText();
+            String draw = setDraw(n.getType());
+            drawType.put(nodeName, draw);
+            String inps = "";
+            int numInps = 0;
+            if(num_inps_node.containsKey(nodeName)) numInps = num_inps_node.get(nodeName);
+            if(numInps > 0) {
+                if(numInps < 2 && draw != "draw") numInps = 2;
+                inps = ", inputs={";
+                for(int i = 0; i < numInps; ++i) {
+                    inps += "n";
+                }
+                inps += "}";
+            }
+            res1 +=  "\t\t\\node[" + draw + inps + "] (" + nodeName + ") at (" + pos.getFirstCoord() + "bp," + pos.getSecCoord() + "bp) {" + text + "};\n";
+        }
+        for(Map.Entry<String, DataNode> node : Data.entrySet()) {
+            DataNode n = node.getValue();
+            String dir = setDir(n.getType());
+            String nodeName = node.getKey();
+            List<SignalItem> outs = n.getOutputs();
+            for(SignalItem sItem : outs) {
+                String outName = sItem.name;
+                DataNode outNode = Data.get(outName);
+                int numInp = outNode.getUsedInputs();
+                outNode.addUsedInput();
+                Data.put(outName, outNode);
+                res2 += "\t\t\\draw (" + nodeName + "." + dir + ") -- ++(right:3mm) |- (" + outName;
+                String draw = "draw";
+                if(drawType.containsKey(outName)) draw = drawType.get(outName);
+                if (draw != "draw") res2 += ".input " + numInp;
+                res2 += ");\n";
+            }
+        }
+        return res1 + res2;
     }
 
 }

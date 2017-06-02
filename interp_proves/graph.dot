@@ -1,15 +1,22 @@
 digraph  {
  rankdir=LR;
-nodeº8 -> {}
-a -> {nodeº6 nodeº8 nodeº10 }
-nodeº9 -> {}
-b -> {nodeº6 nodeº8 nodeº10 }
+nodeº8 -> {FALSE }
+a -> {nodeº16 nodeº17 }
+ADD -> {}
 cout -> {}
-cin -> {nodeº5 nodeº9 }
-sum -> {}
-nodeº5 -> {}
-nodeº6 -> {}
-nodeº10 -> {}
-nodeº7 -> {}
+cin -> {nodeº16 }
+TRUE -> {nodeº17 }
+nodeº12 -> {S1 }
+nodeº14 -> {S2 }
+nodeº16 -> {nodeº15 }
+nodeº15 -> {cout }
+nodeº17 -> {nodeº15 }
+FALSE -> {}
+nodeº4 -> {ADD }
+S0 -> {}
+nodeº6 -> {TRUE }
+nodeº10 -> {S0 }
+S1 -> {}
+S2 -> {}
 }
 

@@ -14,12 +14,15 @@ public class DataNode {
     private List<SignalItem> outputs; // outputs del node i rang que va cap a l'output del node.
     private Map<Integer, SignalRange> inputs; // donat un output, el rang del node que va a aquell output.
 
+    private int usedInputs;
+
     public DataNode() {
     	this.nType = NodeType.VOID;
     	this.text = "";
         this.range = new SignalRange();
         this.outputs = new ArrayList<SignalItem>();
         this.inputs = new HashMap<Integer, SignalRange>();
+        this.usedInputs = 1;
     }
 
     public DataNode(NodeType nType) {
@@ -28,6 +31,7 @@ public class DataNode {
         this.range = new SignalRange();
         this.outputs = new ArrayList<SignalItem>();
         this.inputs = new HashMap<Integer, SignalRange>();
+        this.usedInputs = 1;
     }
 
     public String getText() {
@@ -48,6 +52,10 @@ public class DataNode {
 
     public Map<Integer, SignalRange> getInputsRange() {
         return inputs;
+    }
+
+    public int getUsedInputs() {
+        return usedInputs;
     }
 
     public void setText(String text) {
@@ -71,6 +79,10 @@ public class DataNode {
         int pos = outputs.size();
         outputs.add(oi);
         inputs.put(pos, sr);
+    }
+
+    public void addUsedInput() {
+        usedInputs += 1;
     }
 
 }

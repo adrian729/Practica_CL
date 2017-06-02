@@ -1,0 +1,23 @@
+module module1 (a, b, cin, sum, cout);
+  input  a, b, cin;
+  output sum, cout;
+  wire a, b, cin, sum, cout;
+  sum  = a ^ b ^ cin;
+  cout = a & b | cin & (a | b);
+endmodule
+
+module module2 (a, b, cin, sum, cout);
+  input  a, b, cin;
+  output sum, cout;
+  wire a, b, cin, sum, cout;
+  sum  = a ^ cin;
+  cout = a & b | cin ^ (a | b);
+endmodule
+
+module module3 (a, b, cin, sum, cout);
+  input  a, b, cin;
+  output sum, cout;
+  wire a, b, cin, sum, cout;
+  sum  = a ^ cin;
+  cout = a & !b | cin & b;
+endmodule

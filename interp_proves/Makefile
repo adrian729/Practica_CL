@@ -12,8 +12,12 @@ all:
 exec:
 	@$(foreach vl,$(SRCS),\
 		echo % Execute $(vl);\
-		Vlcl $(vl);\
+		Vlcl $(vl) > $(vl:.vl=.tex);\
+		pdflatex $(vl:.vl=.tex);\
+		rm $(vl:.vl=.aux);\
+		rm $(vl:.vl=.log);\
 	)
+	rm graph.dot
 
 clean:
 	rm *.dot

@@ -83,12 +83,11 @@ module expressions_module (cin, cout);
 
 	// Operador condicional
 	// Operador “? :”
-	a = (b == c) ? a + b : a - c;
+	cout = (b == c) ? a + b : a - c;
 
 	// Operador concatenació
 	// Operador “{ }” permet concatenar els operants per formar un vector.
-	a = {a, b}; // El resultat tindrà mida bits d'a més bits de b
-	a = { a[4:0], b[2:0] }; // El resultat tindra mida 8
+	cin = {a, b}; // El resultat tindrà mida bits d'a més bits de b
 	a = { 3{a} }; // Equivalent a { a, a, a }
 	a = {b, 2{ c, d } }; // Equivalent a { b, c, d, c, d }
 	

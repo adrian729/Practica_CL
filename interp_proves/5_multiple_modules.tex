@@ -1,0 +1,107 @@
+\documentclass[tikz,border=10pt,12pt,x11names]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{circuits.logic.US} % TiKZ Library for US Logic Circuits.
+\begin{document}
+
+	\begin{tikzpicture}[circuit logic US,
+						tiny circuit symbols,
+						every circuit symbol/.style={
+						fill=white,draw}]
+
+		\node[draw] at (-2.0bp,2.0bp) {module1};
+
+		\node[and gate, inputs={nn}] (nodeº8) at (129.65bp,18.0bp) {};
+		\node[draw] (a) at (27.0bp,99.0bp) {a};
+		\node[and gate, inputs={nn}] (nodeº9) at (240.39bp,72.0bp) {};
+		\node[draw] (b) at (27.0bp,45.0bp) {b};
+		\node[draw, inputs={n}] (cout) at (444.68bp,47.0bp) {cout};
+		\node[draw] (cin) at (129.65bp,126.0bp) {cin};
+		\node[draw, inputs={n}] (sum) at (346.58bp,126.0bp) {sum};
+		\node[xor gate, inputs={nn}] (nodeº5) at (240.39bp,126.0bp) {};
+		\node[xor gate, inputs={nn}] (nodeº6) at (129.65bp,180.0bp) {};
+		\node[or gate, inputs={nn}] (nodeº10) at (129.65bp,72.0bp) {};
+		\node[or gate, inputs={nn}] (nodeº7) at (346.58bp,47.0bp) {};
+
+		\draw (nodeº8.output) -- ++(right:3mm) |- (nodeº7.input 1);
+		\draw (a.east) -- ++(right:3mm) |- (nodeº6.input 1);
+		\draw (a.east) -- ++(right:3mm) |- (nodeº8.input 1);
+		\draw (a.east) -- ++(right:3mm) |- (nodeº10.input 1);
+		\draw (nodeº9.output) -- ++(right:3mm) |- (nodeº7.input 2);
+		\draw (b.east) -- ++(right:3mm) |- (nodeº6.input 2);
+		\draw (b.east) -- ++(right:3mm) |- (nodeº8.input 2);
+		\draw (b.east) -- ++(right:3mm) |- (nodeº10.input 2);
+		\draw (cin.east) -- ++(right:3mm) |- (nodeº5.input 1);
+		\draw (cin.east) -- ++(right:3mm) |- (nodeº9.input 1);
+		\draw (nodeº5.output) -- ++(right:3mm) |- (sum);
+		\draw (nodeº6.output) -- ++(right:3mm) |- (nodeº5.input 2);
+		\draw (nodeº10.output) -- ++(right:3mm) |- (nodeº9.input 2);
+		\draw (nodeº7.output) -- ++(right:3mm) |- (cout);
+
+	\end{tikzpicture}
+
+	\begin{tikzpicture}[circuit logic US,
+						tiny circuit symbols,
+						every circuit symbol/.style={
+						fill=white,draw}]
+
+		\node[draw] at (-2.0bp,2.0bp) {module2};
+
+		\node[xor gate, inputs={nn}] (nodeº8) at (231.29bp,158.0bp) {};
+		\node[draw] (a) at (27.0bp,72.0bp) {a};
+		\node[or gate, inputs={nn}] (nodeº9) at (125.1bp,72.0bp) {};
+		\node[draw] (b) at (27.0bp,18.0bp) {b};
+		\node[draw, inputs={n}] (cout) at (435.58bp,101.0bp) {cout};
+		\node[draw] (cin) at (27.0bp,149.0bp) {cin};
+		\node[draw, inputs={n}] (sum) at (231.29bp,104.0bp) {sum};
+		\node[xor gate, inputs={nn}] (nodeº5) at (125.1bp,126.0bp) {};
+		\node[or gate, inputs={nn}] (nodeº6) at (337.48bp,101.0bp) {};
+		\node[and gate, inputs={nn}] (nodeº7) at (125.1bp,18.0bp) {};
+
+		\draw (nodeº8.output) -- ++(right:3mm) |- (nodeº6.input 1);
+		\draw (a.east) -- ++(right:3mm) |- (nodeº5.input 1);
+		\draw (a.east) -- ++(right:3mm) |- (nodeº7.input 1);
+		\draw (a.east) -- ++(right:3mm) |- (nodeº9.input 1);
+		\draw (nodeº9.output) -- ++(right:3mm) |- (nodeº8.input 1);
+		\draw (b.east) -- ++(right:3mm) |- (nodeº7.input 2);
+		\draw (b.east) -- ++(right:3mm) |- (nodeº9.input 2);
+		\draw (cin.east) -- ++(right:3mm) |- (nodeº5.input 2);
+		\draw (cin.east) -- ++(right:3mm) |- (nodeº8.input 2);
+		\draw (nodeº5.output) -- ++(right:3mm) |- (sum);
+		\draw (nodeº6.output) -- ++(right:3mm) |- (cout);
+		\draw (nodeº7.output) -- ++(right:3mm) |- (nodeº6.input 2);
+
+	\end{tikzpicture}
+
+	\begin{tikzpicture}[circuit logic US,
+						tiny circuit symbols,
+						every circuit symbol/.style={
+						fill=white,draw}]
+
+		\node[draw] at (-2.0bp,2.0bp) {module3};
+
+		\node[draw, inputs={n}] (nodeº8) at (125.1bp,18.0bp) {!};
+		\node[draw] (a) at (125.1bp,72.0bp) {a};
+		\node[and gate, inputs={nn}] (nodeº9) at (231.29bp,149.0bp) {};
+		\node[draw] (b) at (27.0bp,95.0bp) {b};
+		\node[draw, inputs={n}] (cout) at (435.58bp,149.0bp) {cout};
+		\node[draw] (cin) at (125.1bp,126.0bp) {cin};
+		\node[draw, inputs={n}] (sum) at (337.48bp,95.0bp) {sum};
+		\node[xor gate, inputs={nn}] (nodeº5) at (231.29bp,95.0bp) {};
+		\node[or gate, inputs={nn}] (nodeº6) at (337.48bp,149.0bp) {};
+		\node[and gate, inputs={nn}] (nodeº7) at (231.29bp,41.0bp) {};
+
+		\draw (nodeº8.east) -- ++(right:3mm) |- (nodeº7.input 1);
+		\draw (a.east) -- ++(right:3mm) |- (nodeº5.input 1);
+		\draw (a.east) -- ++(right:3mm) |- (nodeº7.input 2);
+		\draw (nodeº9.output) -- ++(right:3mm) |- (nodeº6.input 1);
+		\draw (b.east) -- ++(right:3mm) |- (nodeº8);
+		\draw (b.east) -- ++(right:3mm) |- (nodeº9.input 1);
+		\draw (cin.east) -- ++(right:3mm) |- (nodeº5.input 2);
+		\draw (cin.east) -- ++(right:3mm) |- (nodeº9.input 2);
+		\draw (nodeº5.output) -- ++(right:3mm) |- (sum);
+		\draw (nodeº6.output) -- ++(right:3mm) |- (cout);
+		\draw (nodeº7.output) -- ++(right:3mm) |- (nodeº6.input 2);
+
+	\end{tikzpicture}
+
+\end{document}

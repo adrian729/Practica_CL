@@ -98,7 +98,7 @@ public class Interp {
         if(Data.getActModUnusedParams().size() > 0)
             throw new RuntimeException("alguna senyal del modul no ha estat declarada.");
         Data.checkModParamTypes();
-        int posx, posy;
+        double posx, posy;
         posx = Data.getMinPosX();
         posy = Data.getMaxPosY();
         outStr += moduleHead(modName, posx, posy);
@@ -123,7 +123,6 @@ public class Interp {
         int nChild = 0;
         VlclTree child = t.getChild(0);
         while(child != null) {
-            System.out.println("PATATA " + child.getText());
             switch(child.getType()) {
                 // signal_dec
                 case VlclLexer.INPUT:
@@ -143,10 +142,6 @@ public class Interp {
                 // mod_dec
                 case VlclLexer.MODULE:
                     executeModuleDec(child);
-                    break;
-                // func_dec
-                case VlclLexer.FUNCTION:
-                    executeFunctionDec(child);
                     break;
                 // statement
                 default:
@@ -293,12 +288,6 @@ public class Interp {
         }
     }
 
-//TODO
-    private void executeFunctionDec(VlclTree t) {
-
-    }
-
-//TODO
     private void executeStatement(VlclTree t) {
         switch(t.getType()) {
             case VlclLexer.ASSIGNSIMBOL:
@@ -326,13 +315,6 @@ public class Interp {
                 executeExpression(varName, sr, t.getChild(++nChild));
                 break;
         }
-        /*
-            TODO
-                statement
-                | ifelse_stmt
-                | case_stmt
-                | for_loop
-        */
     }
 
     /*
@@ -342,11 +324,13 @@ public class Interp {
         if(exprTree.getType() == VlclLexer.NUM_CONST) {
             String num = exprTree.getChild(0).getText();
             if(exprTree.getChild(1) != null) num += exprTree.getChild(1).getText();
-            Data.addVar("", num, new SignalRange(), NodeType.BOX);
+            String numName = Data.addVar("", num, new SignalRange(), NodeType.BOX);
+            Data.addVarOutput(numName, varName, new SignalRange()); //TODO mira si s'ha de tocar el SignalRange
         }
         else if(exprTree.getType() == VlclLexer.NUM) {
             String num = exprTree.getText();            
-            Data.addVar("", num, new SignalRange(), NodeType.BOX);
+            String numName = Data.addVar("", num, new SignalRange(), NodeType.BOX);
+            Data.addVarOutput(numName, varName, new SignalRange()); //TODO mira si s'ha de tocar el SignalRange
         }
         else if(exprTree.getType() == VlclLexer.ID) {
             Data.addVarOutput(exprTree.getText(), varName, range);
@@ -416,6 +400,7 @@ public class Interp {
                     nText = exprTree.getText();
             }
             String nodeName = Data.addVar("", nText, new SignalRange(), nType);
+            Data.addVarOutput(nodeName, varName, range);
             int nChild = 0;
             VlclTree child = exprTree.getChild(nChild);
             while(child != null) {
@@ -423,21 +408,6 @@ public class Interp {
                 child = exprTree.getChild(++nChild);
             }
         }
-
-        /*
-        TODO:
-            ALTRES
-            // Operador condicional
-            // Operador “? :”
-            a = (b == c) ? a + b : a - c;
-
-            // Operador concatenació
-            // Operador “{ }” permet concatenar els operants per formar un vector.
-            a = {a, b}; // El resultat tindrà mida bits d'a més bits de b
-            a = { a[4:0], b[2:0] }; // El resultat tindra mida 8
-            a = { 3{a} }; // Equivalent a { a, a, a }
-            a = {b, 2{ c, d } }; // Equivalent a { b, c, d, c, d }
-        */
     }
 
     /*
@@ -475,14 +445,14 @@ public class Interp {
     /**
     * Capcelera modul en latex.
     */
-    private String moduleHead(String modName, int posx, int posy) {
+    private String moduleHead(String modName, double posx, double posy) {
         posx -= 2;
         posy += 2;
         return "\n\t\\begin{tikzpicture}[circuit logic US,\n" +
                     "\t\t\t\t\t\ttiny circuit symbols,\n" +
                     "\t\t\t\t\t\tevery circuit symbol/.style={\n" +
                     "\t\t\t\t\t\tfill=white,draw}]\n" +
-                    "\n\t\t\\node[draw] at (" + posx + "," + posy + ") {" + modName + "};\n";
+                    "\n\t\t\\node[draw] at (" + posx + "bp," + posy + "bp) {" + modName + "};\n";
     }
 
     /**

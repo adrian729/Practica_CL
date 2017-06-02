@@ -1,0 +1,9 @@
+module assignations_module (cin, cout);
+	input cin;
+	output cout;
+	wire [5:0] a, b, c, x;
+	a[4:2] = x ^ b ^ c;
+	wire [4:2] m;
+	m = 23;
+	m[3] = 1'b1;
+endmodule

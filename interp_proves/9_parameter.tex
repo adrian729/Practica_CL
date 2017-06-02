@@ -1,0 +1,48 @@
+\documentclass[tikz,border=10pt,12pt,x11names]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{circuits.logic.US} % TiKZ Library for US Logic Circuits.
+\begin{document}
+
+	\begin{tikzpicture}[circuit logic US,
+						tiny circuit symbols,
+						every circuit symbol/.style={
+						fill=white,draw}]
+
+		\node[draw] at (-2.0bp,2.0bp) {parameters_module};
+
+		\node[draw] (nodeº8) at (39.646bp,18.0bp) {0};
+		\node[draw] (a) at (152.99bp,126.0bp) {a};
+		\node[draw, inputs={n}] (ADD) at (152.99bp,234.0bp) {};
+		\node[draw, inputs={n}] (cout) at (484.27bp,126.0bp) {cout};
+		\node[draw] (cin) at (152.99bp,180.0bp) {cin};
+		\node[draw, inputs={n}] (TRUE) at (152.99bp,72.0bp) {};
+		\node[draw] (nodeº12) at (39.646bp,288.0bp) {1};
+		\node[draw] (nodeº14) at (39.646bp,342.0bp) {2};
+		\node[and gate, inputs={nn}] (nodeº16) at (266.33bp,153.0bp) {};
+		\node[and gate, inputs={nn}] (nodeº15) at (381.63bp,126.0bp) {};
+		\node[or gate, inputs={nn}] (nodeº17) at (266.33bp,99.0bp) {};
+		\node[draw, inputs={n}] (FALSE) at (152.99bp,18.0bp) {};
+		\node[draw] (nodeº4) at (39.646bp,234.0bp) {1'b1};
+		\node[draw, inputs={n}] (S0) at (152.99bp,396.0bp) {};
+		\node[draw] (nodeº6) at (39.646bp,72.0bp) {1};
+		\node[draw] (nodeº10) at (39.646bp,396.0bp) {3};
+		\node[draw, inputs={n}] (S1) at (152.99bp,288.0bp) {};
+		\node[draw, inputs={n}] (S2) at (152.99bp,342.0bp) {};
+
+		\draw (nodeº8.east) -- ++(right:3mm) |- (FALSE);
+		\draw (a.east) -- ++(right:3mm) |- (nodeº16.input 1);
+		\draw (a.east) -- ++(right:3mm) |- (nodeº17.input 1);
+		\draw (cin.east) -- ++(right:3mm) |- (nodeº16.input 2);
+		\draw (TRUE.east) -- ++(right:3mm) |- (nodeº17.input 2);
+		\draw (nodeº12.east) -- ++(right:3mm) |- (S1);
+		\draw (nodeº14.east) -- ++(right:3mm) |- (S2);
+		\draw (nodeº16.output) -- ++(right:3mm) |- (nodeº15.input 1);
+		\draw (nodeº15.output) -- ++(right:3mm) |- (cout);
+		\draw (nodeº17.output) -- ++(right:3mm) |- (nodeº15.input 2);
+		\draw (nodeº4.east) -- ++(right:3mm) |- (ADD);
+		\draw (nodeº6.east) -- ++(right:3mm) |- (TRUE);
+		\draw (nodeº10.east) -- ++(right:3mm) |- (S0);
+
+	\end{tikzpicture}
+
+\end{document}
