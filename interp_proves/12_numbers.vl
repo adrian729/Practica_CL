@@ -1,5 +1,8 @@
-module numbers_module (cin, cout);
+module numbersmodule (cin, cout);
 
+	input cin;
+	inout cout;
+	wire cin, cout;
 	wire [200:0] b1, b2, o1, o2, d0, d1, d2, h1, h2;
 
 	// Decimal sense base especificada

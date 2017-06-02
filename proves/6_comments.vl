@@ -4,13 +4,15 @@
 
 module module1 (a, b, c, d, e);
 	input a, b; // AIXO UN COMENTARI DE LINIA
-	output [5:1] c, d;
+	output c, d;
 	input e;
+	wire a, b, c, d, e;
 endmodule
 
 module module2 (a, b);
 	input a;  // AIXO UN ALTRE COMENTARI DE LINIA
 	output [5:1] b;
+	wire a, b;
 endmodule // AIXO UN ALTRE COMENTARI DE LINIA
 
 /*
@@ -19,6 +21,7 @@ endmodule // AIXO UN ALTRE COMENTARI DE LINIA
 
 module module3 (a); // AIXO UN ALTRE COMENTARI DE LINIA
 	inout a;
+	wire a;
 endmodule
 
 /*

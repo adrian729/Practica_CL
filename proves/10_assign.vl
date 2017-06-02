@@ -1,8 +1,9 @@
 module assigns_module (cin, cout);
 	input cin;
 	output cout;
-	wire b, c, d, e;
+	wire cin, cout, b, c, d, e;
 	assign a = -23;
 	assign {a, b, 23{3, a}, {c, {d}}} = e + 11'b1011;
 	assign [5:2] sum = 4'b11;
+	
 endmodule

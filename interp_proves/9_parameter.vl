@@ -1,4 +1,4 @@
-module parameters_module (a, cin, cout);
+module parametersmodule (a, cin, cout);
 	input a, cin;
 	output cout;
 	wire a, cin, cout;

@@ -1,6 +1,7 @@
 module module1 (cin, cout);
 	input cin;
 	output cout;
+	wire cin, cout;
 	wire a;
 	wire b, c, d;
 	wire [7:0] e;

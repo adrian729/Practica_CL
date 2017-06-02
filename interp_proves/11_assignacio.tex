@@ -1,0 +1,35 @@
+\documentclass[tikz,border=10pt,12pt,x11names]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{circuits.logic.US} % TiKZ Library for US Logic Circuits.
+\begin{document}
+
+	\begin{tikzpicture}[circuit logic US,
+						tiny circuit symbols,
+						every circuit symbol/.style={
+						fill=white,draw}]
+
+		\node[draw] at (-2.0bp,2.0bp) {assignationsmodule};
+
+		\node[draw, inputs={n}] (a) at (354.68bp,45.0bp) {a};
+		\node[draw] (nodeº9) at (39.646bp,180.0bp) {23};
+		\node[draw] (b) at (39.646bp,72.0bp) {b};
+		\node[draw] (c) at (150.39bp,18.0bp) {c};
+		\node[draw] (cout) at (39.646bp,234.0bp) {cout};
+		\node[draw] (x) at (39.646bp,18.0bp) {x};
+		\node[draw] (cin) at (39.646bp,288.0bp) {cin};
+		\node[draw, inputs={nn}] (m) at (150.39bp,153.0bp) {m};
+		\node[xor gate, inputs={nn}] (nodeº6) at (256.58bp,45.0bp) {};
+		\node[draw] (nodeº10) at (39.646bp,126.0bp) {1'b1};
+		\node[xor gate, inputs={nn}] (nodeº7) at (150.39bp,72.0bp) {};
+
+		\draw (nodeº9.east) -- ++(right:3mm) |- (m);
+		\draw (b.east) -- ++(right:3mm) |- (nodeº7.input 1);
+		\draw (c.east) -- ++(right:3mm) |- (nodeº6.input 1);
+		\draw (x.east) -- ++(right:3mm) |- (nodeº7.input 2);
+		\draw (nodeº6.output) -- ++(right:3mm) |- (a);
+		\draw (nodeº10.east) -- ++(right:3mm) |- (m);
+		\draw (nodeº7.output) -- ++(right:3mm) |- (nodeº6.input 2);
+
+	\end{tikzpicture}
+
+\end{document}

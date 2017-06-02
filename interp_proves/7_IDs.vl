@@ -1,5 +1,5 @@
-module prova_IDs_module (a, _b, a343, _b343, a$, _b$, );
-	input _a;
-	output a _b, a343, _b343, a$;
-	inout _b$;
+module provaDsmodule (a, b, a343, b343 );
+	input a;
+	output b, a343, b343;
+	wire a, b, a343, b343;
 endmodule
