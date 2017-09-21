@@ -1,0 +1,13 @@
+digraph  {
+ rankdir=LR;
+nodeº8 -> {nodeº7 }
+a -> {}
+b -> {}
+c -> {nodeº7 }
+cout -> {}
+cin -> {}
+sum -> {}
+FA -> {a b cin sum c }
+nodeº7 -> {cout }
+}
+

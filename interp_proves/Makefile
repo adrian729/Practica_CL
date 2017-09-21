@@ -16,12 +16,12 @@ exec:
 		pdflatex $(vl:.vl=.tex);\
 		rm $(vl:.vl=.aux);\
 		rm $(vl:.vl=.log);\
+		mv graph.dot $(vl:.vl=.dot);\
 	)
-	rm graph.dot
 
 clean:
 	rm *.dot
 	rm *.pdf
-	rm *.trace
+	rm *.log
 
 distclean: clean

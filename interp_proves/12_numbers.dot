@@ -1,0 +1,24 @@
+digraph  {
+ rankdir=LR;
+o1 -> {}
+o2 -> {}
+cout -> {}
+cin -> {}
+h1 -> {}
+nodeº19 -> {h2 }
+h2 -> {}
+d0 -> {}
+d1 -> {}
+d2 -> {}
+b1 -> {}
+b2 -> {}
+nodeº12 -> {b1 }
+nodeº11 -> {d0 }
+nodeº14 -> {d1 }
+nodeº13 -> {o1 }
+nodeº16 -> {b2 }
+nodeº15 -> {h1 }
+nodeº18 -> {d2 }
+nodeº17 -> {o2 }
+}
+

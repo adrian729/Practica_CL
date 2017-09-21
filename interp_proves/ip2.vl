@@ -1,0 +1,16 @@
+module fulladder (a, b, cin, sum, cout);
+  input  a, b, cin;
+  output sum, cout;
+  wire a, b, cin, sum, cout;
+  sum  = a ^ b ^ cin;
+  cout = a & b | cin & (a | b);
+endmodule
+
+
+module fulladder2 (a, b, cin, sum, cout);
+  input  a, b, cin;
+  output sum, cout;
+  wire a, b, cin, sum, cout, c;
+  fulladder FA (a, b, cin, sum, c);
+  cout = c ^ 5'b1110;
+endmodule

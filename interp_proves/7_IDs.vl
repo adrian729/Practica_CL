@@ -1,5 +1,0 @@
-module provaDsmodule (a, b, a343, b343 );
-	input a;
-	output b, a343, b343;
-	wire a, b, a343, b343;
-endmodule
